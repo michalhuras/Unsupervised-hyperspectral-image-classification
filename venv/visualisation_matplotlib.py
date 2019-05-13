@@ -80,14 +80,15 @@ print('Wavelengths: {0:4d} {1:4d} {2:4d} {3:4d}'.format(NEONRedWv, NEONGreenWv, 
 #print (NEONRed, NEONGreen, NEONBlue)
 #print (type (NEONRed))
 
-#RGBIm = OSBSTinyIm[:, :, [NEONRed, NEOXNGreen, NEONBlue]]
-RGBIm = OSBSTinyIm[:, :, [29, 20, 11]]
+# RGBIm = OSBSTinyIm[:, :, [NEONRed, NEOXNGreen, NEONBlue]]
+# RGBIm = OSBSTinyIm[:, :, [29, 20, 11]]
+RGBIm = OSBSTinyIm[:, :, 20]
 
-#RGBIm = np.sqrt(RGBIm)
-#print(RGBIm)
+# RGBIm = np.sqrt(RGBIm)
+# print(RGBIm)
 print("---------------------")
-#print((RGBIm * 255).astype(np.uint8))
-#print(type((RGBIm * 255).astype(np.uint8)))
+# print((RGBIm * 255).astype(np.uint8))
+# print(type((RGBIm * 255).astype(np.uint8)))
 
 plt.figure(2)
 plt.imshow((RGBIm * 255).astype(np.uint8))
