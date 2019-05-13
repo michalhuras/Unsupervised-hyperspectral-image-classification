@@ -34,10 +34,10 @@ OSBSTinyIm = ImDict['indian_pines_corrected']
 # OSBSTinyIm = ImDict['indian_pines']
 
 # Size
-TinySize   = np.shape(OSBSTinyIm)
-NRows      = TinySize[0]
-NCols      = TinySize[1]
-NBands     = TinySize[2]
+TinySize = np.shape(OSBSTinyIm)
+NRows = TinySize[0]
+NCols = TinySize[1]
+NBands = TinySize[2]
 print('Size(rows, cols, bands): {0:4d} {1:4d} {2:4d}'.format(NRows, NCols, NBands))
 
 # Adding colors
@@ -81,9 +81,9 @@ print('Wavelengths: {0:4d} {1:4d} {2:4d} {3:4d}'.format(NEONRedWv, NEONGreenWv, 
 #print (type (NEONRed))
 
 #RGBIm = OSBSTinyIm[:, :, [NEONRed, NEOXNGreen, NEONBlue]]
-RGBIm = OSBSTinyIm[:, :, [22, 20, 10]]
+RGBIm = OSBSTinyIm[:, :, [29, 20, 11]]
 
-RGBIm = np.sqrt(RGBIm)
+#RGBIm = np.sqrt(RGBIm)
 #print(RGBIm)
 print("---------------------")
 #print((RGBIm * 255).astype(np.uint8))
@@ -92,7 +92,5 @@ print("---------------------")
 plt.figure(2)
 plt.imshow((RGBIm * 255).astype(np.uint8))
 plt.show()
-
-
 
 print("end")
