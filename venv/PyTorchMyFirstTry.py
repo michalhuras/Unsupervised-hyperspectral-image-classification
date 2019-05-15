@@ -4,27 +4,37 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import torchvision.transforms as transforms
+from scipy import io
+import numpy as np
+
 
 '''
     My first try with PyTorch based on "A 60 minute blitz"
     NOPE NOPE NOPE 
     not yet
+    
+    TODO 
+        - sprawdzić jaka jest najlepsza wartość kernel_size
 '''
-
 
 class Autoencoder(nn.Module):
     def __init__(self):
         super(Autoencoder, self).__init__()
 
         self.encoder = nn.Sequential(
-            nn.Conv2d(3, 6, kernel_size=5),
+            nn.Conv2d(20, 40, kernel_size=20),
             nn.ReLU(True),
-            nn.Conv2d(6, 16, kernel_size=5),
+            nn.Conv2d(40, 90, kernel_size=20),
+            nn.ReLU(True),
+            nn.Conv2d(90, 200, kernel_size=20),
             nn.ReLU(True))
         self.decoder = nn.Sequential(
-            nn.ConvTranspose2d(16, 6, kernel_size=5),
+            nn.ConvTranspose2d(200, 90, kernel_size=20),
             nn.ReLU(True),
-            nn.ConvTranspose2d(6, 3, kernel_size=5),
+            nn.ConvTranspose2d(90, 40, kernel_size=20),
+            nn.ReLU(True),
+            nn.ConvTranspose2d(40, 20, kernel_size=20),
             nn.ReLU(True),
             nn.Sigmoid())
 
@@ -33,11 +43,135 @@ class Autoencoder(nn.Module):
         x = self.decoder(x)
         return x
 
-if __name__ == '__main__':
-    my_net = Autoencoder()
-    print(my_net)
 
-    params = list(my_net.parameters())
-    print(len(params))
-    print(params[0].size())
+if __name__ == '__main__':
+    to_file = False
+
+    # Przekierowanie wyjścia do pliku
+    if to_file:
+        import sys
+        orig_stdout = sys.stdout
+        f = open('out.txt', 'w')
+        sys.stdout = f
+
+    print("START")
+
+    print()
+    print("***   Loading data   ***")
     print("---------------------------------")
+    filename = 'C:/TestingCatalog/AI_data/Indian Pines/Indian_pines_corrected.mat'
+    ImDict = io.loadmat(filename)
+    image_name = 'indian_pines_corrected'
+    the_image = ImDict[image_name]
+    image_size = np.shape(the_image)
+    NRows = image_size[0]
+    NCols = image_size[1]
+    NBands = image_size[2]
+    print("Lokalizacja obrazu: \t", filename)
+    print("Nazwa obrazu:  \t\t\t", image_name)
+    print("Rozmiar: \t\t\t\t", "wiersze: ", NRows, " kolumny: ", NCols, " zakresy: ", NBands)
+
+    print()
+    print("***   Converting image to uint8   ***")
+    print("---------------------------------")
+    # Rzutowanie z uint16 na uint8
+    oryginal_image_type = the_image.dtype
+    oryginal_image_info = np.iinfo(oryginal_image_type)
+    converted_image = the_image.astype(np.float32) / oryginal_image_info.max
+    converted_image_type = np.uint8
+    converted_image_info = np.iinfo(converted_image_type)
+    print(converted_image_info.max)
+    converted_image = converted_image_info.max * converted_image
+    converted_image = converted_image.astype(np.uint8)
+    print("Oryginal type: ")
+    print()
+
+    print()
+    print("***   Loading labels   ***")
+    print("---------------------------------")
+    filename_labels = 'C:/TestingCatalog/AI_data/Indian Pines/Indian_pines_gt.mat'
+    ImDict_labels = io.loadmat(filename_labels)
+    image_name_labels = 'indian_pines_gt'
+    the_image_labels = ImDict_labels[image_name_labels]
+    image_size_labels = np.shape(the_image_labels)
+    NRows_labels = image_size_labels[0]
+    NCols_labels = image_size_labels[1]
+    '''
+    import matplotlib.pyplot as plt
+    plt.imshow(the_image_labels)
+    plt.show()
+    '''
+    labels = set()
+    for row in the_image_labels:
+        for element in row:
+            labels.add(element)
+    num_labels = len(labels)
+    print("Lokalizacja obrazu: \t", filename_labels)
+    print("Nazwa obrazu:  \t\t\t", image_name_labels)
+    print("Rozmiar: \t\t\t\t", "wiersze: ", NRows_labels, " kolumny: ", NCols_labels)
+    print("Ilośc etykiet: ", num_labels, " Etykiety: ", labels)
+
+    print()
+    print("***   Transforming data   ***")
+    print("---------------------------------")
+    import torch.utils.data as utils
+
+    lista = []
+
+    for row in img:
+        for element in row:
+            print(type(element[0]))
+            lista.append(torch.Tensor(element))
+        print(len(lista))
+
+
+
+    print("LALA")
+    my_x = [np.array([[1.0, 2], [3, 4]]), np.array([[5., 6], [7, 8]])]  # a list of numpy arrays
+    print("LALA 2")
+    druga_lista = [torch.Tensor(i) for i in my_x]
+    print("LALA 3")
+
+    print(lista[:20])
+    print()
+    print(druga_lista)
+
+    # tensor_x = torch.stack([torch.Tensor(i) for i in my_x])
+    #
+    # my_x = [np.array([[1.0, 2], [3, 4]]), np.array([[5., 6], [7, 8]])]  # a list of numpy arrays
+    # my_y = [np.array([4.]), np.array([2.])]  # another list of numpy arrays (targets)
+    #
+    # tensor_x = torch.stack([torch.Tensor(i) for i in my_x])  # transform to torch tensors
+    # tensor_y = torch.stack([torch.Tensor(i) for i in my_y])
+    #
+    # my_dataset = utils.TensorDataset(tensor_x, tensor_y)  # create your datset
+    # my_dataloader = utils.DataLoader(my_dataset)  # create your dataloader
+    #
+    # print(tensor_x)
+    # print(type(tensor_x))
+    # print(my_dataset)
+
+
+
+    print()
+    print("***   Creating autoencoder   ***")
+    print("---------------------------------")
+    my_net = Autoencoder()
+    # print(my_net)
+    # params = list(my_net.parameters())
+    # print(len(params))
+    # print(params[0].size())
+
+    print()
+    print("***   Creating optimizer   ***")
+    print("---------------------------------")
+    optimizer = torch.optim.Adam(my_net.parameters(), weight_decay=1e-5)
+
+    print("\nEND")
+
+    # Closing file
+    if to_file:
+        sys.stdout = orig_stdout
+        f.close()
+
+
