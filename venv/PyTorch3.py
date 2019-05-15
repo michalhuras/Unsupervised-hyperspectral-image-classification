@@ -22,6 +22,7 @@ def imshow(img):
     plt.imshow(np.transpose(npimg, (1, 2, 0)))
     plt.show()
 
+
 if __name__ == '__main__':
     '''  1. Loading and normalizing CIFAR10  '''
     print("1. Loading and normalizing CIFAR10")
@@ -29,12 +30,12 @@ if __name__ == '__main__':
         [transforms.ToTensor(),
          transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
     # Normalizacja - w PyTorch piksele mają wartości [-1, 1], w obrazach zazwyczaj [0, 1]
-
     trainset = torchvision.datasets.CIFAR10(root='./data', train=True,
                                             download=True, transform=transform)
+    print(type(trainset))
     trainloader = torch.utils.data.DataLoader(trainset, batch_size=4,
                                               shuffle=True, num_workers=1) #num_workers=2
-
+    print(type(trainloader))
     testset = torchvision.datasets.CIFAR10(root='./data', train=False, # TRAIN = FALSE !!!!
                                            download=True, transform=transform)
     testloader = torch.utils.data.DataLoader(testset, batch_size=4,
@@ -65,8 +66,11 @@ if __name__ == '__main__':
     class Net(nn.Module):
         def __init__(self):
             super(Net, self).__init__()
-            self.conv1 = nn.Conv2d(3, 6, 5) # 3 kanały - R, G, B
-            self.pool = nn.MaxPool2d(2, 2) # Tego nie było w poprzednim przykładzie
+            self.conv1 = nn.Conv2d(3, 6, 5)
+            # 3 kanały - R, G, B
+            self.pool = nn.MaxPool2d(2, 2)
+            # Tego nie było w poprzednim przykładzie
+            # TODO doczytać o poolingu !
             self.conv2 = nn.Conv2d(6, 16, 5)
             self.fc1 = nn.Linear(16 * 5 * 5, 120)
             self.fc2 = nn.Linear(120, 84)
@@ -97,7 +101,6 @@ if __name__ == '__main__':
     print("4. Train the network")
 
     for epoch in range(2):  # loop over the dataset multiple times
-
         running_loss = 0.0
         for i, data in enumerate(trainloader, 0):
             # get the inputs
