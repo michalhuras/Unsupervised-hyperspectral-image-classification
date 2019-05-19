@@ -7,6 +7,7 @@ import torch.nn.functional as F
 import torchvision.transforms as transforms
 from scipy import io
 import numpy as np
+import mathematical_operations as mo
 
 
 '''
@@ -17,6 +18,7 @@ import numpy as np
     TODO 
         - sprawdzić jaka jest najlepsza wartość kernel_size
 '''
+
 
 class Autoencoder(nn.Module):
     def __init__(self):
@@ -74,15 +76,8 @@ if __name__ == '__main__':
     print()
     print("***   Converting image to uint8   ***")
     print("---------------------------------")
-    original_image_type = the_image.dtype
-    original_image_info = np.iinfo(original_image_type)
-    converted_image = the_image.astype(np.float32) / original_image_info.max
-    converted_image_type = np.uint8
-    converted_image_info = np.iinfo(converted_image_type)
-    converted_image = converted_image_info.max * converted_image
-    converted_image = converted_image.astype(np.uint8)
-    print("Original image type: ", original_image_type)
-    print("Converted image type:  ", converted_image_type)
+    # converted_image = mo.numpy_to_uint8(the_image)
+    the_image = mo.numpy_to_uint8(the_image)
 
     print()
     print("***   Loading labels   ***")
