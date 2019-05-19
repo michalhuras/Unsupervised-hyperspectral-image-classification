@@ -4,6 +4,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import torch.utils.data as utils
 import torchvision.transforms as transforms
 from scipy import io
 import numpy as np
@@ -72,6 +73,7 @@ if __name__ == '__main__':
     print("Lokalizacja obrazu: \t", filename)
     print("Nazwa obrazu:  \t\t\t", image_name)
     print("Rozmiar: \t\t\t\t", "wiersze: ", NRows, " kolumny: ", NCols, " zakresy: ", NBands)
+    print("Ilośc pikseli (ilość kolumn * ilość wierszy): ", NRows * NCols)
 
     print()
     print("***   Converting image to uint8   ***")
@@ -106,44 +108,18 @@ if __name__ == '__main__':
     print("Ilośc etykiet: ", num_labels, " Etykiety: ", labels)
 
     print()
-    print("***   Transforming data   ***")
+    print("***   Creating dataset and dataloader   ***")
     print("---------------------------------")
     import torch.utils.data as utils
-    lista = []
-    # for row in the_image:
-    #     for element in row:
-    #         print(type(element[0]))
-    #         lista.append(torch.Tensor(element))
-    #     print(len(lista))
-    #
-    #
-    #
-    # print("LALA")
-    # my_x = [np.array([[1.0, 2], [3, 4]]), np.array([[5., 6], [7, 8]])]  # a list of numpy arrays
-    # print("LALA 2")
-    # druga_lista = [torch.Tensor(i) for i in my_x]
-    # print("LALA 3")
-    #
-    # print(lista[:20])
-    # print()
-    # print(druga_lista)
+    list_of_tensors = []
+    for row in the_image:
+        for element in row:
+            list_of_tensors.append(torch.Tensor(element))
 
-    # tensor_x = torch.stack([torch.Tensor(i) for i in my_x])
-    #
-    # my_x = [np.array([[1.0, 2], [3, 4]]), np.array([[5., 6], [7, 8]])]  # a list of numpy arrays
-    # my_y = [np.array([4.]), np.array([2.])]  # another list of numpy arrays (targets)
-    #
-    # tensor_x = torch.stack([torch.Tensor(i) for i in my_x])  # transform to torch tensors
-    # tensor_y = torch.stack([torch.Tensor(i) for i in my_y])
-    #
-    # my_dataset = utils.TensorDataset(tensor_x, tensor_y)  # create your datset
-    # my_dataloader = utils.DataLoader(my_dataset)  # create your dataloader
-    #
-    # print(tensor_x)
-    # print(type(tensor_x))
-    # print(my_dataset)
-
-
+    my_tensor = torch.stack(list_of_tensors)
+    my_dataset = utils.TensorDataset(my_tensor)
+    my_dataloader = utils.DataLoader(my_dataset)
+    print("Number of elements in dataset: ", my_dataset.__len__())
 
     print()
     print("***   Creating autoencoder   ***")
