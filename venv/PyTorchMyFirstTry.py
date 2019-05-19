@@ -136,10 +136,15 @@ if __name__ == '__main__':
     print()
     print("***   Creating autoencoder   ***")
     print("---------------------------------")
-    my_net = Autoencoder()
+    my_net = Autoencoder().cpu()
     print(my_net)
     params = list(my_net.parameters())
+    print(len(params))
     print(params[0].size())
+    print(params[1].size())
+    print(params[2].size())
+
+    distance = nn.MSELoss()
 
     print()
     print("***   Creating optimizer   ***")
