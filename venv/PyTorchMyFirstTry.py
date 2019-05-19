@@ -74,21 +74,20 @@ if __name__ == '__main__':
     print()
     print("***   Converting image to uint8   ***")
     print("---------------------------------")
-    # Rzutowanie z uint16 na uint8
-    oryginal_image_type = the_image.dtype
-    oryginal_image_info = np.iinfo(oryginal_image_type)
-    converted_image = the_image.astype(np.float32) / oryginal_image_info.max
+    original_image_type = the_image.dtype
+    original_image_info = np.iinfo(original_image_type)
+    converted_image = the_image.astype(np.float32) / original_image_info.max
     converted_image_type = np.uint8
     converted_image_info = np.iinfo(converted_image_type)
-    print(converted_image_info.max)
     converted_image = converted_image_info.max * converted_image
     converted_image = converted_image.astype(np.uint8)
-    print("Oryginal type: ")
-    print()
+    print("Original image type: ", original_image_type)
+    print("Converted image type:  ", converted_image_type)
 
     print()
     print("***   Loading labels   ***")
     print("---------------------------------")
+    # To juz jest w uint8
     filename_labels = 'C:/TestingCatalog/AI_data/Indian Pines/Indian_pines_gt.mat'
     ImDict_labels = io.loadmat(filename_labels)
     image_name_labels = 'indian_pines_gt'
@@ -115,26 +114,24 @@ if __name__ == '__main__':
     print("***   Transforming data   ***")
     print("---------------------------------")
     import torch.utils.data as utils
-
     lista = []
-
-    for row in img:
-        for element in row:
-            print(type(element[0]))
-            lista.append(torch.Tensor(element))
-        print(len(lista))
-
-
-
-    print("LALA")
-    my_x = [np.array([[1.0, 2], [3, 4]]), np.array([[5., 6], [7, 8]])]  # a list of numpy arrays
-    print("LALA 2")
-    druga_lista = [torch.Tensor(i) for i in my_x]
-    print("LALA 3")
-
-    print(lista[:20])
-    print()
-    print(druga_lista)
+    # for row in the_image:
+    #     for element in row:
+    #         print(type(element[0]))
+    #         lista.append(torch.Tensor(element))
+    #     print(len(lista))
+    #
+    #
+    #
+    # print("LALA")
+    # my_x = [np.array([[1.0, 2], [3, 4]]), np.array([[5., 6], [7, 8]])]  # a list of numpy arrays
+    # print("LALA 2")
+    # druga_lista = [torch.Tensor(i) for i in my_x]
+    # print("LALA 3")
+    #
+    # print(lista[:20])
+    # print()
+    # print(druga_lista)
 
     # tensor_x = torch.stack([torch.Tensor(i) for i in my_x])
     #
