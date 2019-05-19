@@ -108,27 +108,38 @@ if __name__ == '__main__':
     print("Ilośc etykiet: ", num_labels, " Etykiety: ", labels)
 
     print()
-    print("***   Creating dataset and dataloader   ***")
+    print("***   Creating datasets and dataloaders   ***")
     print("---------------------------------")
-    import torch.utils.data as utils
+    # można podzielić set danych na dwa różne foldery testowy i do nauczania
     list_of_tensors = []
     for row in the_image:
         for element in row:
             list_of_tensors.append(torch.Tensor(element))
 
+    train_size = int(0.8 * len(list_of_tensors))
+    test_size = len(list_of_tensors) - train_size
     my_tensor = torch.stack(list_of_tensors)
+    print(type(my_tensor))
     my_dataset = utils.TensorDataset(my_tensor)
-    my_dataloader = utils.DataLoader(my_dataset)
-    print("Number of elements in dataset: ", my_dataset.__len__())
+    print(type(my_dataset))
+    train_dataset, test_dataset = utils.dataset.random_split(my_dataset, [train_size, test_size])
+    print(type(train_dataset))
+    print(type(test_dataset))
+    my_dataloader_train = utils.DataLoader(train_dataset)
+    print(type(my_dataloader_train))
+    my_dataloader_test = utils.DataLoader(test_dataset)
+    print(type(my_dataloader_test))
+    print("Full dataset length: ", len(list_of_tensors))
+    print("Number of elements in train dataset: ", train_dataset.__len__())
+    print("Number of elements in test dataset: ", test_dataset.__len__())
 
     print()
     print("***   Creating autoencoder   ***")
     print("---------------------------------")
     my_net = Autoencoder()
-    # print(my_net)
-    # params = list(my_net.parameters())
-    # print(len(params))
-    # print(params[0].size())
+    print(my_net)
+    params = list(my_net.parameters())
+    print(params[0].size())
 
     print()
     print("***   Creating optimizer   ***")
