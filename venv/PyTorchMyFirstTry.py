@@ -6,6 +6,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.data as utils
 import torchvision.transforms as transforms
+from torch.autograd import Variable
 from scipy import io
 import numpy as np
 import mathematical_operations as mo
@@ -26,18 +27,18 @@ class Autoencoder(nn.Module):
         super(Autoencoder, self).__init__()
 
         self.encoder = nn.Sequential(
-            nn.Conv2d(20, 40, kernel_size=20),
+            nn.Conv1d(20, 40, kernel_size=20),
             nn.ReLU(True),
-            nn.Conv2d(40, 90, kernel_size=20),
+            nn.Conv1d(40, 90, kernel_size=20),
             nn.ReLU(True),
-            nn.Conv2d(90, 200, kernel_size=20),
+            nn.Conv1d(90, 200, kernel_size=20),
             nn.ReLU(True))
         self.decoder = nn.Sequential(
-            nn.ConvTranspose2d(200, 90, kernel_size=20),
+            nn.ConvTranspose1d(200, 90, kernel_size=20),
             nn.ReLU(True),
-            nn.ConvTranspose2d(90, 40, kernel_size=20),
+            nn.ConvTranspose1d(90, 40, kernel_size=20),
             nn.ReLU(True),
-            nn.ConvTranspose2d(40, 20, kernel_size=20),
+            nn.ConvTranspose1d(40, 20, kernel_size=20),
             nn.ReLU(True),
             nn.Sigmoid())
 
@@ -110,28 +111,51 @@ if __name__ == '__main__':
     print()
     print("***   Creating datasets and dataloaders   ***")
     print("---------------------------------")
-    # można podzielić set danych na dwa różne foldery testowy i do nauczania
+
     list_of_tensors = []
     for row in the_image:
         for element in row:
             list_of_tensors.append(torch.Tensor(element))
+    print(len(list_of_tensors))
+    print(list_of_tensors[0])
 
-    train_size = int(0.8 * len(list_of_tensors))
-    test_size = len(list_of_tensors) - train_size
+    list_of_tensors_labels = []
+    sie_xxx = 0
+    for row in the_image_labels:
+        for element in row:
+            list_of_tensors_labels.append(torch.Tensor([element]))
+    print(len(list_of_tensors_labels))
+    print(list_of_tensors_labels[1])
+
     my_tensor = torch.stack(list_of_tensors)
-    print(type(my_tensor))
-    my_dataset = utils.TensorDataset(my_tensor)
-    print(type(my_dataset))
-    train_dataset, test_dataset = utils.dataset.random_split(my_dataset, [train_size, test_size])
-    print(type(train_dataset))
-    print(type(test_dataset))
-    my_dataloader_train = utils.DataLoader(train_dataset)
-    print(type(my_dataloader_train))
-    my_dataloader_test = utils.DataLoader(test_dataset)
-    print(type(my_dataloader_test))
-    print("Full dataset length: ", len(list_of_tensors))
-    print("Number of elements in train dataset: ", train_dataset.__len__())
-    print("Number of elements in test dataset: ", test_dataset.__len__())
+    my_tensor_result = torch.stack(list_of_tensors_labels)
+    my_dataset = utils.TensorDataset(my_tensor, my_tensor_result)
+    my_dataloader = utils.DataLoader(my_dataset, batch_size=4)
+    print("Number of elements in dataset: ", my_dataset.__len__())
+
+    # list_of_tensors = []
+    # for row in the_image:
+    #     for element in row:
+    #         list_of_tensors.append(torch.Tensor(element))
+    #
+    # train_size = int(0.8 * len(list_of_tensors))
+    # test_size = len(list_of_tensors) - train_size
+    # my_tensor = torch.stack(list_of_tensors)
+    # print(type(my_tensor))
+    # my_dataset = utils.TensorDataset(my_tensor)
+    # print(type(my_dataset))
+    # train_dataset, test_dataset = utils.dataset.random_split(my_dataset, [train_size, test_size])
+    # print(type(train_dataset))
+    # print(type(test_dataset))
+    # train_dataset = utils.TensorDataset(train_dataset)
+    # test_dataset = utils.TensorDataset(test_dataset)
+    # train_dataloader = utils.DataLoader(train_dataset)
+    # print(type(train_dataloader))
+    # test_dataloader = utils.DataLoader(test_dataset)
+    # print(type(test_dataloader))
+    # print("Full dataset length: ", len(list_of_tensors))
+    # print("Number of elements in train dataset: ", train_dataset.__len__())
+    # print("Number of elements in test dataset: ", test_dataset.__len__())
 
     print()
     print("***   Creating autoencoder   ***")
@@ -140,9 +164,8 @@ if __name__ == '__main__':
     print(my_net)
     params = list(my_net.parameters())
     print(len(params))
-    print(params[0].size())
-    print(params[1].size())
-    print(params[2].size())
+    for parameter in params:
+        print(parameter.size())
 
     distance = nn.MSELoss()
 
@@ -150,6 +173,30 @@ if __name__ == '__main__':
     print("***   Creating optimizer   ***")
     print("---------------------------------")
     optimizer = torch.optim.Adam(my_net.parameters(), weight_decay=1e-5)
+
+    print()
+    print("***   Training the autoencoder   ***")
+    print("---------------------------------")
+    num_epochs = 5
+    batch_size = 128
+    for epoch in range(num_epochs):
+        for data in my_dataloader:
+            print(type(data))
+            print(len(data))
+            img, _ = data
+            print(type(img))
+            print(len(img))
+            print()
+            # img = Variable(img).cpu()
+            # ===================forward=====================
+            output = my_net(img)
+            loss = distance(output, img)
+            # ===================backward====================
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+        # ===================log========================
+        print('epoch [{}/{}], loss:{:.4f}'.format(epoch+1, num_epochs, loss))
 
     print("\nEND")
 
