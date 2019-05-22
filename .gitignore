@@ -86,7 +86,6 @@ env/
 venv/Lib
 venv/Scripts
 venv/Include
-venv/data
 ENV/
 env.bak/
 venv.bak/
