@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys
-sys.path.insert(0, "/home/myname/pythonfiles")
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -25,17 +22,12 @@ import mathematical_operations as mo
 
 dir = 'C:/TestingCatalog/AI_data/Indian Pines/'
 
+
 class Autoencoder(nn.Module):
     def __init__(self):
         super(Autoencoder, self).__init__()
 
         self.encoder = nn.Sequential(
-            # nn.Conv1d(200, 90, kernel_size=20, padding=1),
-            # nn.ReLU(True),
-            # nn.Conv1d(90, 40, kernel_size=20, padding=1),
-            # nn.ReLU(True),
-            # nn.Conv1d(40, 20, kernel_size=20, padding=1),
-            # nn.ReLU(True))
             nn.Linear(200, 90),
             nn.Linear(90, 40),
             nn.Linear(40, 20))
@@ -43,13 +35,6 @@ class Autoencoder(nn.Module):
             nn.Linear(20, 40),
             nn.Linear(40, 90),
             nn.Linear(90, 200))
-            # nn.ConvTranspose1d(200, 90, kernel_size=20, padding=1),
-            # nn.ReLU(True),
-            # nn.ConvTranspose1d(90, 40, kernel_size=20, padding=1),
-            # nn.ReLU(True),
-            # nn.ConvTranspose1d(40, 20, kernel_size=20, padding=1),
-            # nn.ReLU(True),
-            # nn.Sigmoid())
 
     def forward(self, x):
         x = self.encoder(x)
@@ -70,9 +55,8 @@ class Autoencoder(nn.Module):
         return x
 
 
-
 if __name__ == '__main__':
-    to_file = True
+    to_file = False
 
     # Przekierowanie wyjścia do pliku
     if to_file:
@@ -205,7 +189,7 @@ if __name__ == '__main__':
     my_net.eval()
 
     print()
-    print("***   Testing for one element   ***")
+    print("***   Checking code for one element   ***")
     print("---------------------------------")
     print(my_net.getCode(list_of_tensors[0]))
 
@@ -213,17 +197,19 @@ if __name__ == '__main__':
     print("***   K - means clastering   ***")
     print("---------------------------------")
     # https://www.datacamp.com/community/tutorials/k-means-clustering-python
-
     # https: // datatofish.com / k - means - clustering - python /
+
     from pandas import DataFrame
     import matplotlib.pyplot as plt
     from sklearn.cluster import KMeans
 
     print("all_points_200")
     all_points_200 = []
+    print(np.shape(the_image))
     for row in the_image:
         for element in row:
             all_points_200.append(element)
+    print(np.shape(all_points_200))
 
     print("autoencoded_points_20")
     autoencoded_points_20 = []
