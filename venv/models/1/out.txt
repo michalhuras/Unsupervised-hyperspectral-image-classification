@@ -1,0 +1,82 @@
+START
+
+***   Loading data   ***
+---------------------------------
+Lokalizacja obrazu: 	 C:/TestingCatalog/AI_data/Indian Pines/Indian_pines_corrected.mat
+Nazwa obrazu:  			 indian_pines_corrected
+Rozmiar: 				 wiersze:  145  kolumny:  145  zakresy:  200
+Iloœc pikseli (iloœæ kolumn * iloœæ wierszy):  21025
+
+***   Converting image to uint8   ***
+---------------------------------
+Original image type:  uint16
+Converted image type:   <class 'numpy.uint8'>
+
+***   Loading labels   ***
+---------------------------------
+Lokalizacja obrazu: 	 Indian_pines_gt.mat
+Nazwa obrazu:  			 indian_pines_gt
+Rozmiar: 				 wiersze:  145  kolumny:  145
+Iloœc etykiet:  17  Etykiety:  {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
+
+***   Creating dataset and dataloader   ***
+---------------------------------
+Number of elements in dataset:  21025
+
+***   Creating autoencoder   ***
+---------------------------------
+Autoencoder(
+  (encoder): Sequential(
+    (0): Linear(in_features=200, out_features=90, bias=True)
+    (1): Linear(in_features=90, out_features=40, bias=True)
+    (2): Linear(in_features=40, out_features=20, bias=True)
+  )
+  (decoder): Sequential(
+    (0): Linear(in_features=20, out_features=40, bias=True)
+    (1): Linear(in_features=40, out_features=90, bias=True)
+    (2): Linear(in_features=90, out_features=200, bias=True)
+  )
+)
+Params size:   12
+90
+90
+40
+40
+20
+20
+40
+40
+90
+90
+200
+200
+
+***   Creating optimizer   ***
+---------------------------------
+
+***   Loading model from file   ***
+---------------------------------
+
+***   Testing for one element   ***
+---------------------------------
+tensor([-0.0576,  0.1022, -0.2447, -0.2056, -2.7917, -0.2486, -0.4186, -0.1464,
+        -6.5169, -0.0372,  0.0601, -0.1463,  0.6872,  0.1659, -0.6160, -1.5562,
+        -0.1299,  0.2241,  0.1884,  0.1965], grad_fn=<AddBackward0>)
+
+***   K - means clastering   ***
+---------------------------------
+all_points_200
+autoencoded_points_20
+Data frame
+kmeans
+Zeros to labeled data
+(145, 145)
+[[14.  2. 14. ...  8.  8.  1.]
+ [ 0. 14. 14. ...  1.  5.  8.]
+ [ 3.  6. 14. ...  8.  1.  5.]
+ ...
+ [11. 14. 14. ...  7.  7.  7.]
+ [11. 14. 14. ...  1.  1.  8.]
+ [ 2. 14.  2. ...  8.  1.  1.]]
+
+END
