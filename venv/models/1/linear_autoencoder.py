@@ -17,7 +17,7 @@ import time
     Result image does not mach labeled image.
 '''
 
-data_dir = 'C:/TestingCatalog/AI_data/Indian Pines/'
+data_dir = 'C:/Users/Public/AI/artificial-intelligence---my-beginning/venv/data/Indian Pines/'
 
 
 class Autoencoder(nn.Module):
@@ -55,7 +55,7 @@ if __name__ == '__main__':
 
     print("START")
     start_time = time.time()
-    print("Start time:  ", start_time)
+    print("Start time:  ", time.ctime(start_time))
 
     print()
     print("***   Loading data   ***")
@@ -170,12 +170,12 @@ if __name__ == '__main__':
     # print()
     # print("***   Saving model to file   ***")
     # print("---------------------------------")
-    # torch.save(my_net.state_dict(), './conv_autoencoder.pth')
+    # torch.save(my_net.state_dict(), './linear_autoencoder.pth')
 
     print()
     print("***   Loading model from file   ***")
     print("---------------------------------")
-    my_net.load_state_dict(torch.load('./conv_autoencoder.pth'))
+    my_net.load_state_dict(torch.load('./linear_autoencoder.pth'))
     my_net.eval()
 
     print()
@@ -232,8 +232,8 @@ if __name__ == '__main__':
 
     print("\nEND")
     end_time = time.time()
-    print("End time:  ", end_time)
-    print("Duration:  ", end_time - start_time)
+    print("End time:  ", time.ctime(end_time))
+    print("Duration:  ", int(end_time - start_time), " seconds")
 
     # Closing file
     if to_file:

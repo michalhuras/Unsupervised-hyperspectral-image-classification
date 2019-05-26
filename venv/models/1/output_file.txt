@@ -1,8 +1,9 @@
 START
+Start time:   Sun May 26 17:27:04 2019
 
 ***   Loading data   ***
 ---------------------------------
-Lokalizacja obrazu: 	 C:/TestingCatalog/AI_data/Indian Pines/Indian_pines_corrected.mat
+Lokalizacja obrazu: 	 C:/Users/Public/AI/artificial-intelligence---my-beginning/venv/data/Indian Pines/Indian_pines_corrected.mat
 Nazwa obrazu:  			 indian_pines_corrected
 Rozmiar: 				 wiersze:  145  kolumny:  145  zakresy:  200
 Iloœc pikseli (iloœæ kolumn * iloœæ wierszy):  21025
@@ -57,7 +58,7 @@ Params size:   12
 ***   Loading model from file   ***
 ---------------------------------
 
-***   Testing for one element   ***
+***   Checking code for one element   ***
 ---------------------------------
 tensor([-0.0576,  0.1022, -0.2447, -0.2056, -2.7917, -0.2486, -0.4186, -0.1464,
         -6.5169, -0.0372,  0.0601, -0.1463,  0.6872,  0.1659, -0.6160, -1.5562,
@@ -65,18 +66,21 @@ tensor([-0.0576,  0.1022, -0.2447, -0.2056, -2.7917, -0.2486, -0.4186, -0.1464,
 
 ***   K - means clastering   ***
 ---------------------------------
-all_points_200
-autoencoded_points_20
-Data frame
-kmeans
-Zeros to labeled data
-(145, 145)
-[[14.  2. 14. ...  8.  8.  1.]
- [ 0. 14. 14. ...  1.  5.  8.]
- [ 3.  6. 14. ...  8.  1.  5.]
+Image shape:  (145, 145, 200)
+List of points shape:  (21025, 200)
+Image code got from autoencoder
+Creating datframe from k-clastering
+KMeans clastering
+Creating list for clastered data
+Clastered data shape:   (145, 145)
+[[10. 13. 10. ... 15. 15.  2.]
+ [11. 10. 10. ...  2.  8. 15.]
+ [11.  0. 10. ... 15.  2.  8.]
  ...
- [11. 14. 14. ...  7.  7.  7.]
- [11. 14. 14. ...  1.  1.  8.]
- [ 2. 14.  2. ...  8.  1.  1.]]
+ [13. 10. 10. ...  9.  9.  9.]
+ [13. 10. 10. ...  2.  2. 15.]
+ [13. 10.  3. ... 15.  2.  2.]]
 
 END
+End time:   Sun May 26 17:28:25 2019
+Duration:   81  seconds
