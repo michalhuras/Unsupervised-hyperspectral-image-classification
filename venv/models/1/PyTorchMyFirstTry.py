@@ -9,18 +9,15 @@ import torchvision.transforms as transforms
 from scipy import io
 import numpy as np
 import mathematical_operations as mo
-
+import time
 
 '''
-    My first try with PyTorch based on "A 60 minute blitz"
-    NOPE NOPE NOPE 
-    not yet
-    
-    TODO 
-        - sprawdzić jaka jest najlepsza wartość kernel_size
+    First working model. 
+    Tested for dataset Indian Pines
+    Result image does not mach labeled image.
 '''
 
-dir = 'C:/TestingCatalog/AI_data/Indian Pines/'
+data_dir = 'C:/TestingCatalog/AI_data/Indian Pines/'
 
 
 class Autoencoder(nn.Module):
@@ -42,43 +39,36 @@ class Autoencoder(nn.Module):
         return x
 
     def getCode(self, x):
-        # print(type(x))
-        # print(len(x))
-        # print(x)
-        # print()
-        # print()
-        # print()
         x = self.encoder(x)
-        # print(type(x))
-        # print(len(x))
-        # print(x)
         return x
 
 
 if __name__ == '__main__':
-    to_file = False
+    to_file = True
 
     # Przekierowanie wyjścia do pliku
     if to_file:
         import sys
         orig_stdout = sys.stdout
-        f = open('out.txt', 'w')
-        sys.stdout = f
+        output_file = open('output_file.txt', 'w')
+        sys.stdout = output_file
 
     print("START")
+    start_time = time.time()
+    print("Start time:  ", start_time)
 
     print()
     print("***   Loading data   ***")
     print("---------------------------------")
     filename = 'Indian_pines_corrected.mat'
-    ImDict = io.loadmat(dir + filename)
+    ImDict = io.loadmat(data_dir + filename)
     image_name = 'indian_pines_corrected'
     the_image = ImDict[image_name]
     image_size = np.shape(the_image)
     NRows = image_size[0]
     NCols = image_size[1]
     NBands = image_size[2]
-    print("Lokalizacja obrazu: \t", dir + filename)
+    print("Lokalizacja obrazu: \t", data_dir + filename)
     print("Nazwa obrazu:  \t\t\t", image_name)
     print("Rozmiar: \t\t\t\t", "wiersze: ", NRows, " kolumny: ", NCols, " zakresy: ", NBands)
     print("Ilośc pikseli (ilość kolumn * ilość wierszy): ", NRows * NCols)
@@ -94,7 +84,7 @@ if __name__ == '__main__':
     print("---------------------------------")
     # To juz jest w uint8
     filename_labels = 'Indian_pines_gt.mat'
-    ImDict_labels = io.loadmat(dir + filename_labels)
+    ImDict_labels = io.loadmat(data_dir + filename_labels)
     image_name_labels = 'indian_pines_gt'
     the_image_labels = ImDict_labels[image_name_labels]
     image_size_labels = np.shape(the_image_labels)
@@ -203,52 +193,49 @@ if __name__ == '__main__':
     import matplotlib.pyplot as plt
     from sklearn.cluster import KMeans
 
-    print("all_points_200")
-    all_points_200 = []
-    print(np.shape(the_image))
+    print("Image shape: ", np.shape(the_image))
+    the_image_list = []
     for row in the_image:
         for element in row:
-            all_points_200.append(element)
-    print(np.shape(all_points_200))
+            the_image_list.append(element)
+    print("List of points shape: ", np.shape(the_image_list))
 
-    print("autoencoded_points_20")
-    autoencoded_points_20 = []
-    for point in all_points_200:
-        autoencoded_points_20.append(
-                my_net.getCode(torch.Tensor(point)).detach().numpy())
+    print("Image code got from autoencoder")
+    image_autoencoded = [my_net.getCode(torch.Tensor(point)).detach().numpy() for point in the_image_list]
 
-    print("Data frame")
-    df = DataFrame(data = autoencoded_points_20)
+    print("Creating datframe from k-clastering")
+    df = DataFrame(data=image_autoencoded)
 
-    print("kmeans")
-    kmeans = KMeans(n_clusters = 16).fit(df)
+    print("KMeans clastering")
+    number_of_clusters = 16
+    kmeans = KMeans(n_clusters=number_of_clusters).fit(df)
 
-    print("Zeros to labeled data")
-    MYDATA = np.zeros(np.shape(the_image_labels))
-    print(np.shape(MYDATA))
-
+    print("Creating list for clastered data")
+    clastered_data = np.zeros(np.shape(the_image_labels))
+    print("Clastered data shape:  ", np.shape(clastered_data))
 
     x = 0
     y = 0
-    for i in range(len(autoencoded_points_20)):
-        MYDATA[y][x] = kmeans.predict(autoencoded_points_20[x * 144 +
-                                                            y].reshape(1, -1))
-        y = y + 1
-        if y == 145:
-            y = 0
-            x = x + 1
+    for i in range(np.shape(clastered_data)[0] * np.shape(clastered_data)[1]):
+        # clastered_data[x][y] = kmeans.predict(image_autoencoded[y * 144 + x].reshape(1, -1))
+        clastered_data[x][y] = kmeans.predict([image_autoencoded[y * 144 + x]])
+        x = x + 1
+        if x == 145:
+            x = 0
+            y = y + 1
 
     import matplotlib.pyplot as plt
-    print(MYDATA)
-    plt.imshow(MYDATA)
+    print(clastered_data)
+    plt.imshow(clastered_data)
     plt.savefig('demo.png', bbox_inches='tight')
-    # plt.show()
+    plt.show()
 
     print("\nEND")
+    end_time = time.time()
+    print("End time:  ", end_time)
+    print("Duration:  ", end_time - start_time)
 
     # Closing file
     if to_file:
         sys.stdout = orig_stdout
-        f.close()
-
-
+        output_file.close()
