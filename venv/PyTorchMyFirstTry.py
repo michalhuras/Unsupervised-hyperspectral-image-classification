@@ -13,12 +13,7 @@ import mathematical_operations as mo
 
 
 '''
-    My first try with PyTorch based on "A 60 minute blitz"
-    NOPE NOPE NOPE 
-    not yet
-    
-    TODO 
-        - sprawdzić jaka jest najlepsza wartość kernel_size
+    My first try with PyTorch based on "A 60 minute blitz"    
 '''
 
 
