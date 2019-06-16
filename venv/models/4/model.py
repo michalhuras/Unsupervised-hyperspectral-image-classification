@@ -13,15 +13,11 @@ from datetime import datetime
 
 
 '''
-    My first try with PyTorch based on "A 60 minute blitz"
     jasperRidge2_R198.mat
     
-    Klasyfikacja OPTIC z sklearn
 '''
 
-data_dir = 'C:/Users/Public/AI/artificial-intelligence---my-beginning/venv/data/Jasper_ridge/'
-# dir = 'C:/TestingCatalog/AI_data/Indian Pines/Indian_pines_corrected.mat'
-dir = data_dir
+dir = 'C:/TestingCatalog/AI_data/Indian Pines/Indian_pines_corrected.mat'
 
 class Autoencoder(nn.Module):
     def __init__(self):
@@ -187,68 +183,132 @@ if __name__ == '__main__':
     print(my_net.getCode(list_of_tensors[0]))
 
     print()
-    print("***  OPTICS clastering   ***")
+    print("***   OPTICS clustering   ***")
     print("---------------------------------")
-    # https://www.datacamp.com/community/tutorials/k-means-clustering-python
-    # https: // datatofish.com / k - means - clustering - python /
-
-    from sklearn.cluster import OPTICS
-    import numpy as np
-
-    from pandas import DataFrame
+    # https://scikit-learn.org/stable/modules/clustering.html
+    # https://scikit-learn.org/stable/auto_examples/cluster/plot_optics.html
+    # #sphx-glr-auto-examples-cluster-plot-optics-py
+    # https://scikit-learn.org/stable/modules/clustering.html#optics
     import matplotlib.pyplot as plt
-    from sklearn.cluster import KMeans
+    from sklearn.cluster import OPTICS, cluster_optics_dbscan
+
+
+
+    clust = OPTICS(min_samples=10, xi=.0005, min_cluster_size=.005)
 
     print("Image shape: ", np.shape(the_image))
     the_image_list = the_image
-    # the_image_list = []
-    # for row in the_image:
-    #     for element in row:
-    #         the_image_list.append(element)
-    # print("List of points shape: ", np.shape(the_image_list))
 
     print("Image code got from autoencoder")
     image_autoencoded = [my_net.getCode(torch.Tensor(point)).detach().numpy()
                          for point in the_image_list]
 
-    print("Creating dataframe from k-clastering")
-    df = DataFrame(data=image_autoencoded)
+    print("Runing fit function for OPTICS clustering")
+    clust.fit(image_autoencoded)
 
-    print("KMeans clastering")
+    labels_050 = cluster_optics_dbscan(reachability=clust.reachability_,
+                                       core_distances=clust.core_distances_,
+                                       ordering=clust.ordering_, eps=0.5)
 
-    clustering = OPTICS(metric="euclidean").fit(image_autoencoded)
+    labels_200 = cluster_optics_dbscan(reachability=clust.reachability_,
+                                       core_distances=clust.core_distances_,
+                                       ordering=clust.ordering_, eps=2)
 
-    # for nr_of_clasters in range(1, 31):
-    #     print("Number of claters: ", nr_of_clasters)
-    #     # number_of_clusters = 10
-    #     number_of_clusters = nr_of_clasters
-    #     kmeans = KMeans(n_clusters=number_of_clusters).fit(df)
+    labels_300 = cluster_optics_dbscan(reachability=clust.reachability_,
+                                       core_distances=clust.core_distances_,
+                                       ordering=clust.ordering_, eps=3)
+
+    print("---------------------------")
+    reachability = clust.reachability_[clust.ordering_]
+    print(reachability)
+    print("---------------------------")
 
     print("Creating list for clastered data")
-    # clastered_data = np.zeros(np.shape(the_image_labels))
-    clastered_data = np.zeros((100, 100))
+    clustered_data = np.zeros((100, 100))
+    clustered_data_labels_050 = np.zeros((100, 100))
+    clustered_data_labels_200 = np.zeros((100, 100))
+    clustered_data_labels_300 = np.zeros((100, 100))
 
-    print("Clustered data shape:  ", np.shape(clastered_data))
+    print("Clustered data shape:  ", np.shape(clustered_data))
 
     x = 0
     y = 0
-    for i in range(np.shape(clastered_data)[0] * np.shape(clastered_data)[1]):
-        clastered_data[x][y] = clustering.fit_predict(
-                [image_autoencoded[y * 100 + x]])
+    for i in range(np.shape(clustered_data)[0] * np.shape(clustered_data)[1]):
+        clustered_data[x][y] = clust.labels_[i]
+        clustered_data_labels_050[x][y] = labels_050[i]
+        clustered_data_labels_200[x][y] = labels_200[i]
+        clustered_data_labels_300[x][y] = labels_300[i]
         x = x + 1
         if x == 100:
             x = 0
             y = y + 1
 
+    import matplotlib.pyplot as plt
 
+    fig = plt.figure()
+    plt.imshow(clustered_data)
+    plt.title('Automatic Clustering\nOPTICS')
+    name = 'img_OPTICS_clustering_automatic.png'
+    plt.savefig(name, bbox_inches='tight')
+    plt.close(fig)
+
+    fig = plt.figure()
+    plt.imshow(clustered_data_labels_050)
+    plt.title('Clustering at 0.5 epsilon cut\nDBSCAN')
+    name = 'img_OPTICS_clustering_0_5_clustering.png'
+    plt.savefig(name, bbox_inches='tight')
+    plt.close(fig)
+
+    fig = plt.figure()
+    plt.imshow(clustered_data_labels_200)
+    plt.title('Clustering at 2.0 epsilon cut\nDBSCAN')
+    name = 'img_OPTICS_clustering_2_0_epsilon.png'
+    plt.savefig(name, bbox_inches='tight')
+    plt.close(fig)
+
+    fig = plt.figure()
+    plt.imshow(clustered_data_labels_300)
+    plt.title('Clustering at 2.0 epsilon cut\nDBSCAN')
+    name = 'img_OPTICS_clustering_3_0_epsilon.png'
+    plt.savefig(name, bbox_inches='tight')
+    plt.close(fig)
+
+    print()
+    print("***   DBSCAN clustering   ***")
+    print("---------------------------------")
+    import matplotlib.pyplot as plt
+    from sklearn.cluster import DBSCAN
+
+    print("Image shape: ", np.shape(the_image))
+    the_image_list = the_image
+
+    print("Image code got from autoencoder")
+    image_autoencoded = [my_net.getCode(torch.Tensor(point)).detach().numpy()
+                         for point in the_image_list]
+
+    print("Runing fit function for DBSCAN clustering")
+    clust = DBSCAN(eps=3, min_samples=2).fit(image_autoencoded)
+
+    print("Creating list for clastered data")
+    clustered_data = np.zeros((100, 100))
+
+    print("Clustered data shape:  ", np.shape(clustered_data))
+
+    x = 0
+    y = 0
+    for i in range(np.shape(clustered_data)[0] * np.shape(clustered_data)[1]):
+        clustered_data[x][y] = clust.labels_[i]
+        x = x + 1
+        if x == 100:
+            x = 0
+            y = y + 1
 
     import matplotlib.pyplot as plt
 
-    # print(clastered_data)
-    plt.imshow(clastered_data)
-    name = 'img_clasters_' + str(nr_of_clasters) + '.png'
+    plt.imshow(clustered_data)
+    name = 'img_DBSCAN_clustering.png'
     plt.savefig(name, bbox_inches='tight')
-    # plt.show()
+
 
     print()
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
