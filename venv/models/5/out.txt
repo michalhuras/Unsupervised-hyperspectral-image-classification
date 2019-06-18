@@ -1,0 +1,77 @@
+START
+2019-06-16 22:44:24
+
+***   Loading data   ***
+---------------------------------
+(10000, 198)
+Lokalizacja obrazu: 	 ../../data/Jasper_ridge/jasperRidge2_R198.mat
+Nazwa obrazu:  			 Y
+Rozmiar: 				 wiersze:  10000  kolumny:  198
+Iloœc pikseli (iloœæ kolumn * iloœæ wierszy):  1980000
+
+***   Converting image to uint8   ***
+---------------------------------
+Original image type:  uint16
+Converted image type:   <class 'numpy.uint8'>
+
+***   Creating dataset and dataloader   ***
+---------------------------------
+Number of elements in dataset:  10000
+
+***   Creating autoencoder   ***
+---------------------------------
+Autoencoder(
+  (encoder): Sequential(
+    (0): Linear(in_features=198, out_features=90, bias=True)
+    (1): Linear(in_features=90, out_features=40, bias=True)
+    (2): Linear(in_features=40, out_features=20, bias=True)
+  )
+  (decoder): Sequential(
+    (0): Linear(in_features=20, out_features=40, bias=True)
+    (1): Linear(in_features=40, out_features=90, bias=True)
+    (2): Linear(in_features=90, out_features=198, bias=True)
+  )
+)
+Params size:   12
+90
+90
+40
+40
+20
+20
+40
+40
+90
+90
+198
+198
+
+***   Creating optimizer   ***
+---------------------------------
+
+***   Loading model from file   ***
+---------------------------------
+
+***   Testing for one element   ***
+---------------------------------
+tensor([-4.7767e-01, -7.5668e-01,  5.8623e-01, -6.9524e-01,  4.5122e-02,
+         4.5421e+01,  5.7395e-02,  5.9647e-01, -1.0689e+00, -6.4490e-01,
+        -7.1978e-01,  3.3108e-01,  8.4670e-01, -6.3518e+00,  3.0672e-02,
+        -1.1977e+01,  1.2202e+00,  1.3793e-01,  7.4823e-01, -1.9764e+01],
+       grad_fn=<AddBackward0>)
+
+***   Mean-Shift clustering   ***
+---------------------------------
+Image shape:  (10000, 198)
+Image code got from autoencoder
+Running fit function for mean-shift clustering
+Creating list for clustered data
+Clustered data shape:   (100, 100)
+Parameters for this estimation:  {'bandwidth': 2, 'bin_seeding': False, 'cluster_all': True, 'min_bin_freq': 1, 'n_jobs': None, 'seeds': None}
+Labels from 0  ,to 2695 . Number of labels:  2695
+
+2019-06-16 22:47:01
+End time:   Sun Jun 16 22:47:01 2019
+Duration:   156  seconds
+
+END
