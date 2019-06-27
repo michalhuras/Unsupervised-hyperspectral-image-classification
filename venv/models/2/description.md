@@ -22,16 +22,3 @@ Autoencoder(
 # Clustering
 
 K - means clustering
-
-
-
-oryginalne dane 
-wiecej klasteryzacji 
-autenkoder
-
-
- selines
- pavia
-
- œrednia krzywa spektralna
- MI - mutual information 
