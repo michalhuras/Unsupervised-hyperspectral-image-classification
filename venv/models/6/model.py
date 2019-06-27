@@ -21,6 +21,8 @@ from datetime import datetime
 
 dir = '../../data/Jasper_ridge/'
 
+img_dir = './img/'
+
 class Autoencoder(nn.Module):
     def __init__(self):
         super(Autoencoder, self).__init__()
@@ -215,7 +217,7 @@ if __name__ == '__main__':
     print("Running fit function for Gaussian Mixture Model Selection ")
     lowest_bic = np.infty
     bic = []
-    n_components_range = range(1, 31)
+    n_components_range = range(1, 10)
     cv_types = ['spherical', 'tied', 'diag', 'full']
     for cv_type in cv_types:
         for n_components in n_components_range:
@@ -241,7 +243,7 @@ if __name__ == '__main__':
                     y = y + 1
 
             plt.imshow(clustered_data)
-            name = 'img_gaussian_mixture_model_selection_' + cv_type + "_" + str(n_components) + '.png'
+            name = img_dir + 'img_gaussian_mixture_model_selection_' + cv_type + "_" + str(n_components) + '.png'
             plt.savefig(name, bbox_inches='tight')
 
     print()

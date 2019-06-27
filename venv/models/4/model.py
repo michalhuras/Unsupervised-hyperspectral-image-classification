@@ -6,6 +6,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.data as utils
 import torchvision.transforms as transforms
+from pygments.formatters import img
 from scipy import io
 import numpy as np
 import mathematical_operations as mo
@@ -16,7 +17,9 @@ from datetime import datetime
     jasperRidge2_R198.mat
 '''
 
-dir = 'C:/TestingCatalog/AI_data/Indian Pines/Indian_pines_corrected.mat'
+dir = './../../data/Jasper_ridge/'
+
+img_dir = "./img/"
 
 class Autoencoder(nn.Module):
     def __init__(self):
@@ -191,8 +194,6 @@ if __name__ == '__main__':
     import matplotlib.pyplot as plt
     from sklearn.cluster import OPTICS, cluster_optics_dbscan
 
-
-
     clust = OPTICS(min_samples=10, xi=.0005, min_cluster_size=.005)
 
     print("Image shape: ", np.shape(the_image))
@@ -254,21 +255,21 @@ if __name__ == '__main__':
     fig = plt.figure()
     plt.imshow(clustered_data_labels_050)
     plt.title('Clustering at 0.5 epsilon cut\nDBSCAN')
-    name = 'img_OPTICS_clustering_0_5_clustering.png'
+    name = img_dir + 'img_OPTICS_clustering_0_5_clustering.png'
     plt.savefig(name, bbox_inches='tight')
     plt.close(fig)
 
     fig = plt.figure()
     plt.imshow(clustered_data_labels_200)
     plt.title('Clustering at 2.0 epsilon cut\nDBSCAN')
-    name = 'img_OPTICS_clustering_2_0_epsilon.png'
+    name = img_dir + 'img_OPTICS_clustering_2_0_epsilon.png'
     plt.savefig(name, bbox_inches='tight')
     plt.close(fig)
 
     fig = plt.figure()
     plt.imshow(clustered_data_labels_300)
     plt.title('Clustering at 2.0 epsilon cut\nDBSCAN')
-    name = 'img_OPTICS_clustering_3_0_epsilon.png'
+    name = img_dir + 'img_OPTICS_clustering_3_0_epsilon.png'
     plt.savefig(name, bbox_inches='tight')
     plt.close(fig)
 
@@ -305,7 +306,7 @@ if __name__ == '__main__':
     import matplotlib.pyplot as plt
 
     plt.imshow(clustered_data)
-    name = 'img_DBSCAN_clustering.png'
+    name = img_dir + 'img_DBSCAN_clustering.png'
     plt.savefig(name, bbox_inches='tight')
 
     print()

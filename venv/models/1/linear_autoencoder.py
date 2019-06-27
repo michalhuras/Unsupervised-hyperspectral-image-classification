@@ -44,7 +44,7 @@ class Autoencoder(nn.Module):
 
 
 if __name__ == '__main__':
-    to_file = True
+    to_file = False
 
     # Przekierowanie wyjścia do pliku
     if to_file:
@@ -227,7 +227,7 @@ if __name__ == '__main__':
     import matplotlib.pyplot as plt
     print(clastered_data)
     plt.imshow(clastered_data)
-    plt.savefig('demo.png', bbox_inches='tight')
+    plt.savefig('./img/demo.png', bbox_inches='tight')
     plt.show()
 
     print("\nEND")

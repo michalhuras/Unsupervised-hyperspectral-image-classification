@@ -16,7 +16,9 @@ from datetime import datetime
     jasperRidge2_R198.mat
 '''
 
-dir = 'C:/TestingCatalog/AI_data/Indian Pines/Indian_pines_corrected.mat'
+dir = '../../data/Jasper_ridge/'
+
+img_dir = "./img/"
 
 class Autoencoder(nn.Module):
     def __init__(self):
@@ -207,7 +209,7 @@ if __name__ == '__main__':
     df = DataFrame(data=image_autoencoded)
 
     print("KMeans clastering")
-    for nr_of_clasters in range(1, 31):
+    for nr_of_clasters in range(1, 10):
         print("Number of claters: ", nr_of_clasters)
         # number_of_clusters = 10
         number_of_clusters = nr_of_clasters
@@ -278,19 +280,15 @@ if __name__ == '__main__':
                     y1 = y1 + 1
 
             plt.imshow(points_distance)
-            name = 'dist' + str(nr_of_clasters) + '.png'
+            name = img_dir + 'dist' + str(nr_of_clasters) + '.png'
             plt.savefig(name, bbox_inches='tight')
-            plt.show()
-
-
-
-
+            # plt.show()
 
         import matplotlib.pyplot as plt
 
         # print(clastered_data)
         plt.imshow(clastered_data)
-        name = 'img_clasters_' + str(nr_of_clasters) + '.png'
+        name = img_dir + 'img_clasters_' + str(nr_of_clasters) + '.png'
         plt.savefig(name, bbox_inches='tight')
         # plt.show()
 

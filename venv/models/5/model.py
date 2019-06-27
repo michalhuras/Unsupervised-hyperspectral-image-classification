@@ -21,6 +21,8 @@ from datetime import datetime
 
 dir = '../../data/Jasper_ridge/'
 
+img_dir = "./img/"
+
 class Autoencoder(nn.Module):
     def __init__(self):
         super(Autoencoder, self).__init__()
@@ -45,7 +47,7 @@ class Autoencoder(nn.Module):
 
 
 if __name__ == '__main__':
-    to_file = True
+    to_file = False
 
     # Przekierowanie wyjścia do pliku
     if to_file:
@@ -228,7 +230,7 @@ if __name__ == '__main__':
             y = y + 1
 
     plt.imshow(clustered_data)
-    name = 'img_mean_shift_clustering.png'
+    name = img_dir + 'img_mean_shift_clustering.png'
     plt.savefig(name, bbox_inches='tight')
 
     print("Parameters for this estimation: ", clust.get_params())

@@ -18,6 +18,7 @@ import time
 
 data_dir = 'C:/Users/Public/AI/artificial-intelligence---my-beginning/venv/data/Samson/'
 
+img_dir = "./img/"
 
 class Autoencoder(nn.Module):
     def __init__(self):
@@ -235,7 +236,7 @@ if __name__ == '__main__':
         import matplotlib.pyplot as plt
         print(clastered_data)
         plt.imshow(clastered_data)
-        name = 'img_clasters_' + str(trololo) + '.png'
+        name = img_dir + 'img_clasters_' + str(trololo) + '.png'
         plt.savefig(name, bbox_inches='tight')
         # plt.show()
 
