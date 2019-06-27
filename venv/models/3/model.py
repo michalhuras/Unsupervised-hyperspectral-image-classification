@@ -13,19 +13,10 @@ from datetime import datetime
 
 
 '''
-    My first try with PyTorch based on "A 60 minute blitz"
     jasperRidge2_R198.mat
-    
-    
-    Po klasyfikacji k - średnich pewien procent zostanie przekazany jako 
-    niezaklasyfiowany.
-    
-    Będą to elementy leżące najdalej od średnich
 '''
 
-dir = '/home/michalhuras/Pulpit/artificial-intelligence---my-beginning-master' \
-      '/venv/'
-# dir = 'C:/TestingCatalog/AI_data/Indian Pines/Indian_pines_corrected.mat'
+dir = 'C:/TestingCatalog/AI_data/Indian Pines/Indian_pines_corrected.mat'
 
 class Autoencoder(nn.Module):
     def __init__(self):

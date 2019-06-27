@@ -12,10 +12,8 @@ import mathematical_operations as mo
 import time
 
 '''
-    First working model.
     Tested for dataset Samson
     (the same model as in catalog 1, different dataset)
-    Result image does not mach labeled image.
 '''
 
 data_dir = 'C:/Users/Public/AI/artificial-intelligence---my-beginning/venv/data/Samson/'

@@ -14,7 +14,6 @@ from datetime import datetime
 
 '''
     jasperRidge2_R198.mat
-    
 '''
 
 dir = 'C:/TestingCatalog/AI_data/Indian Pines/Indian_pines_corrected.mat'
@@ -308,7 +307,6 @@ if __name__ == '__main__':
     plt.imshow(clustered_data)
     name = 'img_DBSCAN_clustering.png'
     plt.savefig(name, bbox_inches='tight')
-
 
     print()
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
