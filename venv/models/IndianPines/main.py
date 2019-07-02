@@ -12,7 +12,6 @@ import numpy as np
 import mathematical_operations as mo
 import time
 
-from autoencoder import Autoencoder
 from clustering import clustering_kmeans
 
 '''
@@ -24,7 +23,7 @@ data_dir = 'C:/Users/Public/AI/artificial-intelligence---my-beginning/venv/data/
 
 img_dir = './img/'
 
-def run_machine():
+def run_machine(input_net, first=True):
     to_file = False
 
     # Przekierowanie wyjścia do pliku
@@ -109,57 +108,60 @@ def run_machine():
     print()
     print("***   Creating autoencoder   ***")
     print("---------------------------------")
-    my_net = Autoencoder()
+    my_net = input_net
     print(my_net)
     params = list(my_net.parameters())
     print("Params size:  ", params.__len__())
     for parameter in params:
         print(len(parameter))
 
-    print()
-    print("***   Creating optimizer   ***")
-    print("---------------------------------")
-    optimizer = torch.optim.Adam(my_net.parameters(), weight_decay=1e-5)
-    criterion = nn.MSELoss()
+    if my_net.getName() != 'none':
+        print()
+        print("***   Creating optimizer   ***")
+        print("---------------------------------")
+        optimizer = torch.optim.Adam(my_net.parameters(), weight_decay=1e-5)
+        criterion = nn.MSELoss()
 
-    print()
-    print("***   Learning   ***")
-    print("---------------------------------")
-    from torch.autograd import Variable
-    num_epochs = 3
-    batch_size = 128
-    learning_rate = 1e-3
-    for epoch in range(num_epochs):
-        for i, data in enumerate(my_dataloader):
-            img, _ = data
-            img = Variable(img).cpu()
-            # ===================forward=====================
-            output = my_net(img)
-            loss = criterion(output, img)
-            # ===================backward====================
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
-        # ===================log========================
-        print(type(loss))
-        #print(len(loss))
-        print(type(loss.item()))
-        print('epoch [', epoch + 1, '/', num_epochs, '], loss:', loss.item())
-        # if epoch % 10 == 0:
-        #    pic = to_img(output.cpu().data)
+    if first and my_net.getName() != 'none':
+        print()
+        print("***   Learning   ***")
+        print("---------------------------------")
+        from torch.autograd import Variable
+        num_epochs = 3
+        batch_size = 128
+        learning_rate = 1e-3
+        for epoch in range(num_epochs):
+            for i, data in enumerate(my_dataloader):
+                img, _ = data
+                img = Variable(img).cpu()
+                # ===================forward=====================
+                output = my_net(img)
+                loss = criterion(output, img)
+                # ===================backward====================
+                optimizer.zero_grad()
+                loss.backward()
+                optimizer.step()
+            # ===================log========================
+            print(type(loss))
+            #print(len(loss))
+            print(type(loss.item()))
+            print('epoch [', epoch + 1, '/', num_epochs, '], loss:', loss.item())
+            # if epoch % 10 == 0:
+            #    pic = to_img(output.cpu().data)
 
-    print()
-    print("***   Saving model to file   ***")
-    print("---------------------------------")
-    autoencoder_learned_file = './autoencoder_' + my_net.getType + my_net.getName + '.pth'
-    torch.save(my_net.state_dict(), autoencoder_learned_file)
+        print()
+        print("***   Saving model to file   ***")
+        print("---------------------------------")
+        autoencoder_learned_file = './autoencoder_' + my_net.getType() + '_' + my_net.getName() + '.pth'
+        torch.save(my_net.state_dict(), autoencoder_learned_file)
 
-    # print()
-    # print("***   Loading model from file   ***")
-    # print("---------------------------------")
-    # autoencoder_learned_file = './autoencoder_' + my_net.getType + my_net.getName + '.pth'
-    # my_net.load_state_dict(torch.load(autoencoder_learned_file))
-    # my_net.eval()
+    if not first and my_net.getName() != 'none':
+        print()
+        print("***   Loading model from file   ***")
+        print("---------------------------------")
+        autoencoder_learned_file = './autoencoder_' + my_net.getType() + ' ' + my_net.getName() + '.pth'
+        my_net.load_state_dict(torch.load(autoencoder_learned_file))
+        my_net.eval()
 
     print()
     print("***   Checking code for one element   ***")
@@ -186,4 +188,9 @@ def run_machine():
 
 
 if __name__ == '__main__':
-    run_machine()
+    from autoencoder import AutoencoderNone
+    run_machine(AutoencoderNone(), first=True)
+    from autoencoder import AutoencoderLinear
+    run_machine(AutoencoderLinear(), first=True)
+
+

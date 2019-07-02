@@ -10,9 +10,32 @@ from scipy import io
 import numpy as np
 import mathematical_operations as mo
 
-class Autoencoder(nn.Module):
+
+class AutoencoderNone(nn.Module):
     def __init__(self):
-        super(Autoencoder, self).__init__()
+        super(AutoencoderNone, self).__init__()
+
+        self.my_tensor = torch.Tensor()
+
+    def parameters(self):
+        return self.my_tensor
+
+    def forward(self, x):
+        return x
+
+    def getCode(self, x):
+        return x
+
+    def getType(self):
+        return 'none'
+
+    def getName(self):
+        return 'none'
+
+
+class AutoencoderLinear(nn.Module):
+    def __init__(self):
+        super(AutoencoderLinear, self).__init__()
 
         self.encoder = nn.Sequential(
             nn.Linear(200, 90),
