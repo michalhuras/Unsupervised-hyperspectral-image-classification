@@ -11,7 +11,7 @@ import numpy as np
 import mathematical_operations as mo
 
 
-def clustering_kmeans(the_image, my_net, the_image_labels, img_dir, img_name, show_image=False):
+def clustering_kmeans(the_image, my_net, shape, img_dir, img_name, show_image=False):
     print()
     print("***   K - means clustering   ***")
     print("---------------------------------")
@@ -41,7 +41,7 @@ def clustering_kmeans(the_image, my_net, the_image_labels, img_dir, img_name, sh
 
     print("Creating list for clustered data")
     clastered_data = np.zeros(np.shape(the_image_labels))
-    print("Clustered data shape:  ", np.shape(clastered_data))
+    print("Clustered data shape:  ", shape)
 
     x = 0
     y = 0

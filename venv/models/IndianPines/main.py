@@ -174,7 +174,7 @@ def run_machine(input_net, first=True):
     print()
 
     img_name = 'clustering_kmeans_' + my_net.getType() + '_autoencoder_' + my_net.getName() + '.png'
-    clustering_kmeans(the_image, my_net, the_image_labels, img_dir, img_name)
+    clustering_kmeans(the_image, my_net, np.shape(the_image_labels), img_dir, img_name)
 
     print("\nEND")
     end_time = time.time()
