@@ -142,9 +142,9 @@ class Dataloader():
                     else:
                         corrected_labels_1D[j][i] = 3
 
-            import matplotlib.pyplot as plt
-            plt.imshow(corrected_labels_1D)
-            plt.show()
+            # import matplotlib.pyplot as plt
+            # plt.imshow(corrected_labels_1D)
+            # plt.show()
 
             image_size_labels = np.shape(corrected_labels_1D)
             NRows_labels = image_size_labels[0]
@@ -189,6 +189,7 @@ class Dataloader():
             print("Number of elements in dataset: ", my_dataset.__len__())
 
         return my_dataloader
+
 
 if __name__ == '__main__':
     my_dataloader = Dataloader()
