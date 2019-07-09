@@ -186,7 +186,7 @@ class Dataloader():
 
 
 if __name__ == '__main__':
-    my_dataloader = Dataloader
+    my_dataloader = Dataloader()
     print("\n\n\nTEST GET NAME")
     print("RESULT:  ", my_dataloader.get_name())
     print("\n\n\nTEST GET results directory")

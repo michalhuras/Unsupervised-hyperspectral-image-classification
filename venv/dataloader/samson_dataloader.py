@@ -13,7 +13,6 @@ import time
 
 
 '''
-    TODO !!!!!
     Samson
 '''
 
@@ -80,8 +79,10 @@ class Dataloader():
             filename = 'samson_1.mat'
             ImDict = io.loadmat(self.data_dir + filename)
             image_name = 'V'
-            the_image_list = ImDict[image_name]
-            the_image_list = the_image_list.transpose()
+            print(ImDict)
+            the_image_list_before = ImDict[image_name]
+            the_image_list = the_image_list_before.transpose()
+
             image_size = np.shape(the_image_list)
             NRows = image_size[0]
             NCols = image_size[1]
@@ -142,9 +143,9 @@ class Dataloader():
             # plt.imshow(corrected_labels_3D)
             # plt.show()
 
-            image_size_labels = np.shape(corrected_labels_1D)
-            NRows_labels = image_size_labels[0]
-            NCols_labels = image_size_labels[1]
+            # image_size_labels = np.shape(corrected_labels_3D)
+            # NRows_labels = image_size_labels[0]
+            # NCols_labels = image_size_labels[1]
 
             if verbal:
                 print("Lokalizacja obrazu: \t", filename_labels)
