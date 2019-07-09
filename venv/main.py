@@ -15,7 +15,8 @@ import time
 '''
 
 
-def run_machine(Autoencoder, Dataloader, Classifier, nr_of_clusters, show_img=True, save_img=True, save_data=True, first=True):
+def run_machine(
+        Autoencoder, Dataloader, Classifier, nr_of_clusters, show_img=True, save_img=True, save_data=True, first=True):
     to_file = False
 
     # Przekierowanie wyjścia do pliku
@@ -58,10 +59,12 @@ def run_machine(Autoencoder, Dataloader, Classifier, nr_of_clusters, show_img=Tr
         print()
         print("***   Learning   ***")
         print("---------------------------------")
+        print("Is CUDA available: ", torch.cuda.is_available())
         from torch.autograd import Variable
-        num_epochs = 3
+        num_epochs = 10
         batch_size = 128
         learning_rate = 1e-3
+        epsilon = 0.23
         for epoch in range(num_epochs):
             for i, data in enumerate(my_dataloader):
                 img, _ = data
@@ -74,12 +77,10 @@ def run_machine(Autoencoder, Dataloader, Classifier, nr_of_clusters, show_img=Tr
                 loss.backward()
                 optimizer.step()
             # ===================log========================
-            print(type(loss))
-            #print(len(loss))
-            print(type(loss.item()))
             print('epoch [', epoch + 1, '/', num_epochs, '], loss:', loss.item())
-            # if epoch % 10 == 0:
-            #    pic = to_img(output.cpu().data)
+            if loss.item() < epsilon:
+                print('Epsilon break. Epsilon value: ',epsilon)
+                break
 
         print()
         print("***   Saving model to file   ***")
@@ -157,8 +158,6 @@ if __name__ == '__main__':
     from dataloader.indian_pines_dataloader import Dataloader
     import clustering.kmeans as classifier
     nr_of_clusters = 15
-    run_machine(Autoencoder, Dataloader(), classifier, nr_of_clusters, first=False)
-    # from autoencoder import AutoencoderLinear
-    # run_machine(AutoencoderLinear(), first=True)
+    run_machine(Autoencoder, Dataloader(), classifier, nr_of_clusters, first=True)
 
 

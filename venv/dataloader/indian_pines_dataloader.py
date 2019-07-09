@@ -14,6 +14,8 @@ import time
 
 '''
     Indian Pines
+    TODO dodać obraz do pamięci, tak aby przy każdym wywołaniu funkcji nie trzeba było go na nowo odczytywać
+    if notloaded .. 
 '''
 
 
@@ -181,3 +183,21 @@ class Dataloader():
             print("Number of elements in dataset: ", my_dataset.__len__())
 
         return my_dataloader
+
+
+if __name__ == '__main__':
+    my_dataloader = Dataloader
+    print("\n\n\nTEST GET NAME")
+    print("RESULT:  ", my_dataloader.get_name())
+    print("\n\n\nTEST GET results directory")
+    print("RESULT:  ", my_dataloader.get_results_directory())
+    print("\n\n\nTEST GET IMAGE")
+    print("RESULT:  ", np.shape(my_dataloader.get_image()))
+    print("\n\n\nTEST GET IMAGE LIST")
+    print("RESULT:  ", np.shape(my_dataloader.get_image_list()))
+    print("\n\n\nTEST GET IMAGE SHAPE")
+    print("RESULT:  ", my_dataloader.get_image_shape())
+    print("\n\n\nTEST GET LABELS")
+    print("RESULT:  ", np.shape(my_dataloader.get_labels()))
+    print("\n\n\nTEST GET DATALOADER")
+    print("RESULT:  ", my_dataloader.get_dataloader())
