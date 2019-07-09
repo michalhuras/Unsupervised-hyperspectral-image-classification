@@ -46,7 +46,6 @@ def clustering_kmeans(the_image, my_net, shape, img_dir, img_name, show_image=Fa
     x = 0
     y = 0
     for i in range(np.shape(clastered_data)[0] * np.shape(clastered_data)[1]):
-        # clustered_data[x][y] = kmeans.predict(image_autoencoded[y * 144 + x].reshape(1, -1))
         clastered_data[x][y] = kmeans.predict([image_autoencoded[y * 144 + x]])
         x = x + 1
         if x == 145:

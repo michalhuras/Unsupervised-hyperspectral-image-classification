@@ -28,7 +28,7 @@ def clustering(the_image_autoencoded, the_image_shape, number_of_clusters):
     x = 0
     y = 0
     for i in range(the_image_shape[0] * the_image_shape[1]):
-        clustered_data[x][y] = kmeans.predict([the_image_autoencoded[y * (the_image_shape[0] - 1) + x]])
+        clustered_data[x][y] = kmeans.predict([the_image_autoencoded[y * the_image_shape[0] + x]])
         x = x + 1
         if x == the_image_shape[1]:
             x = 0
