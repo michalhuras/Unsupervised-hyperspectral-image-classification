@@ -143,9 +143,9 @@ class Dataloader():
             # plt.imshow(corrected_labels_3D)
             # plt.show()
 
-            # image_size_labels = np.shape(corrected_labels_3D)
-            # NRows_labels = image_size_labels[0]
-            # NCols_labels = image_size_labels[1]
+            image_size_labels = np.shape(corrected_labels_1D)
+            NRows_labels = image_size_labels[0]
+            NCols_labels = image_size_labels[1]
 
             if verbal:
                 print("Lokalizacja obrazu: \t", filename_labels)
