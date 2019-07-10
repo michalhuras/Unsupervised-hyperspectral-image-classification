@@ -92,7 +92,8 @@ class Dataloader():
             image_name = 'Y'
             the_image_list = ImDict[image_name]
             the_image_list = the_image_list.transpose()
-            image_size = np.shape(the_image_list)
+            the_image_list_turned = mo.turn_image_in_list(the_image_list, self.image_shape)
+            image_size = np.shape(the_image_list_turned)
             NRows = image_size[0]
             NCols = image_size[1]
             print("Lokalizacja obrazu: \t", self.data_dir + filename)
@@ -105,7 +106,7 @@ class Dataloader():
             print("---------------------------------")
             the_image_list = mo.numpy_to_uint8(the_image_list)
 
-            self.image_list = the_image_list
+            self.image_list = the_image_list_turned
             self.image_list_exists = True
 
         return self.image_list

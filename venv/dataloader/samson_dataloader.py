@@ -88,11 +88,11 @@ class Dataloader():
             filename = 'samson_1.mat'
             ImDict = io.loadmat(self.data_dir + filename)
             image_name = 'V'
-            print(ImDict)
             the_image_list_before = ImDict[image_name]
             the_image_list = the_image_list_before.transpose()
+            the_image_list_turned = mo.turn_image_in_list(the_image_list, self.image_shape)
 
-            image_size = np.shape(the_image_list)
+            image_size = np.shape(the_image_list_turned)
             NRows = image_size[0]
             NCols = image_size[1]
             if verbal:
@@ -100,7 +100,7 @@ class Dataloader():
                 print("Nazwa obrazu:  \t\t\t", image_name)
                 print("Rozmiar: \t\t\t\t", "wiersze: ", NRows, " kolumny: ", NCols)  # , " zakresy: ", NBands)
                 print("Ilośc pikseli (ilość kolumn * ilość wierszy): ", NRows * NCols)
-            self.image_list = the_image_list
+            self.image_list = the_image_list_turned
             self.image_list_exists = True
 
         return self.image_list
