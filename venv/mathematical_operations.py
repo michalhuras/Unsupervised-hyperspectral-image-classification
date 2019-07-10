@@ -17,3 +17,19 @@ def numpy_to_uint8(the_image):
     print("Original image type: ", original_image_type)
     print("Converted image type:  ", converted_image_type)
     return converted_image
+
+
+def turn_image_in_list(the_image_list, the_image_shape):
+    x = 0
+    y = 0
+    the_image = np.zeros((the_image_shape[0], the_image_shape[1], the_image_shape[2]))
+    for i in range(the_image_shape[0] * the_image_shape[1]):
+        the_image[x][y] = the_image_list[i] # specjalnie [x][y] zamiast [y][x] !!!
+        x = x + 1
+        if x == the_image_shape[1]:
+            x = 0
+            y = y + 1
+
+    the_image_turned = np.reshape(the_image, (the_image_shape[0] * the_image_shape[1], the_image_shape[2]))
+
+    return the_image_turned
