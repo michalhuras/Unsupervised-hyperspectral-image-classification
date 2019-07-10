@@ -24,6 +24,7 @@ class Dataloader():
         self.name = 'jasper_ridge'
 
         self.image_shape = (100, 100, 198)
+        self.nr_of_clusters = 4
         self.image = ()
         self.image_list = ()
         self.image_labels = ()
@@ -47,6 +48,14 @@ class Dataloader():
             print("---------------------------------")
 
         return self.results_dir
+
+    def get_number_of_clusters(self, verbal=True):
+        if verbal:
+            print()
+            print("***   Get number of clusters   ***")
+            print("---------------------------------")
+
+        return self.nr_of_clusters
 
     def get_image(self, verbal=True):
         if not self.image_exists:
@@ -197,6 +206,8 @@ if __name__ == '__main__':
     print("RESULT:  ", my_dataloader.get_name())
     print("\nTEST GET results directory")
     print("RESULT:  ", my_dataloader.get_results_directory())
+    print("\nTEST GET NUMBER OF CLUSTERS")
+    print("RESULT:  ", my_dataloader.get_number_of_clusters())
     print("\nTEST GET IMAGE")
     print("RESULT:  ", np.shape(my_dataloader.get_image()))
     print("\nTEST GET IMAGE LIST")

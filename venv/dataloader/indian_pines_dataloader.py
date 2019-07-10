@@ -25,6 +25,9 @@ class Dataloader():
         self.results_dir = './results/IndianPines/'
         self.name = 'indian_pines'
 
+
+        self.nr_of_clusters = 20
+
     def get_name(self, verbal=True):
         if verbal:
             print()
@@ -40,6 +43,14 @@ class Dataloader():
             print("---------------------------------")
 
         return self.results_dir
+
+    def get_number_of_clusters(self, verbal=True):
+        if verbal:
+            print()
+            print("***   Get number of clusters   ***")
+            print("---------------------------------")
+
+        return self.nr_of_clusters
 
     def get_image(self, verbal=True):
         if verbal:
@@ -187,17 +198,19 @@ class Dataloader():
 
 if __name__ == '__main__':
     my_dataloader = Dataloader()
-    print("\n\n\nTEST GET NAME")
+    print("\nTEST GET NAME")
     print("RESULT:  ", my_dataloader.get_name())
-    print("\n\n\nTEST GET results directory")
+    print("\nTEST GET results directory")
     print("RESULT:  ", my_dataloader.get_results_directory())
-    print("\n\n\nTEST GET IMAGE")
+    print("\nTEST GET NUMBER OF CLUSTERS")
+    print("RESULT:  ", my_dataloader.get_number_of_clusters())
+    print("\nTEST GET IMAGE")
     print("RESULT:  ", np.shape(my_dataloader.get_image()))
-    print("\n\n\nTEST GET IMAGE LIST")
+    print("\nTEST GET IMAGE LIST")
     print("RESULT:  ", np.shape(my_dataloader.get_image_list()))
-    print("\n\n\nTEST GET IMAGE SHAPE")
+    print("\nTEST GET IMAGE SHAPE")
     print("RESULT:  ", my_dataloader.get_image_shape())
-    print("\n\n\nTEST GET LABELS")
+    print("\nTEST GET LABELS")
     print("RESULT:  ", np.shape(my_dataloader.get_labels()))
-    print("\n\n\nTEST GET DATALOADER")
+    print("\nTEST GET DATALOADER")
     print("RESULT:  ", my_dataloader.get_dataloader())
