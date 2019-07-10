@@ -169,6 +169,12 @@ if __name__ == '__main__':
     from dataloader.jasper_ridge_dataloader import Dataloader
     import clustering.kmeans as classifier
     nr_of_clusters = 4
-    run_machine(Autoencoder, Dataloader(), classifier, nr_of_clusters, first=True)
+    run_machine(Autoencoder, Dataloader(), classifier, nr_of_clusters, first=False)
+
+    from models.autoencoder_linear import Autoencoder
+    from dataloader.salinas_dataloader import Dataloader
+    import clustering.kmeans as classifier
+    nr_of_clusters = 20
+    run_machine(Autoencoder, Dataloader(), classifier, nr_of_clusters, first=False)
 
 
