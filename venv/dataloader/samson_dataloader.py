@@ -16,6 +16,8 @@ import time
     Samson
 '''
 
+g_nr_of_clusters = 3
+
 class Dataloader():
     def __init__(self):
         self.data_dir = 'C:/Users/Public/AI/artificial-intelligence---my-beginning/venv/data/Samson/'
@@ -24,7 +26,7 @@ class Dataloader():
         self.name = 'samson'
 
         self.image_shape = (95, 95, 156)
-        self.nr_of_clusters = 3
+        self.nr_of_clusters = g_nr_of_clusters
         self.image = ()
         self.image_list = ()
         self.image_labels = ()
@@ -49,13 +51,14 @@ class Dataloader():
 
         return self.results_dir
 
-    def get_number_of_clusters(self, verbal=True):
+    @staticmethod
+    def get_number_of_clusters(verbal=True):
         if verbal:
             print()
             print("***   Get number of clusters   ***")
             print("---------------------------------")
 
-        return self.nr_of_clusters
+        return g_nr_of_clusters
 
     def get_image(self, verbal=True):
         if not self.image_exists:

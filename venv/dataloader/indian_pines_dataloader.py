@@ -18,6 +18,7 @@ import time
     if notloaded .. 
 '''
 
+g_nr_of_clusters = 20
 
 class Dataloader():
     def __init__(self):
@@ -26,7 +27,7 @@ class Dataloader():
         self.name = 'indian_pines'
 
 
-        self.nr_of_clusters = 20
+        self.nr_of_clusters = g_nr_of_clusters
 
     def get_name(self, verbal=True):
         if verbal:
@@ -44,13 +45,14 @@ class Dataloader():
 
         return self.results_dir
 
-    def get_number_of_clusters(self, verbal=True):
+    @staticmethod
+    def get_number_of_clusters(verbal=True):
         if verbal:
             print()
             print("***   Get number of clusters   ***")
             print("---------------------------------")
 
-        return self.nr_of_clusters
+        return g_nr_of_clusters
 
     def get_image(self, verbal=True):
         if verbal:

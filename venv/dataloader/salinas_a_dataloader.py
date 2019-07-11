@@ -16,6 +16,8 @@ import time
     Salinas A
 '''
 
+g_nr_of_clusters = 6
+
 class Dataloader():
     def __init__(self):
         self.data_dir = 'C:/Users/Public/AI/artificial-intelligence---my-beginning/venv/data/SalinasA/'
@@ -24,7 +26,7 @@ class Dataloader():
         self.name = 'salinas_a'
 
         self.image_shape = (83, 86, 204)
-        self.nr_of_clusters = 6
+        self.nr_of_clusters = g_nr_of_clusters
         self.image = ()
         self.image_list = ()
         self.image_labels = ()
@@ -49,13 +51,14 @@ class Dataloader():
 
         return self.results_dir
 
-    def get_number_of_clusters(self, verbal=True):
+    @staticmethod
+    def get_number_of_clusters(verbal=True):
         if verbal:
             print()
             print("***   Get number of clusters   ***")
             print("---------------------------------")
 
-        return self.nr_of_clusters
+        return g_nr_of_clusters
 
     def get_image(self, verbal=True):
         if verbal:
