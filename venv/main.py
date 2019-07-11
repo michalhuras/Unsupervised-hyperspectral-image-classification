@@ -177,10 +177,16 @@ if __name__ == '__main__':
     # nr_of_clusters = 20
     # run_machine(Autoencoder, Dataloader(), classifier, nr_of_clusters, first=False)
 
+    # from models.autoencoder_linear import Autoencoder
+    # from dataloader.salinas_a_dataloader import Dataloader
+    # import clustering.kmeans as classifier
+    # nr_of_clusters = 6
+    # run_machine(Autoencoder, Dataloader(), classifier, nr_of_clusters, first=False)
+
     from models.autoencoder_linear import Autoencoder
-    from dataloader.salinas_a_dataloader import Dataloader
+    from dataloader.pavia_dataloader import Dataloader
     import clustering.kmeans as classifier
     nr_of_clusters = 6
-    run_machine(Autoencoder, Dataloader(), classifier, nr_of_clusters, first=False)
+    run_machine(Autoencoder, Dataloader(), classifier, nr_of_clusters, first=True)
 
 
