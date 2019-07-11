@@ -153,39 +153,18 @@ def run_machine(
 
 
 if __name__ == '__main__':
-    from models.autoencoder_linear import Autoencoder
-    from dataloader.indian_pines_dataloader import Dataloader
-    import clustering.kmeans as classifier
-    nr_of_clusters = Dataloader.get_number_of_clusters()
-    run_machine(Autoencoder, Dataloader(), classifier, nr_of_clusters, first=False)
+    # from models.autoencoder_linear import Autoencoder
+    from models.autoencoder_none import Autoencoder
 
-    from models.autoencoder_linear import Autoencoder
-    from dataloader.samson_dataloader import Dataloader
-    import clustering.kmeans as classifier
-    nr_of_clusters = Dataloader.get_number_of_clusters()
-    run_machine(Autoencoder, Dataloader(), classifier, nr_of_clusters, first=False)
-
-    from models.autoencoder_linear import Autoencoder
+    # from dataloader.indian_pines_dataloader import Dataloader
+    # from dataloader.samson_dataloader import Dataloader
     from dataloader.jasper_ridge_dataloader import Dataloader
-    import clustering.kmeans as classifier
-    nr_of_clusters = Dataloader.get_number_of_clusters()
-    run_machine(Autoencoder, Dataloader(), classifier, nr_of_clusters, first=False)
+    # from dataloader.salinas_dataloader import Dataloader
+    # from dataloader.salinas_a_dataloader import Dataloader
+    # from dataloader.pavia_dataloader import Dataloader
 
-    from models.autoencoder_linear import Autoencoder
-    from dataloader.salinas_dataloader import Dataloader
     import clustering.kmeans as classifier
-    nr_of_clusters = Dataloader.get_number_of_clusters()
-    run_machine(Autoencoder, Dataloader(), classifier, nr_of_clusters, first=False)
 
-    from models.autoencoder_linear import Autoencoder
-    from dataloader.salinas_a_dataloader import Dataloader
-    import clustering.kmeans as classifier
-    nr_of_clusters = Dataloader.get_number_of_clusters()
-    run_machine(Autoencoder, Dataloader(), classifier, nr_of_clusters, first=False)
-
-    from models.autoencoder_linear import Autoencoder
-    from dataloader.pavia_dataloader import Dataloader
-    import clustering.kmeans as classifier
     nr_of_clusters = Dataloader.get_number_of_clusters()
     run_machine(Autoencoder, Dataloader(), classifier, nr_of_clusters, first=False)
 
