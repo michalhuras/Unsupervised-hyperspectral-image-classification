@@ -15,7 +15,7 @@ def clustering(the_image_autoencoded, the_image_shape, number_of_clusters):
     # https: // datatofish.com / k - means - clustering - python /
 
     print("Image shape: ", the_image_shape)
-    print("Creating dataframe from k-clustering")
+    print("Creating dataframe foR k-clustering")
     df = DataFrame(data=the_image_autoencoded)
 
     print("KMeans clustering")
