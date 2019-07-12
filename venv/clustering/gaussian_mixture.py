@@ -20,17 +20,6 @@ def clustering(the_image_autoencoded, the_image_shape, number_of_clusters):
     # print("Creating dataframe")
     # df = DataFrame(data=the_image_autoencoded)
 
-
-    #
-    # x = 0
-    # y = 0
-    # for i in range(the_image_shape[0] * the_image_shape[1]):
-    #     clustered_data[y, x] = kmeans.predict([the_image_autoencoded[y * the_image_shape[1] + x]])
-    #     x = x + 1
-    #     if x == the_image_shape[1]:
-    #         x = 0
-    #         y = y + 1
-
     print("Running fit function for Gaussian Mixture Model Selection ")
     # cv_types = ['spherical', 'tied', 'diag', 'full']
     cv_type = 'spherical'
