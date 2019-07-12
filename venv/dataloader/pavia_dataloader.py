@@ -16,7 +16,7 @@ import time
     Pavia
 '''
 
-g_nr_of_clusters = 9
+g_nr_of_clusters = 10
 
 class Dataloader():
     def __init__(self):
@@ -132,19 +132,37 @@ class Dataloader():
             image_name_labels = 'paviaU_gt'
             the_image_labels = ImDict_labels[image_name_labels]
 
-            # import matplotlib.pyplot as plt
-            # plt.imshow(the_image_labels)
-            # plt.show()
+            # labels unification - wartości od 0 do number_of_labels -1
+            unused_label = 0
+            labels_dictionary = {}
+            x = 0
+            y = 0
+            labels_values = set()
+            for i in range(self.image_shape[0] * self.image_shape[1]):
+                if the_image_labels[y, x] not in labels_dictionary:
+                    labels_dictionary[the_image_labels[y, x]] = unused_label
+                    unused_label += 1
+                the_image_labels[y, x] = labels_dictionary[the_image_labels[y, x]]
+                labels_values.add(the_image_labels[y, x])
+                x = x + 1
+                if x == self.image_shape[1]:
+                    x = 0
+                    y += 1
 
             image_size_labels = np.shape(the_image_labels)
             NRows_labels = image_size_labels[0]
             NCols_labels = image_size_labels[1]
+
+            # import matplotlib.pyplot as plt
+            # plt.imshow(the_image_labels)
+            # plt.show()
 
             if verbal:
                 print("Lokalizacja obrazu: \t", filename_labels)
                 print("Nazwa obrazu:  \t\t\t", image_name_labels)
                 print("Rozmiar: \t\t\t\t", "wiersze: ", NRows_labels, " kolumny: ", NCols_labels)
                 print("Ilośc etykiet: \t\t\t", self.nr_of_clusters)
+                print("Etykiety: \t\t\t\t", labels_values)
             self.image_labels = the_image_labels
             self.image_labels_exists = True
 

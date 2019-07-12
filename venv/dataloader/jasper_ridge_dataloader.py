@@ -167,8 +167,8 @@ class Dataloader():
                 print("Lokalizacja obrazu: \t", filename_labels)
                 print("Nazwa obrazu:  \t\t\t", image_name_labels)
                 print("Rozmiar: \t\t\t\t", "wiersze: ", NRows_labels, " kolumny: ", NCols_labels)
-                print("Ilośc etykiet: \t\t\t", 3)
-                print("Etykiety: \t\t\t\t", (0, 1, 2))
+                print("Ilośc etykiet: \t\t\t", self.get_number_of_clusters())
+                print("Etykiety: \t\t\t\t", (0, 1, 2, 3))
             self.image_labels = corrected_labels_1D
             self.image_labels_exists = True
 

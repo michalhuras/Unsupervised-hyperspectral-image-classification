@@ -18,7 +18,7 @@ import time
     if notloaded .. 
 '''
 
-g_nr_of_clusters = 20
+g_nr_of_clusters = 17
 
 class Dataloader():
     def __init__(self):
@@ -26,8 +26,15 @@ class Dataloader():
         self.results_dir = './results/IndianPines/'
         self.name = 'indian_pines'
 
-
+        self.image_shape = (145, 145, 200)
         self.nr_of_clusters = g_nr_of_clusters
+        self.image = ()
+        self.image_list = ()
+        self.image_labels = ()
+
+        self.image_exists = False
+        self.image_list_exists = False
+        self.image_labels_exists = False
 
     def get_name(self, verbal=True):
         if verbal:
@@ -121,21 +128,8 @@ class Dataloader():
             print()
             print("***   Getting shape   ***")
             print("---------------------------------")
-        filename = 'Indian_pines_corrected.mat'
-        ImDict = io.loadmat(self.data_dir + filename)
-        image_name = 'indian_pines_corrected'
-        the_image = ImDict[image_name]
-        image_shape = np.shape(the_image)
-        NRows = image_shape[0]
-        NCols = image_shape[1]
-        NBands = image_shape[2]
-        if verbal:
-            print("Lokalizacja obrazu: \t", self.data_dir + filename)
-            print("Nazwa obrazu:  \t\t\t", image_name)
-            print("Rozmiar: \t\t\t\t", "wiersze: ", NRows, " kolumny: ", NCols, " zakresy: ", NBands)
-            print("Ilośc pikseli (ilość kolumn * ilość wierszy): ", NRows * NCols)
 
-        return image_shape
+        return self.image_shape
 
     def get_labels(self, verbal=True):
         if verbal:
@@ -150,22 +144,33 @@ class Dataloader():
         image_size_labels = np.shape(the_image_labels)
         NRows_labels = image_size_labels[0]
         NCols_labels = image_size_labels[1]
-        '''
-        import matplotlib.pyplot as plt
-        plt.imshow(the_image_labels)
-        plt.show()
-        '''
-        labels = set()
-        for row in the_image_labels:
-            for element in row:
-                labels.add(element)
-        num_labels = len(labels)
+
+        # labels unification - wartości od 0 do number_of_labels -1
+        unused_label = 0
+        labels_dictionary = {}
+        x = 0
+        y = 0
+        labels_values = set()
+        for i in range(self.image_shape[0] * self.image_shape[1]):
+            if the_image_labels[y, x] not in labels_dictionary:
+                labels_dictionary[the_image_labels[y, x]] = unused_label
+                unused_label += 1
+            the_image_labels[y, x] = labels_dictionary[the_image_labels[y, x]]
+            labels_values.add(the_image_labels[y, x])
+            x = x + 1
+            if x == self.image_shape[1]:
+                x = 0
+                y += 1
+
+        # import matplotlib.pyplot as plt
+        # plt.imshow(the_image_labels)
+        # plt.show()
+
         if verbal:
             print("Lokalizacja obrazu: \t", filename_labels)
             print("Nazwa obrazu:  \t\t\t", image_name_labels)
             print("Rozmiar: \t\t\t\t", "wiersze: ", NRows_labels, " kolumny: ", NCols_labels)
-            print("Ilośc etykiet: ", num_labels, " Etykiety: ", labels)
-
+            print("Etykiety: \t\t\t\t", labels_values)
         return the_image_labels
 
     def get_dataloader(self, verbal=True):
