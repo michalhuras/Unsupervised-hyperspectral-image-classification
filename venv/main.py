@@ -15,6 +15,28 @@ import time
 '''
 
 
+def save_model(my_net, autoencoder_learned_file, autoencoder_learned_file_description, loss_value, dataset):
+    print()
+    print("***   Saving model to file   ***")
+    print("---------------------------------")
+    torch.save(my_net.state_dict(), autoencoder_learned_file)
+    description_file = open(autoencoder_learned_file_description, "w+")
+    description_file.write("Autoencoder: \n")
+    description_file.write("Type: " + my_net.getType() + "\n")
+    description_file.write("Name: " + my_net.getName() + "\n")
+    description_file.write("Loss value: " + str(loss_value) + "\n")
+    description_file.write("Dataset: " + dataset + "\n")
+    description_file.write(str(my_net))
+    description_file.write("\n")
+    params = list(my_net.parameters())
+    description_file.write("Params length:  " + str(params.__len__()))
+    description_file.write("\n")
+    for parameter in params:
+        description_file.write("   " + str(len(parameter)))
+
+    description_file.close()
+
+
 def run_machine(
         Autoencoder, Dataloader, Classifier, nr_of_clusters, show_img=True, save_img=True, save_data=True, first=True):
     to_file = False
@@ -55,6 +77,12 @@ def run_machine(
 
     autoencoder_learned_file = \
         Dataloader.get_results_directory() + '/autoencoder/' + my_net.getType() + '_' + my_net.getName() + '.pth'
+    autoencoder_learned_file_description = \
+        Dataloader.get_results_directory() + \
+        '/autoencoder/' + \
+        my_net.getType() + \
+        '_' + my_net.getName() + \
+        '_description.txt'
     if first and my_net.getName() != 'none':
         print()
         print("***   Learning   ***")
@@ -65,6 +93,7 @@ def run_machine(
         batch_size = 128
         learning_rate = 1e-3
         epsilon = 0.23
+        the_best_loss = 1
         for epoch in range(num_epochs):
             for i, data in enumerate(my_dataloader):
                 img, _ = data
@@ -78,14 +107,17 @@ def run_machine(
                 optimizer.step()
             # ===================log========================
             print('epoch [', epoch + 1, '/', num_epochs, '], loss:', loss.item())
-            if loss.item() < epsilon:
-                print('Epsilon break. Epsilon value: ',epsilon)
-                break
-
-        print()
-        print("***   Saving model to file   ***")
-        print("---------------------------------")
-        torch.save(my_net.state_dict(), autoencoder_learned_file)
+            # if loss.item() < epsilon:
+            #     print('Epsilon break. Epsilon value: ',epsilon)
+            #     break
+            if loss.item() < the_best_loss:
+                the_best_loss = loss.item()
+                save_model(
+                    my_net,
+                    autoencoder_learned_file,
+                    autoencoder_learned_file_description,
+                    the_best_loss,
+                    Dataloader.get_name())
 
     if not first and my_net.getName() != 'none':
         print()
@@ -102,6 +134,7 @@ def run_machine(
     print("Image shape: ", the_image_shape)
     print("Image code got from autoencoder")
     the_image_autoencoded = [my_net.getCode(torch.Tensor(point)).detach().numpy() for point in the_image_list]
+    print("Autoencoded image shape: ", np.shape(the_image_autoencoded))
 
     print()
     print("***   Clustering   ***")
@@ -137,7 +170,7 @@ def run_machine(
     print()
     if save_data:
         data_name = Classifier.get_name() + "_" + my_net.getType() + '_autoencoder_' + my_net.getName() + '.txt'
-        result_data_path = Dataloader.get_results_directory() + '/data/' + data_name
+        result_data_path = Dataloader.get_results_directory() + 'data/' + data_name
         print("Path: ", result_data_path)
         np.savetxt(result_data_path, the_image_classified, delimiter=" ", newline="\n", header=data_name, fmt="%s")
 
@@ -153,19 +186,22 @@ def run_machine(
 
 
 if __name__ == '__main__':
-    # from models.autoencoder_linear import Autoencoder
-    from models.autoencoder_none import Autoencoder
+    from models.autoencoder_linear import Autoencoder
+    # from models.autoencoder_none import Autoencoder
 
-    # from dataloader.indian_pines_dataloader import Dataloader
-    # from dataloader.samson_dataloader import Dataloader
-    from dataloader.jasper_ridge_dataloader import Dataloader
-    # from dataloader.salinas_dataloader import Dataloader
-    # from dataloader.salinas_a_dataloader import Dataloader
-    # from dataloader.pavia_dataloader import Dataloader
+    # from dataloader.indian_pines_dataloader import Dataloader as Dataloader1
+    from dataloader.samson_dataloader import Dataloader as Dataloader2
+    from dataloader.jasper_ridge_dataloader import Dataloader as Dataloader3
+    # from dataloader.salinas_dataloader import Dataloader as Dataloader4
+    from dataloader.salinas_a_dataloader import Dataloader as Dataloader5
+    from dataloader.pavia_dataloader import Dataloader as Dataloader6
 
-    import clustering.kmeans as classifier
+    # import clustering.kmeans as classifier
+    # import clustering.optics as classifier
+    # import clustering.mean_shift as classifier
+    import clustering.gaussian_mixture as classifier
 
-    nr_of_clusters = Dataloader.get_number_of_clusters()
-    run_machine(Autoencoder, Dataloader(), classifier, nr_of_clusters, first=False)
-
-
+    run_machine(Autoencoder, Dataloader2(), classifier, Dataloader2.get_number_of_clusters(), first=False)
+    run_machine(Autoencoder, Dataloader3(), classifier, Dataloader3.get_number_of_clusters(), first=False)
+    run_machine(Autoencoder, Dataloader5(), classifier, Dataloader5.get_number_of_clusters(), first=False)
+    run_machine(Autoencoder, Dataloader6(), classifier, Dataloader6.get_number_of_clusters(), first=False)
