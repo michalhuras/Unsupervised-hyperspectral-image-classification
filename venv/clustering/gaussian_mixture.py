@@ -48,9 +48,9 @@ def clustering(the_image_autoencoded, the_image_shape, number_of_clusters):
     x = 0
     y = 0
     for i in range(np.shape(clustered_data)[0] * np.shape(clustered_data)[1]):
-        clustered_data[x][y] = clust.predict(the_image_autoencoded[i].reshape(1, -1))
+        clustered_data[y][x] = clust.predict(the_image_autoencoded[i].reshape(1, -1))
         x = x + 1
-        if x == 100:
+        if x == the_image_shape[1]:
             x = 0
             y = y + 1
 
