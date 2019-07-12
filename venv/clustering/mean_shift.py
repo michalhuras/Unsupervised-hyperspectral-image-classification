@@ -17,7 +17,7 @@ def clustering(the_image_autoencoded, the_image_shape, number_of_clusters):
     # df = DataFrame(data=the_image_autoencoded)
 
     print("Running fit function for mean-shift clustering")
-    clust = MeanShift(bandwidth=2).fit(image_autoencoded)
+    clust = MeanShift(bandwidth=2).fit(the_image_autoencoded)
 
     print("Creating list for clustered data")
     clustered_data = np.zeros((the_image_shape[0], the_image_shape[1]))
