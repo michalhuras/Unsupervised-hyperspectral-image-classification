@@ -20,7 +20,7 @@ g_nr_of_clusters = 3
 class Dataloader():
     def __init__(self):
         self.data_dir = 'none'
-        self.results_dir = './results/none/'
+        self.results_dir = './results/tests/'
         self.name = 'test'
 
         self.image_shape = (6, 4, 5)
