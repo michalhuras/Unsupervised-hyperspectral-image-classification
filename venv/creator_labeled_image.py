@@ -186,22 +186,24 @@ def run_machine(
 
 
 if __name__ == '__main__':
-    from models.autoencoder_linear import Autoencoder
-    # from models.autoencoder_none import Autoencoder
+    # from models.autoencoder_linear import Autoencoder
+    from models.autoencoder_none import Autoencoder
 
-    # from dataloader.indian_pines_dataloader import Dataloader as Dataloader1
-    from dataloader.samson_dataloader import Dataloader as Dataloader2
-    from dataloader.jasper_ridge_dataloader import Dataloader as Dataloader3
-    # from dataloader.salinas_dataloader import Dataloader as Dataloader4
+    from dataloader.indian_pines_dataloader import Dataloader as Dataloader1
+    from dataloader.jasper_ridge_dataloader import Dataloader as Dataloader2
+    from dataloader.pavia_dataloader import Dataloader as Dataloader3
+    from dataloader.salinas_dataloader import Dataloader as Dataloader4
     from dataloader.salinas_a_dataloader import Dataloader as Dataloader5
-    from dataloader.pavia_dataloader import Dataloader as Dataloader6
+    from dataloader.samson_dataloader import Dataloader as Dataloader6
 
-    # import clustering.kmeans as classifier
+    import clustering.kmeans as classifier
     # import clustering.optics as classifier
     # import clustering.mean_shift as classifier
-    import clustering.gaussian_mixture as classifier
+    #import clustering.gaussian_mixture as classifier
 
-    run_machine(Autoencoder, Dataloader2(), classifier, Dataloader2.get_number_of_clusters(), first=False)
-    run_machine(Autoencoder, Dataloader3(), classifier, Dataloader3.get_number_of_clusters(), first=False)
+    # run_machine(Autoencoder, Dataloader1(), classifier, Dataloader1.get_number_of_clusters(), first=False)
+    # run_machine(Autoencoder, Dataloader2(), classifier, Dataloader2.get_number_of_clusters(), first=False)
+    # run_machine(Autoencoder, Dataloader3(), classifier, Dataloader3.get_number_of_clusters(), first=False)
+    # run_machine(Autoencoder, Dataloader4(), classifier, Dataloader4.get_number_of_clusters(), first=False)
     run_machine(Autoencoder, Dataloader5(), classifier, Dataloader5.get_number_of_clusters(), first=False)
     run_machine(Autoencoder, Dataloader6(), classifier, Dataloader6.get_number_of_clusters(), first=False)
