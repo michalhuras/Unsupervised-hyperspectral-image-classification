@@ -1,0 +1,19 @@
+Autoencoder: 
+Type: linear
+Name: 1
+Loss value: 0.09695013612508774
+Dataset: salinas
+Autoencoder(
+  (encoder): Sequential(
+    (0): Linear(in_features=204, out_features=90, bias=True)
+    (1): Linear(in_features=90, out_features=40, bias=True)
+    (2): Linear(in_features=40, out_features=20, bias=True)
+  )
+  (decoder): Sequential(
+    (0): Linear(in_features=20, out_features=40, bias=True)
+    (1): Linear(in_features=40, out_features=90, bias=True)
+    (2): Linear(in_features=90, out_features=204, bias=True)
+  )
+)
+Params length:  12
+   90   90   40   40   20   20   40   40   90   90   204   204
