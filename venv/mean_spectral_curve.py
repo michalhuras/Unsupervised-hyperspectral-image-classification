@@ -160,6 +160,7 @@ def create_spectral_curve_from_dataloader_plus(
         draw_legend=draw_legend,
         output_name=output_name)
 
+
 def create_spectral_curve_for_ideal_data():
     create_spectral_curve_from_dataloader(test_dataloader())
     create_spectral_curve_from_dataloader(indian_pines_dataloader())
@@ -174,7 +175,7 @@ def create_spectral_curve_for_existing_data():
     import os
 
     print("Searching for result files")
-    result_directories = {
+    result_directories_with_dataloaders = {
         "./results/IndianPines/data/": indian_pines_dataloader(),
         "./results/JasperRidge/data/": jasper_ridge_dataloader(),
         "./results/Pavia/data/": pavia_dataloader(),
@@ -186,9 +187,9 @@ def create_spectral_curve_for_existing_data():
 
     names_and_directories = {}
     # name: directory
-    for path in result_directories:
+    for path in result_directories_with_dataloaders:
         print("\tPath: ", path)
-        print("\tDataloader name: ", result_directories[path].get_name(False))
+        print("\tDataloader name: ", result_directories_with_dataloaders[path].get_name(False))
 
         # r=root, d=directories, f = files
         for r, d, f in os.walk(path):
@@ -201,7 +202,7 @@ def create_spectral_curve_for_existing_data():
         for file_name in names_and_directories:
             from dataloader.result_dataloader import Dataloader as ResoultDataloader
             dataloader = ResoultDataloader()
-            image =\
+            image_labels =\
                 dataloader.get_image_labels_from_file(names_and_directories[file_name], verbal=False)
 
             # import matplotlib.pyplot as plt
@@ -211,15 +212,45 @@ def create_spectral_curve_for_existing_data():
             if file_name.endswith('.txt'):
                 file_name = file_name[:-4]
             print("\t create_spectral_curve_from_dataloader_plus:  ", file_name)
-            print("\t Dir: ", result_directories[path].get_name(False))
+            print("\t Dir: ", result_directories_with_dataloaders[path].get_name(False))
             create_spectral_curve_from_dataloader_plus(
-                result_directories[path],
-                image,
+                result_directories_with_dataloaders[path],
+                image_labels,
                 output_name=file_name,
                 show_img=False)
 
 
 if __name__ == '__main__':
+    # Ideal data
     # create_spectral_curve_for_ideal_data()
 
-    create_spectral_curve_for_existing_data()
+    # All data
+    # create_spectral_curve_for_existing_data()
+
+    # Available results files and dataloaders:
+    # "./results/IndianPines/data/"     indian_pines_dataloader()
+    # "./results/JasperRidge/data/"     jasper_ridge_dataloader()
+    # "./results/Pavia/data/"           pavia_dataloader()
+    # "./results/Salinas/data/"         salinas_dataloader()
+    # "./results/SalinasA/data/"        salinas_a_dataloader()
+    # "./results/Samson/data/"          samson_dataloader()
+    # # "./result/tests/data"           test_dataloader()
+
+    # Example use for one result file
+    from dataloader.result_dataloader import Dataloader as ResoultDataloader
+    dataloader = ResoultDataloader()
+    file_directory = "./results/Samson/data/clustering_kmeans_linear_autoencoder_1.txt"
+    image_labels = \
+        dataloader.get_image_labels_from_file(file_directory, verbal=False)
+
+    # import matplotlib.pyplot as plt
+    # plt.imshow(image)
+    # plt.show()
+
+    file_name = "clustering_kmeans_linear_autoencoder_1"
+    create_spectral_curve_from_dataloader_plus(
+        samson_dataloader(),
+        image_labels,
+        output_name=file_name,
+        show_img=True)
+
