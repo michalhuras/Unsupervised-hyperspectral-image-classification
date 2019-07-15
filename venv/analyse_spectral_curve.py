@@ -40,25 +40,32 @@ def fill_low_matching(matching_clusters, start_row, start_column, labels=[]):
     return matching_clusters
 
 
-def fill_matching_clusters_initial_values(matching_clusters, number_of_labels, labels=[]):
+def fill_matching_clusters_initial_values(matching_clusters, number_of_labels, labels=[], start_row=0, start_column=0):
     if not labels:
         labels = [label for label in range(number_of_labels)]
-        print("PUSTE")
 
-    
+    if number_of_labels == 3:
+        fill_low_matching(matching_clusters, 0, 0, labels)
+        return matching_clusters
+
     row = 0
     for label in labels:
+        new_labels = labels.copy()
+        new_labels.remove(label)
         if number_of_labels - 1 == 3:
-            new_labels = labels.copy()
-            new_labels.remove(label)
-            fill_low_matching(matching_clusters, row, 1, new_labels)
+            fill_low_matching(matching_clusters, start_row + row, start_column + 1, new_labels)
+        else:
+            fill_matching_clusters_initial_values(
+                matching_clusters,
+                number_of_labels - 1,
+                new_labels,
+                start_row=row,
+                start_column=start_column + 1)
 
         for i in range(math.factorial(number_of_labels - 1)):
-            matching_clusters[row][0] = label
+            matching_clusters[start_row + row][start_column] = label
             row += 1
 
-    print("___________________")
-    print(labels)
     return matching_clusters
 
 if __name__ == '__main__':
@@ -76,41 +83,42 @@ if __name__ == '__main__':
 
     print("START")
 
-    # print("* Creating spectral curve loader")
-    # from dataloader.spectral_curve_dataloader import Dataloader as spectral_curve_dataloader
-    # dataloader = spectral_curve_dataloader()
-    #
-    # print()
-    # print("* Loading ideal spectral curve")
-    # # ideal_file_name = "./results/Samson/data/IDEAL_spectral_curve.txt"
-    # ideal_file_name = "./results/JasperRidge/data/IDEAL_spectral_curve.txt"
-    # ideal_spectral_curve = dataloader.get_spectral_curve_from_file(ideal_file_name, verbal=False)
-    # number_of_labels = count_number_of_labels(ideal_spectral_curve)
-    # ideal_spectral_curve = ideal_spectral_curve.transpose()
-    # print("Shape: ", ideal_spectral_curve.shape)
-    # print("Number of labels: ", number_of_labels)
-    #
-    # print()
-    # print("* Loading tested spectral curve")
-    # # file_name = "./results/Samson/data/spectral_curve_clustering_kmeans_linear_autoencoder_1.txt"
-    # file_name = "./results/JasperRidge/data/spectral_curve_clustering_kmeans_linear_autoencoder_1.txt"
-    # spectral_curve = dataloader.get_spectral_curve_from_file(file_name, verbal=False)
-    # number_of_labels = count_number_of_labels(spectral_curve)
-    # spectral_curve = spectral_curve.transpose()
-    # print("Shape: ", spectral_curve.shape)
-    # print("Number of labels: ", number_of_labels)
-    #
-    # print()
-    # print("* Creating array with matching clusters")
-    # print(type(math.factorial(number_of_labels)))
-    # print(type(number_of_labels))
+    print("* Creating spectral curve loader")
+    from dataloader.spectral_curve_dataloader import Dataloader as spectral_curve_dataloader
+    dataloader = spectral_curve_dataloader()
 
-    number_of_labels = 4
+    print()
+    print("* Loading ideal spectral curve")
+    # ideal_file_name = "./results/Samson/data/IDEAL_spectral_curve.txt"
+    ideal_file_name = "./results/JasperRidge/data/IDEAL_spectral_curve.txt"
+    ideal_spectral_curve = dataloader.get_spectral_curve_from_file(ideal_file_name, verbal=False)
+    number_of_labels = count_number_of_labels(ideal_spectral_curve)
+    ideal_spectral_curve = ideal_spectral_curve.transpose()
+    print("Shape: ", ideal_spectral_curve.shape)
+    print("Number of labels: ", number_of_labels)
+
+    print()
+    print("* Loading tested spectral curve")
+    # file_name = "./results/Samson/data/spectral_curve_clustering_kmeans_linear_autoencoder_1.txt"
+    file_name = "./results/JasperRidge/data/spectral_curve_clustering_kmeans_linear_autoencoder_1.txt"
+    spectral_curve = dataloader.get_spectral_curve_from_file(file_name, verbal=False)
+    number_of_labels = count_number_of_labels(spectral_curve)
+    spectral_curve = spectral_curve.transpose()
+    print("Shape: ", spectral_curve.shape)
+    print("Number of labels: ", number_of_labels)
+
+    print()
+    print("* Creating array with matching clusters")
+    print(type(math.factorial(number_of_labels)))
+    print(type(number_of_labels))
+
+    number_of_labels = 10
     matching_clusters = np.zeros((math.factorial(number_of_labels), number_of_labels + 1))
 
     matching_clusters = fill_matching_clusters_initial_values(matching_clusters, number_of_labels)
     # matching_clusters = fill_low_matching(matching_clusters, 0, 0)
     print(matching_clusters)
+    print("Dlugosć: ", len(matching_clusters))
 
     # Searching the best result
     # Saving result
