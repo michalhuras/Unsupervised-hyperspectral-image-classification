@@ -26,6 +26,7 @@ def plot(img):
 
 
 def fill_low_matching(matching_clusters, start_row, start_column, labels=[]):
+    # TODO delete
     # for 3 labels only
     number_of_labels = 3
     half_fractional_label = 3
@@ -41,6 +42,7 @@ def fill_low_matching(matching_clusters, start_row, start_column, labels=[]):
 
 
 def fill_matching_clusters_initial_values(matching_clusters, number_of_labels, labels=[], start_row=0, start_column=0):
+    # TODO delete
     if not labels:
         labels = [label for label in range(number_of_labels)]
 
@@ -112,6 +114,7 @@ if __name__ == '__main__':
     print(type(math.factorial(number_of_labels)))
     print(type(number_of_labels))
 
+    # RODO delete -----
     number_of_labels = 10
     matching_clusters = np.zeros((math.factorial(number_of_labels), number_of_labels + 1))
 
@@ -119,6 +122,7 @@ if __name__ == '__main__':
     # matching_clusters = fill_low_matching(matching_clusters, 0, 0)
     print(matching_clusters)
     print("Dlugosć: ", len(matching_clusters))
+    # RODO delete ----- end
 
     # Searching the best result
     # Saving result
