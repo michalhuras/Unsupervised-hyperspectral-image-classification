@@ -4,6 +4,7 @@
 from scipy import io
 import numpy as np
 import math
+import matplotlib.pyplot as plt
 
 from drafts.tests.test_dataloader import Dataloader as test_dataloader
 from dataloader.indian_pines_dataloader import Dataloader as indian_pines_dataloader
@@ -36,7 +37,7 @@ def pairs_in_spectral_curves(ideal_dataloader, file_name):
     print("* Loading ideal spectral curve")
     # ideal_file_name = "./results/Samson/data/IDEAL_spectral_curve.txt"
     # ideal_file_name = "./results/JasperRidge/data/IDEAL_spectral_curve.txt"
-    ideal_file_name = ideal_dataloader.get_spectral_curve_directory(verbal=False)
+    ideal_file_name = ideal_dataloader.get_results_directory(verbal=False) + "data/IDEAL_spectral_curve.txt"
     ideal_spectral_curve = dataloader.get_spectral_curve_from_file(ideal_file_name, verbal=False)
     number_of_labels = count_number_of_labels(ideal_spectral_curve)
     ideal_spectral_curve = ideal_spectral_curve.transpose()
@@ -74,14 +75,52 @@ def pairs_in_spectral_curves(ideal_dataloader, file_name):
 
     return f_pairs
 
-def compare_with_ground_truth(labeled_image_path, dataloader, pairs):
+
+def compare_with_ground_truth(labeled_image, dataloader, pairs, plot):
     print()
     print()
     print("* Compare with ground truth")
+    ground_truth = dataloader.get_labels(verbal=False)
 
+    if plot:
+        plt.clf()
+        plt.subplot(1, 2, 1)
+        plt.title('Labeled corrected image')
+        plt.imshow(labeled_image)
+        plt.subplot(1, 2, 2)
+        plt.title('Ground truth')
+        plt.imshow(ground_truth)
+        plt.show()
+
+    
+
+def get_labeled_image(labeled_image_path, pairs, plot=false):
+    print("** Get labeled image")
     print("* Creating result dataloader")
     from dataloader.result_dataloader import Dataloader as result_dataloader
-    dataloader = result_dataloader()
+    result_dataloader = result_dataloader()
+    labeled_image_f = result_dataloader.get_image_labels_from_file(labeled_image_path)
+
+    transpose_pairs = np.zeros(np.shape(pairs))
+    for i in pairs:
+        transpose_pairs[int(pairs[i])] = i
+
+    corrected_labeled_image = np.zeros(labeled_image_f.shape)
+    for y in range(labeled_image_f.shape[0]):
+        for x in range(labeled_image_f.shape[1]):
+            corrected_labeled_image[y][x] = int(transpose_pairs[int(labeled_image_f[y][x])])
+
+    if plot:
+        plt.clf()
+        plt.subplot(1, 2, 1)
+        plt.imshow(labeled_image_f)
+        plt.title('Labeled image')
+        plt.subplot(1, 2, 2)
+        plt.imshow(corrected_labeled_image)
+        plt.title('Labeled corrected image')
+        plt.show()
+
+    return corrected_labeled_image
 
 
 if __name__ == '__main__':
@@ -99,8 +138,10 @@ if __name__ == '__main__':
     # # Searching result files
     # # Running function for all result files
 
-    file_name = "./results/JasperRidge/data/spectral_curve_clustering_kmeans_linear_autoencoder_1.txt"
-    pairs = pairs_in_spectral_curves(jasper_ridge_dataloader(), file_name)
-    compare_with_ground_truth(file_name, jasper_ridge_dataloader(), pairs)
+    file_spectral = "./results/JasperRidge/data/spectral_curve_clustering_kmeans_linear_autoencoder_1.txt"
+    file_labels = "./results/JasperRidge/data/clustering_kmeans_linear_autoencoder_1.txt"
+    pairs = pairs_in_spectral_curves(jasper_ridge_dataloader(), file_spectral)
+    labeled_image = get_labeled_image(file_labels, pairs)
+    compare_with_ground_truth(labeled_image, jasper_ridge_dataloader(), pairs)
 
     print("END")
