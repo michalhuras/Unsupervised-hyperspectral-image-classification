@@ -8,7 +8,7 @@ import torch.utils.data as utils
 import torchvision.transforms as transforms
 from scipy import io
 import numpy as np
-import mathematical_operations as mo
+import scripts_my.mathematical_operations as mo
 import time
 
 
