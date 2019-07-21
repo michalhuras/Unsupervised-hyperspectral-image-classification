@@ -29,22 +29,30 @@ def image_to_list(image):
     return result_list
 
 
-def create_confusion_matrix(labeled_image, ground_truth):
+def create_confusion_matrix(labeled_image, ground_truth, verbal=False):
     labeled_image_list = image_to_list(labeled_image)
     ground_truth_list = image_to_list(ground_truth)
-    print()
-    print("CONFUSION MATRIX")
+    if verbal:
+        print()
+        print("CONFUSION MATRIX")
     from sklearn.metrics import multilabel_confusion_matrix
     confusion_matrix = multilabel_confusion_matrix(ground_truth_list, labeled_image_list)
-    print(confusion_matrix)
+    if verbal:
+        print(confusion_matrix)
+    return confusion_matrix
 
-    print()
-    print("PRECISION")
+
+def get_precision(labeled_image, ground_truth, verbal=False):
+    labeled_image_list = image_to_list(labeled_image)
+    ground_truth_list = image_to_list(ground_truth)
+    if verbal:
+        print()
+        print("PRECISION")
     from sklearn.metrics import precision_score
     from sklearn.metrics import recall_score, f1_score
-    print("Precision: ", precision_score(ground_truth_list, labeled_image_list, average=None))
-    print("recall: ", recall_score(ground_truth_list, labeled_image_list, average=None))
-    print("F1: ", f1_score(ground_truth_list, labeled_image_list, average=None))
+    report = " Precision: " + str(precision_score(ground_truth_list, labeled_image_list, average=None))
+    report += "\n Recall: " + str(recall_score(ground_truth_list, labeled_image_list, average=None))
+    report += "\n F1: " + str(f1_score(ground_truth_list, labeled_image_list, average=None))
     '''
     print("Macro - counted for each label, and found unweighted mean")
     print(precision_score(ground_truth_list, labeled_image_list, average='macro'))
@@ -54,6 +62,9 @@ def create_confusion_matrix(labeled_image, ground_truth):
     print(precision_score(ground_truth_list, labeled_image_list, average='weighted'))
     print(precision_score(ground_truth_list, labeled_image_list, average=None))
     '''
+    if verbal:
+        print(report)
+    return report
 
 
 def compare_with_ground_truth(labeled_image, dataloader, pairs, plot=False):
@@ -72,7 +83,11 @@ def compare_with_ground_truth(labeled_image, dataloader, pairs, plot=False):
         plt.imshow(ground_truth)
         plt.show()
 
-    create_confusion_matrix(labeled_image, ground_truth)
+    report = "Confusion matrix: \n" + str(create_confusion_matrix(labeled_image, ground_truth))
+    report += "\n" + get_precision(labeled_image, ground_truth)
+    print("REPORT \n")
+    print(report)
+    return report
 
 
 if __name__ == '__main__':
