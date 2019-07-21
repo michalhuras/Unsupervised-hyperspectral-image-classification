@@ -19,7 +19,44 @@ from dataloader.pavia_dataloader import Dataloader as pavia_dataloader
 from algorithms.pairing_greedy_algorithm import PairingAlgorithm
 
 
-def compare_with_ground_truth(labeled_image, dataloader, pairs, plot=True):
+def image_to_list(image):
+    result_list = np.zeros(image.shape[0] * image.shape[1])
+    i = 0
+    for y in range(image.shape[0]):
+        for x in range(image.shape[1]):
+            result_list[i] = image[y][x]
+            i += 1
+    return result_list
+
+
+def create_confusion_matrix(labeled_image, ground_truth):
+    labeled_image_list = image_to_list(labeled_image)
+    ground_truth_list = image_to_list(ground_truth)
+    print()
+    print("CONFUSION MATRIX")
+    from sklearn.metrics import multilabel_confusion_matrix
+    confusion_matrix = multilabel_confusion_matrix(ground_truth_list, labeled_image_list)
+    print(confusion_matrix)
+
+    print()
+    print("PRECISION")
+    from sklearn.metrics import precision_score
+    from sklearn.metrics import recall_score, f1_score
+    print("Precision: ", precision_score(ground_truth_list, labeled_image_list, average=None))
+    print("recall: ", recall_score(ground_truth_list, labeled_image_list, average=None))
+    print("F1: ", f1_score(ground_truth_list, labeled_image_list, average=None))
+    '''
+    print("Macro - counted for each label, and found unweighted mean")
+    print(precision_score(ground_truth_list, labeled_image_list, average='macro'))
+    print("Micro - counted globally")
+    print(precision_score(ground_truth_list, labeled_image_list, average='micro'))
+    print("Weighted")
+    print(precision_score(ground_truth_list, labeled_image_list, average='weighted'))
+    print(precision_score(ground_truth_list, labeled_image_list, average=None))
+    '''
+
+
+def compare_with_ground_truth(labeled_image, dataloader, pairs, plot=False):
     print()
     print()
     print("* Compare with ground truth")
@@ -34,6 +71,8 @@ def compare_with_ground_truth(labeled_image, dataloader, pairs, plot=True):
         plt.title('Ground truth')
         plt.imshow(ground_truth)
         plt.show()
+
+    create_confusion_matrix(labeled_image, ground_truth)
 
 
 if __name__ == '__main__':

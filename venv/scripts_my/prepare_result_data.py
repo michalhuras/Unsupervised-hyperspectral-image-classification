@@ -18,7 +18,7 @@ def plot(img):
     plt.show()
 
 
-def get_labeled_image(labeled_image_path, pairs, plot=True):
+def get_labeled_image(labeled_image_path, pairs, plot=False):
     print("** Get labeled image")
     print("* Creating result dataloader")
     from dataloader.result_dataloader import Dataloader as result_dataloader
