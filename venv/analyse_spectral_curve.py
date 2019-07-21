@@ -50,9 +50,10 @@ def get_precision(labeled_image, ground_truth, verbal=False):
         print("PRECISION")
     from sklearn.metrics import precision_score
     from sklearn.metrics import recall_score, f1_score
-    report = " Precision: " + str(precision_score(ground_truth_list, labeled_image_list, average=None))
-    report += "\n Recall: " + str(recall_score(ground_truth_list, labeled_image_list, average=None))
-    report += "\n F1: " + str(f1_score(ground_truth_list, labeled_image_list, average=None))
+    report = "PRECISION"
+    report += "\nPrecision: \t\t\t" + str(precision_score(ground_truth_list, labeled_image_list, average=None))
+    report += "\nRecall: \t\t\t" + str(recall_score(ground_truth_list, labeled_image_list, average=None))
+    report += "\nF1: \t\t\t" + str(f1_score(ground_truth_list, labeled_image_list, average=None))
     '''
     print("Macro - counted for each label, and found unweighted mean")
     print(precision_score(ground_truth_list, labeled_image_list, average='macro'))
@@ -69,7 +70,6 @@ def get_precision(labeled_image, ground_truth, verbal=False):
 
 def compare_with_ground_truth(labeled_image, dataloader, pairs, plot=False):
     print()
-    print()
     print("* Compare with ground truth")
     ground_truth = dataloader.get_labels(verbal=False)
 
@@ -84,10 +84,27 @@ def compare_with_ground_truth(labeled_image, dataloader, pairs, plot=False):
         plt.show()
 
     report = "Confusion matrix: \n" + str(create_confusion_matrix(labeled_image, ground_truth))
-    report += "\n" + get_precision(labeled_image, ground_truth)
+    report += "\n\n\n" + get_precision(labeled_image, ground_truth)
     print("REPORT \n")
     print(report)
     return report
+
+
+def save_report(report, file_labels):
+    print()
+    print("* Save report")
+
+    file_labels_split = file_labels.split("/")
+    report_name = "report_" + file_labels_split[-1]
+    report_path = ""
+    for i in range(len(file_labels_split) - 1):
+        report_path += file_labels_split[i] + "/"
+
+    print("Report file name: \t\t", report_name)
+    print("Report file path: \t\t", report_path)
+
+    with open(report_path + report_name, "w") as text_file:
+        print(report, file=text_file)
 
 
 if __name__ == '__main__':
@@ -104,11 +121,77 @@ if __name__ == '__main__':
 
     # # Searching result files
     # # Running function for all result files
+    '''
+    import os
+
+    print("Searching for spectral curve and labeled files")
+    result_directories_with_dataloaders = {
+        "./results/IndianPines/data/": indian_pines_dataloader(),
+        "./results/JasperRidge/data/": jasper_ridge_dataloader(),
+        "./results/Pavia/data/": pavia_dataloader(),
+        "./results/Salinas/data/": salinas_dataloader(),
+        "./results/SalinasA/data/": salinas_a_dataloader(),
+        "./results/Samson/data/": samson_dataloader(),
+        # "./result/tests/data":test_dataloader(),
+    }
+
+
+    # name: directory
+    for path in result_directories_with_dataloaders:
+        print()
+        print()
+        names_and_directories = {}
+        print("\tPath: ", path)
+        print("\tDataloader name: ", result_directories_with_dataloaders[path].get_name(False))
+
+        # r=root, d=directories, f = files
+        for r, d, f in os.walk(path):
+            for file in f:
+                if '.txt' in file and "spectral_curve" not in file:
+                    names_and_directories[file] = os.path.join(r, file)
+
+        print(names_and_directories)
+
+        for file_name in names_and_directories:
+            labels_image_path = names_and_directories[file_name]
+            dataloader_for_this = result_directories_with_dataloaders[path]
+            labels_path = dataloader_for_this.get_results_directory(verbal=False) + "spectral_curve_" + file_name
+
+            print()
+            print("\t File name:  ", file_name)
+            print("\t Labels image path: ", labels_image_path)
+            print("\t Spectral curve path: ", labels_path)
+            print("\t Dataloader name: ", dataloader_for_this.get_name(verbal=False))
+
+
+            create_spectral_curve_from_dataloader_plus(
+                result_directories_with_dataloaders[path],
+                image_labels,
+                output_name=file_name,
+                show_img=False)
+
+           
+    print()
+    print()
+    print()
+    print()
+    print()
+     '''
+
+    # TU się zaczyna funkcja dla jednej wartości !!!!!
+    # in dataloader
+    # int spectral curve path
+    # int image labeled path
 
     file_spectral = "./results/JasperRidge/data/spectral_curve_clustering_kmeans_linear_autoencoder_1.txt"
     file_labels = "./results/JasperRidge/data/clustering_kmeans_linear_autoencoder_1.txt"
+    print("File spectral curve: \t\t", file_spectral)
+    print("File labels: \t\t\t", file_labels)
     pairs = prd.pairs_in_spectral_curves(jasper_ridge_dataloader(), file_spectral, PairingAlgorithm())
     labeled_image = prd.get_labeled_image(file_labels, pairs)
-    compare_with_ground_truth(labeled_image, jasper_ridge_dataloader(), pairs)
+    report = compare_with_ground_truth(labeled_image, jasper_ridge_dataloader(), pairs)
+    save_report(report, file_labels)
+
+
 
     print("END")
