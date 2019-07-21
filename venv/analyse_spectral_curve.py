@@ -68,9 +68,10 @@ def get_precision(labeled_image, ground_truth, verbal=False):
     return report
 
 
-def compare_with_ground_truth(labeled_image, dataloader, pairs, plot=False):
-    print()
-    print("* Compare with ground truth")
+def compare_with_ground_truth(labeled_image, dataloader, pairs, plot=False, verbal=False):
+    if verbal:
+        print()
+        print("* Compare with ground truth")
     ground_truth = dataloader.get_labels(verbal=False)
 
     if plot:
@@ -85,14 +86,15 @@ def compare_with_ground_truth(labeled_image, dataloader, pairs, plot=False):
 
     report = "Confusion matrix: \n" + str(create_confusion_matrix(labeled_image, ground_truth))
     report += "\n\n\n" + get_precision(labeled_image, ground_truth)
-    print("REPORT \n")
-    print(report)
+    if verbal:
+        print("REPORT \n")
+        print(report)
     return report
 
 
-def save_report(report, file_labels):
-    print()
-    print("* Save report")
+def save_report(report, file_labels, verbal=True):
+    if verbal:
+        print("* Save report")
 
     file_labels_split = file_labels.split("/")
     report_name = "report_" + file_labels_split[-1]
@@ -100,11 +102,23 @@ def save_report(report, file_labels):
     for i in range(len(file_labels_split) - 1):
         report_path += file_labels_split[i] + "/"
 
-    print("Report file name: \t\t", report_name)
-    print("Report file path: \t\t", report_path)
+    save_path = report_path + report_name
+    if verbal:
+        # print("Report file name: \t\t", report_name)
+        # print("Report file path: \t\t", report_path)
+        print("Save path: \t\t", save_path)
 
-    with open(report_path + report_name, "w") as text_file:
+    with open(save_path, "w") as text_file:
         print(report, file=text_file)
+
+
+def single_analyse(dataloader_local, spectral_curve_path, labeled_image_path):
+    print("File spectral curve: \t\t", spectral_curve_path)
+    print("File labels: \t\t\t", labeled_image_path)
+    pairs = prd.pairs_in_spectral_curves(dataloader_local, file_spectral, PairingAlgorithm())
+    labeled_image = prd.get_labeled_image(labeled_image_path, pairs)
+    report = compare_with_ground_truth(labeled_image, jasper_ridge_dataloader(), pairs)
+    save_report(report, labeled_image_path)
 
 
 if __name__ == '__main__':
@@ -178,20 +192,9 @@ if __name__ == '__main__':
     print()
      '''
 
-    # TU się zaczyna funkcja dla jednej wartości !!!!!
-    # in dataloader
-    # int spectral curve path
-    # int image labeled path
-
     file_spectral = "./results/JasperRidge/data/spectral_curve_clustering_kmeans_linear_autoencoder_1.txt"
     file_labels = "./results/JasperRidge/data/clustering_kmeans_linear_autoencoder_1.txt"
-    print("File spectral curve: \t\t", file_spectral)
-    print("File labels: \t\t\t", file_labels)
-    pairs = prd.pairs_in_spectral_curves(jasper_ridge_dataloader(), file_spectral, PairingAlgorithm())
-    labeled_image = prd.get_labeled_image(file_labels, pairs)
-    report = compare_with_ground_truth(labeled_image, jasper_ridge_dataloader(), pairs)
-    save_report(report, file_labels)
-
+    single_analyse(jasper_ridge_dataloader(), file_spectral,file_labels )
 
 
     print("END")
