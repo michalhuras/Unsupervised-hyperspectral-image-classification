@@ -18,7 +18,7 @@ class Dataloader():
         self.image_list = ()
         self.image_labels = ()
 
-    def get_image_labels_from_file(self, input_file_path, verbal=True):
+    def get_image_labels_from_file(self, input_file_path, verbal=False):
         if verbal:
             print()
             print("***   Get labels from result file   ***")
