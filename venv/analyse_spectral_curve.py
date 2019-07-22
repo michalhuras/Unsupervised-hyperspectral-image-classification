@@ -32,6 +32,7 @@ def image_to_list(image):
 def create_confusion_matrix(labeled_image, ground_truth, verbal=False):
     labeled_image_list = image_to_list(labeled_image)
     ground_truth_list = image_to_list(ground_truth)
+
     if verbal:
         print()
         print("CONFUSION MATRIX")
@@ -115,16 +116,69 @@ def save_report(report, file_labels, verbal=True):
 def single_analyse(dataloader_local, spectral_curve_path, labeled_image_path):
     print("File spectral curve: \t\t", spectral_curve_path)
     print("File labels: \t\t\t", labeled_image_path)
-    pairs = prd.pairs_in_spectral_curves(dataloader_local, file_spectral, PairingAlgorithm())
+    pairs = prd.pairs_in_spectral_curves(dataloader_local, spectral_curve_path, PairingAlgorithm())
     labeled_image = prd.get_labeled_image(labeled_image_path, pairs)
-    report = compare_with_ground_truth(labeled_image, jasper_ridge_dataloader(), pairs)
+    report = compare_with_ground_truth(labeled_image, dataloader_local, pairs)
     save_report(report, labeled_image_path)
+
+
+def analyse_all_data():
+        import os
+
+        print("Searching for spectral curve and labeled files")
+        result_directories_with_dataloaders = {
+            "./results/IndianPines/data/": indian_pines_dataloader(),
+            "./results/JasperRidge/data/": jasper_ridge_dataloader(),
+            "./results/Pavia/data/": pavia_dataloader(),
+            "./results/Salinas/data/": salinas_dataloader(),
+            "./results/SalinasA/data/": salinas_a_dataloader(),
+            "./results/Samson/data/": samson_dataloader(),
+            # "./result/tests/data":test_dataloader(),
+        }
+
+        # name: directory
+        for path in result_directories_with_dataloaders:
+            print()
+            print()
+            names_and_directories = {}
+            print("\tPath: ", path)
+            print("\tDataloader name: ", result_directories_with_dataloaders[path].get_name(False))
+
+            # r=root, d=directories, f = files
+            for r, d, f in os.walk(path):
+                for file in f:
+                    if '.txt' in file and "spectral_curve" not in file:
+                        names_and_directories[file] = os.path.join(r, file)
+
+            print(names_and_directories)
+
+            for file_name in names_and_directories:
+                labels_image_path = names_and_directories[file_name]
+                dataloader_for_this = result_directories_with_dataloaders[path]
+                spectral_curve_path = \
+                    dataloader_for_this.get_results_directory(verbal=False) + "data/spectral_curve_" + file_name
+
+                if os.path.exists(spectral_curve_path):
+                    print()
+                    print("\t File name:  ", file_name)
+                    print("\t Labels image path: ", labels_image_path)
+                    print("\t Spectral curve path: ", spectral_curve_path)
+                    print("\t Dataloader name: ", dataloader_for_this.get_name(verbal=False))
+
+                    single_analyse(dataloader_for_this, spectral_curve_path, labels_image_path)
+                else:
+                    print()
+                    print("FILE DOES NOT EXIST")
+                    print("File: ", spectral_curve_path)
 
 
 if __name__ == '__main__':
     print("START")
 
-    # Available results files and dataloaders:
+    analyse_all_data()
+
+    '''
+    # # Available results files and dataloaders:
     # "./results/IndianPines/data/"     indian_pines_dataloader()
     # "./results/JasperRidge/data/"     jasper_ridge_dataloader()
     # "./results/Pavia/data/"           pavia_dataloader()
@@ -132,69 +186,10 @@ if __name__ == '__main__':
     # "./results/SalinasA/data/"        salinas_a_dataloader()
     # "./results/Samson/data/"          samson_dataloader()
     # "./result/tests/data"           test_dataloader()
-
-    # # Searching result files
-    # # Running function for all result files
     '''
-    import os
 
-    print("Searching for spectral curve and labeled files")
-    result_directories_with_dataloaders = {
-        "./results/IndianPines/data/": indian_pines_dataloader(),
-        "./results/JasperRidge/data/": jasper_ridge_dataloader(),
-        "./results/Pavia/data/": pavia_dataloader(),
-        "./results/Salinas/data/": salinas_dataloader(),
-        "./results/SalinasA/data/": salinas_a_dataloader(),
-        "./results/Samson/data/": samson_dataloader(),
-        # "./result/tests/data":test_dataloader(),
-    }
-
-
-    # name: directory
-    for path in result_directories_with_dataloaders:
-        print()
-        print()
-        names_and_directories = {}
-        print("\tPath: ", path)
-        print("\tDataloader name: ", result_directories_with_dataloaders[path].get_name(False))
-
-        # r=root, d=directories, f = files
-        for r, d, f in os.walk(path):
-            for file in f:
-                if '.txt' in file and "spectral_curve" not in file:
-                    names_and_directories[file] = os.path.join(r, file)
-
-        print(names_and_directories)
-
-        for file_name in names_and_directories:
-            labels_image_path = names_and_directories[file_name]
-            dataloader_for_this = result_directories_with_dataloaders[path]
-            labels_path = dataloader_for_this.get_results_directory(verbal=False) + "spectral_curve_" + file_name
-
-            print()
-            print("\t File name:  ", file_name)
-            print("\t Labels image path: ", labels_image_path)
-            print("\t Spectral curve path: ", labels_path)
-            print("\t Dataloader name: ", dataloader_for_this.get_name(verbal=False))
-
-
-            create_spectral_curve_from_dataloader_plus(
-                result_directories_with_dataloaders[path],
-                image_labels,
-                output_name=file_name,
-                show_img=False)
-
-           
-    print()
-    print()
-    print()
-    print()
-    print()
-     '''
-
-    file_spectral = "./results/JasperRidge/data/spectral_curve_clustering_kmeans_linear_autoencoder_1.txt"
-    file_labels = "./results/JasperRidge/data/clustering_kmeans_linear_autoencoder_1.txt"
-    single_analyse(jasper_ridge_dataloader(), file_spectral,file_labels )
-
+    # file_spectral = "./results/JasperRidge/data/spectral_curve_clustering_kmeans_linear_autoencoder_1.txt"
+    # file_labels = "./results/JasperRidge/data/clustering_kmeans_linear_autoencoder_1.txt"
+    # single_analyse(jasper_ridge_dataloader(), file_spectral,file_labels )
 
     print("END")
