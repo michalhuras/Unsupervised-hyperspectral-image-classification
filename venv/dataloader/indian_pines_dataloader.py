@@ -20,7 +20,8 @@ import time
 
 g_nr_of_clusters = 17
 
-class Dataloader():
+
+class Dataloader:
     def __init__(self):
         self.data_dir = 'C:/Users/Public/AI/artificial-intelligence---my-beginning/venv/data/Indian Pines/'
         self.results_dir = './results/IndianPines/'

@@ -18,7 +18,8 @@ import time
 
 g_nr_of_clusters = 7
 
-class Dataloader():
+
+class Dataloader:
     def __init__(self):
         self.data_dir = 'C:/Users/Public/AI/artificial-intelligence---my-beginning/venv/data/SalinasA/'
         # self.data_dir = './data/SalinasA/'

@@ -8,7 +8,7 @@ import numpy as np
 '''
 
 
-class Dataloader():
+class Dataloader:
     def __init__(self):
         self.name = 'spectral_curve_dataloader'
 

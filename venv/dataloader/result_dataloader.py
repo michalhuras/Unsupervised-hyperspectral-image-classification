@@ -8,7 +8,7 @@ import numpy as np
 '''
 
 
-class Dataloader():
+class Dataloader:
     def __init__(self):
         self.name = 'result_dataloader'
 
@@ -18,7 +18,8 @@ class Dataloader():
         self.image_list = ()
         self.image_labels = ()
 
-    def get_image_labels_from_file(self, input_file_path, verbal=False):
+    @staticmethod
+    def get_image_labels_from_file(input_file_path, verbal=False):
         if verbal:
             print()
             print("***   Get labels from result file   ***")
@@ -27,6 +28,7 @@ class Dataloader():
         image = np.loadtxt(input_file_path, delimiter=" ")
 
         return image
+
 
 if __name__ == '__main__':
     print("RESULT DATALOADER")
