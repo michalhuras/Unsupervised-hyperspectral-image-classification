@@ -16,7 +16,7 @@ class PairingAlgorithm:
             print(self.prefix + extra_prefix + str(text))
 
     @staticmethod
-    def print_array(array, verbal=False):
+    def my_print_array(array, verbal=False):
         if verbal:
             np.set_printoptions(precision=5)
             print("      ", end="")
@@ -80,14 +80,12 @@ class PairingAlgorithm:
         for y in range(nr_of_labels):
             for x in range(nr_of_labels):
                 distance_array[y][x] = self.count_difference(ideal_spectral_curve[x], spectral_curve[y])
-        self.print_array(distance_array)
-        # self.my_print(distance_array, extra_prefix="")
+        self.my_print_array(distance_array)
 
         self.my_print()
         self.my_print("Normalization")
         distance_array = self.normalise_results(distance_array)
-        self.print_array(distance_array, verbal=True)
-        # self.my_print(distance_array)
+        self.my_print_array(distance_array, verbal=True)
 
         self.my_print()
         self.my_print("Finding minimal value and filing result vector")
@@ -111,7 +109,7 @@ class PairingAlgorithm:
 
             self.my_print()
             print("After change")
-            self.print_array(distance_array_cp)
+            self.my_print_array(distance_array_cp)
             # self.my_print(distance_array_cp)
             self.my_print("Iteration: \t\t\t" + str(n), extra_prefix="\t\t")
             self.my_print("Minimal value: \t\t" + str(minimal_value), extra_prefix="\t\t")
