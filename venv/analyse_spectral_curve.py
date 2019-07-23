@@ -116,7 +116,7 @@ def save_report(report, file_labels, verbal=True):
 def single_analyse(dataloader_local, spectral_curve_path, labeled_image_path):
     print("File spectral curve: \t\t", spectral_curve_path)
     print("File labels: \t\t\t", labeled_image_path)
-    pairs = prd.pairs_in_spectral_curves(dataloader_local, spectral_curve_path, PairingAlgorithm())
+    pairs = prd.pairs_in_spectral_curves(dataloader_local, spectral_curve_path, PairingAlgorithm(), verbal=True)
     labeled_image = prd.get_labeled_image(labeled_image_path, pairs)
     report = compare_with_ground_truth(labeled_image, dataloader_local, pairs)
     save_report(report, labeled_image_path)
@@ -173,7 +173,7 @@ def analyse_all_data():
 
 
 if __name__ == '__main__':
-    to_file = True
+    to_file = False
     # Przekierowanie wyjścia do pliku
     if to_file:
         import sys
@@ -198,11 +198,15 @@ if __name__ == '__main__':
 
     # file_spectral = "./results/JasperRidge/data/spectral_curve_clustering_kmeans_linear_autoencoder_1.txt"
     # file_labels = "./results/JasperRidge/data/clustering_kmeans_linear_autoencoder_1.txt"
-    # single_analyse(jasper_ridge_dataloader(), file_spectral,file_labels )
+    # single_analyse(jasper_ridge_dataloader(), file_spectral, file_labels)
 
     # file_spectral = "./results/IndianPines/data/spectral_curve_clustering_kmeans_linear_autoencoder_1.txt"
     # file_labels = "./results/IndianPines/data/clustering_kmeans_linear_autoencoder_1.txt"
-    # single_analyse(indian_pines_dataloader(), file_spectral,file_labels )
+    # single_analyse(indian_pines_dataloader(), file_spectral, file_labels)
+
+    # file_spectral = "./results/Samson/data/spectral_curve_clustering_kmeans_linear_autoencoder_1.txt"
+    # file_labels = "./results/Samson/data/clustering_kmeans_linear_autoencoder_1.txt"
+    # single_analyse(samson_dataloader(), file_spectral, file_labels)
 
     print("END")
 

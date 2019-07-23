@@ -83,7 +83,7 @@ def pairs_in_spectral_curves(ideal_dataloader, file_name, pairing_obj, verbal=Fa
         print()
         print("* Pairing labels")
     f_pairs, difference_value =\
-        pairing_obj.math_in_pairs(number_of_labels, ideal_spectral_curve, spectral_curve, prefix="\t", verbal=True)
+        pairing_obj.math_in_pairs(number_of_labels, ideal_spectral_curve, spectral_curve, prefix="\t", verbal=False)
     f_pairs = [int(element) for element in f_pairs]
     if verbal:
         print("Pairs: ", f_pairs)

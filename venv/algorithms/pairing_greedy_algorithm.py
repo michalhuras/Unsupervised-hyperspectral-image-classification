@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import matplotlib.pyplot as plt
 import numpy as np
 
 
@@ -16,7 +17,7 @@ class PairingAlgorithm:
             print(self.prefix + extra_prefix + str(text))
 
     @staticmethod
-    def my_print_array(array, verbal=False):
+    def my_print_array(array, verbal=True):
         if verbal:
             np.set_printoptions(precision=5)
             print("      ", end="")
@@ -35,10 +36,24 @@ class PairingAlgorithm:
                 print()
 
     @staticmethod
-    def count_difference(array_1, array_2):
+    def count_difference(array_1, array_2, show_img=False):
         # Mean squared error
         # https://www.geeksforgeeks.org/python-mean-squared-error/
-        return np.square(np.subtract(array_1, array_2)).mean()
+        if show_img:
+            plt.clf()
+            plt.title("Porównywanie krzywych spektralnych, obliczanie różnicy")
+            plt.plot(array_1, label="Array 1")
+            plt.plot(array_2, label="Array 2")
+            plt.legend()
+            plt.axis('tight')
+            plt.show()
+
+        mse = (np.square(array_1 - array_2)).mean(axis=None)
+        # print("MSE: \t\t", mse)
+        return mse * 1000
+
+        # Old method:
+        # return np.square(np.subtract(array_1, array_2)) #.mean()
 
     @staticmethod
     def normalise_results(array):
@@ -60,7 +75,7 @@ class PairingAlgorithm:
                 result[1] += 1
         return result
 
-    def math_in_pairs(self, nr_of_labels, ideal_spectral_curve, spectral_curve, verbal=True, prefix="\t"):
+    def math_in_pairs(self, nr_of_labels, ideal_spectral_curve, spectral_curve, verbal=False, plot=False, prefix="\t"):
         self.verbal = verbal
         self.prefix = prefix
 
@@ -72,8 +87,20 @@ class PairingAlgorithm:
         self.my_print()
         self.my_print("Pairing")
         self.my_print("Algorithm name: \t\t\t" + self.algorithm_name)
-        distance_array = np.full((nr_of_labels, nr_of_labels), -1)
+        distance_array = np.full((nr_of_labels, nr_of_labels), np.float64(-1.0))
         self.my_print(distance_array)
+
+        if plot:
+            plt.clf()
+            plt.subplot(1, 2, 1)
+            plt.plot(np.copy(spectral_curve).transpose())
+            plt.title('Labeled image')
+            plt.axis('tight')
+            plt.subplot(1, 2, 2)
+            plt.plot(np.copy(ideal_spectral_curve).transpose())
+            plt.title('Ground truth')
+            plt.axis('tight')
+            plt.show()
 
         self.my_print()
         self.my_print("Counting differences between labels")
