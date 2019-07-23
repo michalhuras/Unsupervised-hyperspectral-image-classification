@@ -125,9 +125,7 @@ class PairingAlgorithm:
             minimal_value = np.amin(distance_array_cp)
             minimal_value_index = np.where(distance_array_cp == np.amin(distance_array_cp))
             minimal_value_index = [minimal_value_index[0][0], minimal_value_index[1][0]]
-            print(minimal_value_index)
             minimal_value_index_original = self.get_original_index(rows_deleted, columns_deleted, minimal_value_index)
-            print(minimal_value_index_original)
             distance_array_cp = np.delete(distance_array_cp, minimal_value_index[0], 0)
             distance_array_cp = np.delete(distance_array_cp, minimal_value_index[1], 1)
             columns_deleted.append(minimal_value_index_original[1])
@@ -135,7 +133,7 @@ class PairingAlgorithm:
             distance_sum += minimal_value
 
             self.my_print()
-            print("After change")
+            self.my_print("After change")
             self.my_print_array(distance_array_cp)
             # self.my_print(distance_array_cp)
             self.my_print("Iteration: \t\t\t" + str(n), extra_prefix="\t\t")
