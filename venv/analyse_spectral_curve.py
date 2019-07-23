@@ -69,7 +69,7 @@ def get_precision(labeled_image, ground_truth, verbal=False):
     return report
 
 
-def compare_with_ground_truth(labeled_image, dataloader, pairs, plot=False, verbal=False):
+def compare_with_ground_truth(labeled_image, dataloader, pairs, plot=True, verbal=False):
     if verbal:
         print()
         print("* Compare with ground truth")
@@ -147,7 +147,7 @@ def analyse_all_data():
             # r=root, d=directories, f = files
             for r, d, f in os.walk(path):
                 for file in f:
-                    if '.txt' in file and "spectral_curve" not in file:
+                    if '.txt' in file and "spectral_curve" not in file and "report_" not in file:
                         names_and_directories[file] = os.path.join(r, file)
 
             print(names_and_directories)
@@ -173,6 +173,14 @@ def analyse_all_data():
 
 
 if __name__ == '__main__':
+    to_file = True
+    # Przekierowanie wyjścia do pliku
+    if to_file:
+        import sys
+        orig_stdout = sys.stdout
+        output_file = open('analyse_spectral_curve_output.txt', 'w')
+        sys.stdout = output_file
+
     print("START")
 
     analyse_all_data()
@@ -192,4 +200,13 @@ if __name__ == '__main__':
     # file_labels = "./results/JasperRidge/data/clustering_kmeans_linear_autoencoder_1.txt"
     # single_analyse(jasper_ridge_dataloader(), file_spectral,file_labels )
 
+    # file_spectral = "./results/IndianPines/data/spectral_curve_clustering_kmeans_linear_autoencoder_1.txt"
+    # file_labels = "./results/IndianPines/data/clustering_kmeans_linear_autoencoder_1.txt"
+    # single_analyse(indian_pines_dataloader(), file_spectral,file_labels )
+
     print("END")
+
+    # Closing file
+    if to_file:
+        sys.stdout = orig_stdout
+        output_file.close()
