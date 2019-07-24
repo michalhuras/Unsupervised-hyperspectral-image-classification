@@ -173,7 +173,7 @@ def analyse_all_data():
 
 
 if __name__ == '__main__':
-    to_file = True
+    to_file = False
     # Przekierowanie wyjścia do pliku
     if to_file:
         import sys

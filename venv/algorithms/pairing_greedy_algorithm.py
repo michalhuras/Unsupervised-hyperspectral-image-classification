@@ -37,7 +37,8 @@ class PairingAlgorithm:
 
     @staticmethod
     def count_difference(array_1, array_2, show_img=False):
-        from algorithms.dif_mean_squared_error import count_difference
+        # from algorithms.dif_mean_squared_error import count_difference
+        from algorithms.dif_mutual_information import count_difference
         return count_difference(array_1, array_2, show_img=show_img)
 
     @staticmethod

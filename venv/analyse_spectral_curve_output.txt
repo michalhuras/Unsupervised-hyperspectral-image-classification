@@ -1,0 +1,25 @@
+START
+Searching for spectral curve and labeled files
+
+
+	Path:  ./results/IndianPines/data/
+	Dataloader name:  indian_pines
+{'clustering_kmeans_linear_autoencoder_1.txt': './results/IndianPines/data/clustering_kmeans_linear_autoencoder_1.txt', 'clustering_kmeans_none_autoencoder_none.txt': './results/IndianPines/data/clustering_kmeans_none_autoencoder_none.txt'}
+
+	 File name:   clustering_kmeans_linear_autoencoder_1.txt
+	 Labels image path:  ./results/IndianPines/data/clustering_kmeans_linear_autoencoder_1.txt
+	 Spectral curve path:  ./results/IndianPines/data/spectral_curve_clustering_kmeans_linear_autoencoder_1.txt
+	 Dataloader name:  indian_pines
+File spectral curve: 		 ./results/IndianPines/data/spectral_curve_clustering_kmeans_linear_autoencoder_1.txt
+File labels: 			 ./results/IndianPines/data/clustering_kmeans_linear_autoencoder_1.txt
+* Creating spectral curve loader
+
+* Loading ideal spectral curve
+Shape:  (200, 17)
+Number of labels:  17
+
+* Loading tested spectral curve
+Shape:  (200, 17)
+Number of labels:  17
+
+* Pairing labels
