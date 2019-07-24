@@ -37,23 +37,8 @@ class PairingAlgorithm:
 
     @staticmethod
     def count_difference(array_1, array_2, show_img=False):
-        # Mean squared error
-        # https://www.geeksforgeeks.org/python-mean-squared-error/
-        if show_img:
-            plt.clf()
-            plt.title("Porównywanie krzywych spektralnych, obliczanie różnicy")
-            plt.plot(array_1, label="Array 1")
-            plt.plot(array_2, label="Array 2")
-            plt.legend()
-            plt.axis('tight')
-            plt.show()
-
-        mse = (np.square(array_1 - array_2)).mean(axis=None)
-        # print("MSE: \t\t", mse)
-        return mse * 1000
-
-        # Old method:
-        # return np.square(np.subtract(array_1, array_2)) #.mean()
+        from algorithms.dif_mean_squared_error import count_difference
+        return count_difference(array_1, array_2, show_img=show_img)
 
     @staticmethod
     def normalise_results(array):
@@ -145,8 +130,7 @@ class PairingAlgorithm:
                 "Minimal value index in original image: \t\t"
                 + str(minimal_value_index_original[0]) + "\t" + str(minimal_value_index_original[1]),
                 extra_prefix="\t\t")
-            pairing_result[minimal_value_index_original[1]] = minimal_value_index_original[0]
-            distance_array[minimal_value_index_original[0], minimal_value_index_original[1]] = 999
+            pairing_result[minimal_value_index_original[0]] = minimal_value_index_original[1]
 
         self.my_print()
         self.my_print("Pairing result: \t\t\t" + str(pairing_result))

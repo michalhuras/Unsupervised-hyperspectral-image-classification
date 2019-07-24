@@ -26,14 +26,10 @@ def get_labeled_image(labeled_image_path, pairs, plot=False, verbal=False):
     result_dataloader = result_dataloader()
     labeled_image_f = result_dataloader.get_image_labels_from_file(labeled_image_path)
 
-    transpose_pairs = np.zeros(np.shape(pairs))
-    for i in pairs:
-        transpose_pairs[int(pairs[i])] = i
-
     corrected_labeled_image = np.zeros(labeled_image_f.shape)
     for y in range(labeled_image_f.shape[0]):
         for x in range(labeled_image_f.shape[1]):
-            corrected_labeled_image[y][x] = int(transpose_pairs[int(labeled_image_f[y][x])])
+            corrected_labeled_image[y][x] = int(pairs[int(labeled_image_f[y][x])])
 
     if plot:
         plt.clf()

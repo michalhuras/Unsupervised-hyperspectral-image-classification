@@ -1,11 +1,11 @@
 # spectral_curve_clustering_kmeans_none_autoencoder_none_pairs.txt
-6
-1
-5
-8
-2
 7
-3
-0
-9
+1
 4
+6
+9
+2
+0
+5
+3
+8
