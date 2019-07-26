@@ -195,7 +195,9 @@ def create_spectral_curve_for_existing_data():
         # r=root, d=directories, f = files
         for r, d, f in os.walk(path):
             for file in f:
-                if '.txt' in file and "spectral_curve" not in file:
+                if '.txt' in file \
+                        and "spectral_curve" not in file\
+                        and "report_" not in file:
                     names_and_directories[file] = os.path.join(r, file)
 
         print(names_and_directories)
