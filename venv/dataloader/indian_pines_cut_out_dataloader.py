@@ -12,7 +12,7 @@ import scripts_my.mathematical_operations as mo
 import time
 
 try:
-    from dataloader.indian_pines_dataloader import Dataloader
+    from dataloader.indian_pines_dataloader import Dataloader as BasicDataloader
 except:
     from indian_pines_dataloader import Dataloader as BasicDataloader
 

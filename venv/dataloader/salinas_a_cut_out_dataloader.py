@@ -12,7 +12,7 @@ import scripts_my.mathematical_operations as mo
 import time
 
 try:
-    from dataloader.salinas_a_dataloader import Dataloader
+    from dataloader.salinas_a_dataloader import Dataloader as BasicDataloader
 except:
     from salinas_a_dataloader import Dataloader as BasicDataloader
 

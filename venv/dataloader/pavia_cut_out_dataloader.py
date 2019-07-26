@@ -12,7 +12,7 @@ import scripts_my.mathematical_operations as mo
 import time
 
 try:
-    from dataloader.pavia_dataloader import Dataloader
+    from dataloader.pavia_dataloader import Dataloader as BasicDataloader
 except:
     from pavia_dataloader import Dataloader as BasicDataloader
 
