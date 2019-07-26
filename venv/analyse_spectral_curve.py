@@ -83,7 +83,8 @@ def compare_with_ground_truth(labeled_image, dataloader, path_to_file, plot=True
         axs[1].set_title('Ground truth')
         axs[1].imshow(ground_truth)
         fig.suptitle(path_to_file.split("/")[-1], fontsize=16)
-        plt.show()
+        plt.draw()
+        # plt.show()
 
     report = "Confusion matrix: \n" + str(create_confusion_matrix(labeled_image, ground_truth))
     report += "\n\n\n" + get_precision(labeled_image, ground_truth)
@@ -210,7 +211,10 @@ if __name__ == '__main__':
 
     print("END")
 
+
     # Closing file
     if to_file:
         sys.stdout = orig_stdout
         output_file.close()
+
+    plt.show()
