@@ -69,20 +69,20 @@ def get_precision(labeled_image, ground_truth, verbal=False):
     return report
 
 
-def compare_with_ground_truth(labeled_image, dataloader, pairs, plot=True, verbal=False):
+def compare_with_ground_truth(labeled_image, dataloader, path_to_file, plot=True, verbal=False):
     if verbal:
         print()
         print("* Compare with ground truth")
     ground_truth = dataloader.get_labels(verbal=False)
 
     if plot:
-        plt.clf()
-        plt.subplot(1, 2, 1)
-        plt.title('Labeled corrected image')
-        plt.imshow(labeled_image)
-        plt.subplot(1, 2, 2)
-        plt.title('Ground truth')
-        plt.imshow(ground_truth)
+        # plt.clf()
+        fig, axs = plt.subplots(1, 2) # , constrained_layout=True)
+        axs[0].imshow(labeled_image)
+        axs[0].set_title('Labeled corrected image')
+        axs[1].set_title('Ground truth')
+        axs[1].imshow(ground_truth)
+        fig.suptitle(path_to_file.split("/")[-1], fontsize=16)
         plt.show()
 
     report = "Confusion matrix: \n" + str(create_confusion_matrix(labeled_image, ground_truth))
@@ -118,7 +118,7 @@ def single_analyse(dataloader_local, spectral_curve_path, labeled_image_path):
     print("File labels: \t\t\t", labeled_image_path)
     pairs = prd.pairs_in_spectral_curves(dataloader_local, spectral_curve_path, PairingAlgorithm(), verbal=True)
     labeled_image = prd.get_labeled_image(labeled_image_path, pairs)
-    report = compare_with_ground_truth(labeled_image, dataloader_local, pairs)
+    report = compare_with_ground_truth(labeled_image, dataloader_local, labeled_image_path)
     save_report(report, labeled_image_path)
 
 
@@ -173,7 +173,7 @@ def analyse_all_data():
 
 
 if __name__ == '__main__':
-    to_file = True
+    to_file = False
     # Przekierowanie wyjścia do pliku
     if to_file:
         import sys
