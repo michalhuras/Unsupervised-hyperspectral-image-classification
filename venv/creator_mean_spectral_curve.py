@@ -136,6 +136,7 @@ def create_spectral_curve_from_dataloader(
         draw_legend=True,
         output_name="")
 
+
 def create_spectral_curve_from_dataloader_plus(
         dataloader,
         labels,
@@ -225,7 +226,7 @@ if __name__ == '__main__':
     # create_spectral_curve_for_ideal_data()
 
     # All data
-    # create_spectral_curve_for_existing_data()
+    create_spectral_curve_for_existing_data()
 
     # Available results files and dataloaders:
     # "./results/IndianPines/data/"     indian_pines_dataloader()
@@ -236,6 +237,7 @@ if __name__ == '__main__':
     # "./results/Samson/data/"          samson_dataloader()
     # # "./result/tests/data"           test_dataloader()
 
+    '''
     # Example use for one result file
     from dataloader.result_dataloader import Dataloader as ResoultDataloader
     dataloader = ResoultDataloader()
@@ -253,4 +255,5 @@ if __name__ == '__main__':
         image_labels,
         output_name=file_name,
         show_img=True)
+    '''
 
