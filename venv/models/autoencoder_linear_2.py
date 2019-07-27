@@ -32,8 +32,10 @@ class Autoencoder(nn.Module):
         x = self.encoder(x)
         return x
 
-    def getType(self):
+    @staticmethod
+    def getType():
         return 'linear'
 
-    def getName(self):
+    @staticmethod
+    def getName():
         return '1'
