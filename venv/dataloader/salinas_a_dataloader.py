@@ -36,6 +36,8 @@ class Dataloader:
         self.image_list_exists = False
         self.image_labels_exists = False
 
+        self.background_label = 1
+
     def get_name(self, verbal=False):
         if verbal:
             print()
