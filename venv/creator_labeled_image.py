@@ -11,6 +11,7 @@ import numpy as np
 import time
 import os
 import matplotlib.pyplot as plt
+import sys
 
 '''
     Main function
@@ -102,20 +103,20 @@ def run_machine(
     for parameter in params:
         print(len(parameter))
 
-    if my_net.getName() != 'none':
-        print()
-        print("***   Creating optimizer   ***")
-        print("---------------------------------")
-        optimizer = torch.optim.Adam(my_net.parameters(), weight_decay=1e-5)
-        criterion = nn.MSELoss()
+    dataloader_suffix = ""
+    if "cut_out" in Dataloader.get_name():
+        dataloader_suffix = "_cu"
 
     autoencoder_learned_file = \
-        Dataloader.get_results_directory() + 'autoencoder/' + my_net.getType() + '_' + my_net.getName() + '.pth'
+        Dataloader.get_results_directory() + \
+        'autoencoder/' + my_net.getType() + \
+        '_' + my_net.getName() + dataloader_suffix + '.pth'
     autoencoder_learned_file_description = \
         Dataloader.get_results_directory() + \
         'autoencoder/' + \
         my_net.getType() + \
         '_' + my_net.getName() + \
+        dataloader_suffix + \
         '_description.txt'
     print("Autoencoder learn file: ", autoencoder_learned_file)
 
@@ -136,6 +137,12 @@ def run_machine(
 
     if first and my_net.getName() != 'none':
         print()
+        print("***   Creating optimizer   ***")
+        print("---------------------------------")
+        optimizer = torch.optim.Adam(my_net.parameters(), weight_decay=1e-5)
+        criterion = nn.MSELoss()
+
+        print()
         print("***   Learning   ***")
         print("---------------------------------")
         print("Is CUDA available: ", torch.cuda.is_available())
@@ -144,7 +151,7 @@ def run_machine(
         batch_size = 128
         learning_rate = 1e-3
         epsilon = 0.23
-        the_best_loss = 1
+        the_best_loss = sys.maxsize
         for epoch in range(num_epochs):
             for i, data in enumerate(my_dataloader):
                 img, _ = data
@@ -260,7 +267,10 @@ def run_machine_for_all():
                 print("Dataloader:   \t\t", Dataloader().get_name())
                 print("Clustering:   \t\t", clustring.get_name())
                 print("========")
-                run_machine(Autoencoder, Dataloader(), clustring, Dataloader.get_number_of_clusters(), first=False)
+                run_machine(Autoencoder, Dataloader(), clustring, Dataloader.get_number_of_clusters()
+                            , first=False, middle_cut_out=True)
+                run_machine(Autoencoder, Dataloader(), clustring, Dataloader.get_number_of_clusters()
+                            , first=False, middle_cut_out=False)
 
     print()
     print("***   Run machine for all end   ***")
@@ -275,7 +285,7 @@ if __name__ == '__main__':
     if to_file:
         import sys
         orig_stdout = sys.stdout
-        output_file = open('creator_labeled_image_output.txt', 'w')
+        output_file = open('results/creator_labeled_image_output.txt', 'w')
         sys.stdout = output_file
 
     print("START")
@@ -287,10 +297,7 @@ if __name__ == '__main__':
 
     run_machine(
         Autoencoder1, Dataloader2(), classifier1, Dataloader2.get_number_of_clusters(),
-        first=False, middle_cut_out=True)
-    run_machine(
-        Autoencoder1, Dataloader3(), classifier1, Dataloader3.get_number_of_clusters(),
-        first=False, middle_cut_out=True)
+        first=False, middle_cut_out=False)
 
     # end procedures
 
