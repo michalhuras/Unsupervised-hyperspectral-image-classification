@@ -12,7 +12,8 @@ class Dataloader:
     def __init__(self):
         self.name = 'spectral_curve_dataloader'
 
-    def get_spectral_curve_from_file(self, input_file_path, verbal=True):
+    @staticmethod
+    def get_spectral_curve_from_file(input_file_path, verbal=False):
         if verbal:
             print()
             print("***   Get spectral curve from file   ***")
@@ -21,6 +22,7 @@ class Dataloader:
         spectral_curve = np.loadtxt(input_file_path, delimiter=" ")
 
         return spectral_curve
+
 
 if __name__ == '__main__':
     print("SPECTRAL CURVE DATALOADER")

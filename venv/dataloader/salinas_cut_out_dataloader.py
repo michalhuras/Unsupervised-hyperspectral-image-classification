@@ -40,7 +40,7 @@ class Dataloader(BasicDataloader):
     # def get_results_directory(self, verbal=true):
     # def get_number_of_clusters(verbal=true):
 
-    def get_image(self, verbal=True):
+    def get_image(self, verbal=False):
         if verbal:
             print()
             print("***   Get image (cut out)   ***")
@@ -73,7 +73,7 @@ class Dataloader(BasicDataloader):
 
         return self.image
 
-    def get_image_list(self, verbal=True):
+    def get_image_list(self, verbal=False):
         if verbal:
             print()
             print("***   Get image list (cut out)  ***")

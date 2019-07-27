@@ -77,7 +77,7 @@ def compare_with_ground_truth(labeled_image, dataloader, path_to_file, plot=True
 
     if plot:
         # plt.clf()
-        fig, axs = plt.subplots(1, 2) # , constrained_layout=True)
+        fig, axs = plt.subplots(1, 2)
         axs[0].imshow(labeled_image)
         axs[0].set_title('Labeled corrected image')
         axs[1].set_title('Ground truth')

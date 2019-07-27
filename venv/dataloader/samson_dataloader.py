@@ -36,7 +36,7 @@ class Dataloader:
         self.image_list_exists = False
         self.image_labels_exists = False
 
-    def get_name(self, verbal=True):
+    def get_name(self, verbal=False):
         if verbal:
             print()
             print("***   Get name   ***")
@@ -44,7 +44,7 @@ class Dataloader:
 
         return self.name
 
-    def get_results_directory(self, verbal=True):
+    def get_results_directory(self, verbal=False):
         if verbal:
             print()
             print("***   Get results directory   ***")
@@ -53,7 +53,7 @@ class Dataloader:
         return self.results_dir
 
     @staticmethod
-    def get_number_of_clusters(verbal=True):
+    def get_number_of_clusters(verbal=False):
         if verbal:
             print()
             print("***   Get number of clusters   ***")
@@ -61,7 +61,7 @@ class Dataloader:
 
         return g_nr_of_clusters
 
-    def get_image(self, verbal=True):
+    def get_image(self, verbal=False):
         if not self.image_exists:
             the_image_list = self.get_image_list(False)
             if verbal:
@@ -83,7 +83,7 @@ class Dataloader:
 
         return self.image
 
-    def get_image_list(self, verbal=True):
+    def get_image_list(self, verbal=False):
         if verbal:
             print()
             print("***   Get image list   ***")
@@ -109,14 +109,14 @@ class Dataloader:
 
         return self.image_list
 
-    def get_image_shape(self, verbal=True):
+    def get_image_shape(self, verbal=False):
         if verbal:
             print()
             print("***   Getting shape   ***")
             print("---------------------------------")
         return self.image_shape
 
-    def get_labels(self, verbal=True):
+    def get_labels(self, verbal=False):
         if verbal:
             print()
             print("***   Loading labels   ***")
@@ -171,7 +171,7 @@ class Dataloader:
 
         return self.image_labels
 
-    def get_dataloader(self, verbal=True):
+    def get_dataloader(self, verbal=False):
         the_image_list = self.get_image_list(False)
         the_image_labels = self.get_labels(False)
 
