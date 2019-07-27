@@ -14,7 +14,7 @@ import time
     Main function
 '''
 
-from models.autoencoder_linear import Autoencoder as Autoencoder1
+from models.autoencoder_linear_1 import Autoencoder as Autoencoder1
 from models.autoencoder_linear_2 import Autoencoder as Autoencoder2
 from models.autoencoder_linear_3 import Autoencoder as Autoencoder3
 # from models.autoencoder_none import Autoencoder as Autoencoder4
