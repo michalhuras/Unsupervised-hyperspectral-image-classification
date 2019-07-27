@@ -17,11 +17,9 @@ class Autoencoder(nn.Module):
         self.encoder = nn.Sequential(
             nn.Linear(first_size, 90),
             nn.Linear(90, 40),
-            nn.Linear(40, 15),
-            nn.Linear(15, 7))
+            nn.Linear(40, 20))
         self.decoder = nn.Sequential(
-            nn.Linear(7, 15),
-            nn.Linear(15, 40),
+            nn.Linear(20, 40),
             nn.Linear(40, 90),
             nn.Linear(90, first_size))
 
@@ -38,4 +36,4 @@ class Autoencoder(nn.Module):
         return 'linear'
 
     def getName(self):
-        return '2'
+        return '1'
