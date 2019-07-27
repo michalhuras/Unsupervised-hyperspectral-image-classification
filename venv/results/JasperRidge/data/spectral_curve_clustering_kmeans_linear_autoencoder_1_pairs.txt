@@ -1,5 +1,0 @@
-# spectral_curve_clustering_kmeans_linear_autoencoder_1_pairs.txt
-1
-2
-3
-0
