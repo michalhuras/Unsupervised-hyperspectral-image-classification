@@ -7,7 +7,7 @@ from sklearn.cluster import OPTICS, cluster_optics_dbscan
 
 # WIP - zawsze zwraca jedną wartość
 
-def clustering(the_image_autoencoded, the_image_shape, number_of_clusters):
+def clustering(the_image_autoencoded, the_image_shape, number_of_clusters, extra_parameters=""):
     print()
     print("***   OPTICS clustering   ***")
     print("---------------------------------")

@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 
 
-def clustering(the_image_autoencoded, the_image_shape, number_of_clusters):
+def clustering(the_image_autoencoded, the_image_shape, number_of_clusters, extra_parameters=""):
     print()
     print("***   K - means clustering   ***")
     print("---------------------------------")

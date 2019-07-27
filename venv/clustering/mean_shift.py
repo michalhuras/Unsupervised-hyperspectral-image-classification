@@ -6,7 +6,7 @@ from pandas import DataFrame
 from sklearn.cluster import MeanShift
 
 
-def clustering(the_image_autoencoded, the_image_shape, number_of_clusters):
+def clustering(the_image_autoencoded, the_image_shape, number_of_clusters, extra_parameters=""):
     print()
     print("***   Mean-Shift clustering   ***")
     print("---------------------------------")

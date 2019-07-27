@@ -5,8 +5,11 @@ import numpy as np
 from scipy import linalg
 from sklearn import mixture
 
+cv_types = ['spherical', 'tied', 'diag', 'full']
 
-def clustering(the_image_autoencoded, the_image_shape, number_of_clusters):
+
+def clustering(the_image_autoencoded, the_image_shape, number_of_clusters, extra_parameters='spherical'):
+    cv_type = extra_parameters
     n_components = number_of_clusters
     print()
     print("***   Gaussian Mixture Model Selection   ***")
@@ -22,8 +25,7 @@ def clustering(the_image_autoencoded, the_image_shape, number_of_clusters):
 
     print("Running fit function for Gaussian Mixture Model Selection ")
     # cv_types = ['spherical', 'tied', 'diag', 'full']
-    cv_type = 'spherical'
-    # TODO sparametryzować
+    # cv_type = 'spherical'
 
     #  Fit a Gaussian mixture with EM
     clust = mixture.GaussianMixture(n_components=n_components,
