@@ -20,8 +20,8 @@ import sys
 from models.autoencoder_linear_1 import Autoencoder as Autoencoder1
 from models.autoencoder_linear_2 import Autoencoder as Autoencoder2
 from models.autoencoder_linear_3 import Autoencoder as Autoencoder3
-# from models.autoencoder_none import Autoencoder as Autoencoder4
-# from models.autoencoder_convolutional import Autoencoder as Autoencoder5
+# from models.autoencoder_none import Autoencoder as Autoencoder4 # TODO !!! puścić
+# from models.autoencoder_convolutional import Autoencoder as Autoencoder5 # TODO !!! puścić
 
 from dataloader.indian_pines_dataloader import Dataloader as Dataloader1
 from dataloader.indian_pines_cut_out_dataloader import Dataloader as Dataloader11
@@ -35,9 +35,9 @@ from dataloader.salinas_a_cut_out_dataloader import Dataloader as Dataloader55
 from dataloader.samson_dataloader import Dataloader as Dataloader6
 
 import clustering.kmeans as classifier1
-# import clustering.optics as classifier2
-# import clustering.mean_shift as classifier3
-# import clustering.gaussian_mixture as classifier4
+import clustering.gaussian_mixture as classifier2 # TODO puścić
+#import clustering.optics as classifier2 # TODO dostosować
+# import clustering.mean_shift as classifier3 # TODO dostosować
 
 
 def cut_out_in_midle(the_image_autoencoded, Dataloader, verbal=False):
@@ -85,7 +85,8 @@ def run_machine(
         Autoencoder, Dataloader, Classifier, nr_of_clusters,
         show_img=True, save_img=True, save_data=True,
         first=False,
-        middle_cut_out=False):
+        middle_cut_out=False,
+        param=""):
 
     the_image_shape = Dataloader.get_image_shape()
     # (x, y, z)
@@ -205,7 +206,7 @@ def run_machine(
     print()
     print("***   Clustering   ***")
     print("---------------------------------")
-    the_image_classified = Classifier.clustering(the_image_autoencoded, the_image_shape, nr_of_clusters)
+    the_image_classified = Classifier.clustering(the_image_autoencoded, the_image_shape, nr_of_clusters, param)
     print("Result shape: ", np.shape(the_image_classified))
 
     print()
@@ -267,22 +268,34 @@ def run_machine_for_all():
 
     clustering_methods = []
     clustering_methods.append(classifier1)
-    # clustering_methods.append(classifier2)
+    clustering_methods.append(classifier2)
     # clustering_methods.append(classifier3)
     # clustering_methods.append(classifier4)
 
-    for Autoencoder in autoencoders:
-        for Dataloader in dataloaders:
-            for clustring in clustering_methods:
+    for Dataloader in dataloaders:
+        for Autoencoder in autoencoders:
+            for clustering in clustering_methods:
                 print("========")
                 print("Autoencoder : \t\t", Autoencoder.getType(), "\t", Autoencoder.getName())
                 print("Dataloader:   \t\t", Dataloader().get_name())
-                print("Clustering:   \t\t", clustring.get_name())
+                print("Clustering:   \t\t", clustering.get_name())
                 print("========")
-                run_machine(Autoencoder, Dataloader(), clustring, Dataloader.get_number_of_clusters()
-                            , first=False, middle_cut_out=True)
-                run_machine(Autoencoder, Dataloader(), clustring, Dataloader.get_number_of_clusters()
-                            , first=False, middle_cut_out=False)
+                if clustering == classifier2:
+                    for shape in classifier2.cv_types:
+                        print("========")
+                        print("Shape : \t\t", shape)
+                        print("========")
+                        print("KOOTEK")
+                        # run_machine(Autoencoder, Dataloader(), clustering, Dataloader.get_number_of_clusters()
+                        #             , first=False, middle_cut_out=True, param=shape)
+                        # run_machine(Autoencoder, Dataloader(), clustering, Dataloader.get_number_of_clusters()
+                        #             , first=False, middle_cut_out=False, param=shape)
+                else:
+                    print("koot")
+                    # run_machine(Autoencoder, Dataloader(), clustering, Dataloader.get_number_of_clusters()
+                    #             , first=False, middle_cut_out=True)
+                    # run_machine(Autoencoder, Dataloader(), clustering, Dataloader.get_number_of_clusters()
+                    #             , first=False, middle_cut_out=False)
 
     print()
     print("***   Run machine for all end   ***")
@@ -308,8 +321,8 @@ if __name__ == '__main__':
     run_machine_for_all()
 
     # run_machine(
-    #     Autoencoder1, Dataloader5(), classifier1, Dataloader2.get_number_of_clusters(),
-    #     first=False, middle_cut_out=False)
+    #     Autoencoder1, Dataloader55(), classifier2, Dataloader55.get_number_of_clusters(),
+    #     first=False, middle_cut_out=False, param='tied')
 
     # end procedures
 
