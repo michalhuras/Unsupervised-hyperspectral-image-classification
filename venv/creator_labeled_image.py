@@ -87,7 +87,6 @@ def run_machine(
         first=False,
         middle_cut_out=False):
 
-    my_dataloader = Dataloader.get_dataloader()
     the_image_shape = Dataloader.get_image_shape()
     # (x, y, z)
     the_image_list = Dataloader.get_image_list()
@@ -129,7 +128,7 @@ def run_machine(
             print()
             print("***   Loading model from file   ***")
             print("---------------------------------")
-            my_net.load_state_dict(torch.load(autoencoder_learned_file))
+            my_net.load_state_dict(torch.load(autoencoder_learned_file, map_location=torch.device('cpu')))
             my_net.eval()
         else:
             print("\t File doesnt exist")
@@ -146,6 +145,17 @@ def run_machine(
         print("***   Learning   ***")
         print("---------------------------------")
         print("Is CUDA available: ", torch.cuda.is_available())
+        device = torch.device("cuda:0")
+        print("Checking for multiple GPUs")
+        if torch.cuda.device_count() > 1:
+            print("Using: \t\t", torch.cuda.device_count(), " GPUs")
+            my_net = nn.DataParallel(my_net)
+        else:
+            print("No multiple GPUs")
+        my_net.to(device)
+
+        my_dataloader = Dataloader.get_dataloader(verbal=False)
+
         from torch.autograd import Variable
         num_epochs = 10
         batch_size = 128
@@ -155,7 +165,8 @@ def run_machine(
         for epoch in range(num_epochs):
             for i, data in enumerate(my_dataloader):
                 img, _ = data
-                img = Variable(img).cpu()
+                img = img.to(device)
+                # img = Variable(img).cpu()
                 # ===================forward=====================
                 output = my_net(img)
                 loss = criterion(output, img)
@@ -182,6 +193,7 @@ def run_machine(
     print("---------------------------------")
     print("Image shape: ", the_image_shape)
     print("Image code got from autoencoder")
+    my_net.to(torch.device("cpu"))
     the_image_autoencoded = [my_net.getCode(torch.Tensor(point)).detach().numpy() for point in the_image_list]
     print("Autoencoded image shape: ", np.shape(the_image_autoencoded))
     if middle_cut_out:
@@ -293,11 +305,11 @@ if __name__ == '__main__':
     print("Start time:  ", time.ctime(start_time))
 
     # Procedures
-    # run_machine_for_all()
+    run_machine_for_all()
 
-    run_machine(
-        Autoencoder1, Dataloader2(), classifier1, Dataloader2.get_number_of_clusters(),
-        first=False, middle_cut_out=False)
+    # run_machine(
+    #     Autoencoder1, Dataloader5(), classifier1, Dataloader2.get_number_of_clusters(),
+    #     first=False, middle_cut_out=False)
 
     # end procedures
 
