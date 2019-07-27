@@ -14,6 +14,28 @@ import time
     Main function
 '''
 
+from models.autoencoder_linear import Autoencoder as Autoencoder1
+from models.autoencoder_linear_2 import Autoencoder as Autoencoder2
+from models.autoencoder_linear_3 import Autoencoder as Autoencoder3
+# from models.autoencoder_none import Autoencoder as Autoencoder4
+# from models.autoencoder_convolutional import Autoencoder as Autoencoder5
+
+from dataloader.indian_pines_dataloader import Dataloader as Dataloader1
+from dataloader.indian_pines_cut_out_dataloader import Dataloader as Dataloader11
+from dataloader.jasper_ridge_dataloader import Dataloader as Dataloader2
+from dataloader.pavia_dataloader import Dataloader as Dataloader3
+from dataloader.pavia_cut_out_dataloader import Dataloader as Dataloader33
+from dataloader.salinas_dataloader import Dataloader as Dataloader4
+from dataloader.salinas_cut_out_dataloader import Dataloader as Dataloader44
+from dataloader.salinas_a_dataloader import Dataloader as Dataloader5
+from dataloader.salinas_a_cut_out_dataloader import Dataloader as Dataloader55
+from dataloader.samson_dataloader import Dataloader as Dataloader6
+
+import clustering.kmeans as classifier1
+# import clustering.optics as classifier2
+# import clustering.mean_shift as classifier3
+# import clustering.gaussian_mixture as classifier4
+
 
 def save_model(my_net, autoencoder_learned_file, autoencoder_learned_file_description, loss_value, dataset):
     print()
@@ -184,26 +206,37 @@ def run_machine(
         sys.stdout = orig_stdout
         output_file.close()
 
+def run_machine_for_all():
+    autoencoders = []
+    autoencoders.append(Autoencoder1)
+    autoencoders.append(Autoencoder2)
+    autoencoders.append(Autoencoder3)
+
+    dataloaders = []
+    dataloaders.append(Dataloader1)
+    dataloaders.append(Dataloader11)
+    dataloaders.append(Dataloader2)
+    dataloaders.append(Dataloader3)
+    dataloaders.append(Dataloader33)
+    dataloaders.append(Dataloader4)
+    dataloaders.append(Dataloader44)
+    dataloaders.append(Dataloader5)
+    dataloaders.append(Dataloader55)
+    dataloaders.append(Dataloader6)
+
+    clustering_methods = []
+    clustering_methods.append(classifier1)
+    # clustering_methods.append(classifier2)
+    # clustering_methods.append(classifier3)
+    # clustering_methods.append(classifier4)
+
+    for Autoencoder in autoencoders:
+        for Dataloader in dataloaders:
+            for clustring in clustering_methods:
+                run_machine(Autoencoder, Dataloader(), clustring, Dataloader.get_number_of_clusters(), first=False)
+
 
 if __name__ == '__main__':
-    # from models.autoencoder_linear import Autoencoder
-    from models.autoencoder_none import Autoencoder
+    run_machine_for_all()
 
-    from dataloader.indian_pines_dataloader import Dataloader as Dataloader1
-    from dataloader.jasper_ridge_dataloader import Dataloader as Dataloader2
-    from dataloader.pavia_dataloader import Dataloader as Dataloader3
-    from dataloader.salinas_dataloader import Dataloader as Dataloader4
-    from dataloader.salinas_a_dataloader import Dataloader as Dataloader5
-    from dataloader.samson_dataloader import Dataloader as Dataloader6
-
-    import clustering.kmeans as classifier
-    # import clustering.optics as classifier
-    # import clustering.mean_shift as classifier
-    #import clustering.gaussian_mixture as classifier
-
-    # run_machine(Autoencoder, Dataloader1(), classifier, Dataloader1.get_number_of_clusters(), first=False)
-    # run_machine(Autoencoder, Dataloader2(), classifier, Dataloader2.get_number_of_clusters(), first=False)
-    # run_machine(Autoencoder, Dataloader3(), classifier, Dataloader3.get_number_of_clusters(), first=False)
-    # run_machine(Autoencoder, Dataloader4(), classifier, Dataloader4.get_number_of_clusters(), first=False)
-    run_machine(Autoencoder, Dataloader5(), classifier, Dataloader5.get_number_of_clusters(), first=False)
-    run_machine(Autoencoder, Dataloader6(), classifier, Dataloader6.get_number_of_clusters(), first=False)
+    #run_machine(Autoencoder1, Dataloader2(), classifier, Dataloader2.get_number_of_clusters(), first=True)
