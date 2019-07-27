@@ -39,6 +39,25 @@ import clustering.kmeans as classifier1
 # import clustering.gaussian_mixture as classifier4
 
 
+def cut_out_in_midle(the_image_autoencoded, Dataloader, verbal=False):
+    result = np.copy(the_image_autoencoded)
+    labels = Dataloader.get_labels(verbal=False)
+
+    if verbal:
+        print()
+        print("***   Cutting out background   ***")
+        print("---------------------------------")
+
+    iterator = 0
+    for row in range(labels.shape[0]):
+        for column in range(labels.shape[1]):
+            if labels[row][column] == Dataloader.background_label:
+                result[iterator] = np.zeros((result.shape[1]))
+            iterator += 1
+
+    return result
+
+
 def save_model(my_net, autoencoder_learned_file, autoencoder_learned_file_description, loss_value, dataset):
     print()
     print("***   Saving model to file   ***")
@@ -62,7 +81,10 @@ def save_model(my_net, autoencoder_learned_file, autoencoder_learned_file_descri
 
 
 def run_machine(
-        Autoencoder, Dataloader, Classifier, nr_of_clusters, show_img=True, save_img=True, save_data=True, first=False):
+        Autoencoder, Dataloader, Classifier, nr_of_clusters,
+        show_img=True, save_img=True, save_data=True,
+        first=False,
+        middle_cut_out=False):
 
     my_dataloader = Dataloader.get_dataloader()
     the_image_shape = Dataloader.get_image_shape()
@@ -88,13 +110,14 @@ def run_machine(
         criterion = nn.MSELoss()
 
     autoencoder_learned_file = \
-        Dataloader.get_results_directory() + '/autoencoder/' + my_net.getType() + '_' + my_net.getName() + '.pth'
+        Dataloader.get_results_directory() + 'autoencoder/' + my_net.getType() + '_' + my_net.getName() + '.pth'
     autoencoder_learned_file_description = \
         Dataloader.get_results_directory() + \
-        '/autoencoder/' + \
+        'autoencoder/' + \
         my_net.getType() + \
         '_' + my_net.getName() + \
         '_description.txt'
+    print("Autoencoder learn file: ", autoencoder_learned_file)
 
     if not first and my_net.getName() != 'none':
         print()
@@ -150,25 +173,25 @@ def run_machine(
     print()
     print("***   Autoencoding immage   ***")
     print("---------------------------------")
-    print()
-
     print("Image shape: ", the_image_shape)
     print("Image code got from autoencoder")
     the_image_autoencoded = [my_net.getCode(torch.Tensor(point)).detach().numpy() for point in the_image_list]
     print("Autoencoded image shape: ", np.shape(the_image_autoencoded))
+    if middle_cut_out:
+        print()
+        print("***   Middle cut out   ***")
+        print("---------------------------------")
+        the_image_autoencoded = cut_out_in_midle(the_image_autoencoded, Dataloader)
 
     print()
     print("***   Clustering   ***")
     print("---------------------------------")
-    print()
-
     the_image_classified = Classifier.clustering(the_image_autoencoded, the_image_shape, nr_of_clusters)
     print("Result shape: ", np.shape(the_image_classified))
 
     print()
     print("***   Printing   ***")
     print("---------------------------------")
-    print()
     if show_img:
         plt.imshow(the_image_classified)
         plt.draw()
@@ -177,10 +200,13 @@ def run_machine(
     print()
     print("***   Saving image   ***")
     print("---------------------------------")
-    print()
     if save_img:
         plt.imshow(the_image_classified)
-        img_name = Classifier.get_name() + "_" + my_net.getType() + '_autoencoder_' + my_net.getName() + '.png'
+        suffix = ""
+        if middle_cut_out:
+            suffix = "_mcu"
+
+        img_name = Classifier.get_name() + "_" + my_net.getType() + '_autoencoder_' + my_net.getName() + suffix + '.png'
         result_img_path = Dataloader.get_results_directory() + 'img/' + img_name
         print("Path: ", result_img_path)
         plt.savefig(result_img_path, bbox_inches='tight')
@@ -188,7 +214,6 @@ def run_machine(
     print()
     print("***   Saving data   ***")
     print("---------------------------------")
-    print()
     if save_data:
         data_name = Classifier.get_name() + "_" + my_net.getType() + '_autoencoder_' + my_net.getName() + '.txt'
         result_data_path = Dataloader.get_results_directory() + 'data/' + data_name
@@ -206,6 +231,8 @@ def run_machine_for_all():
     autoencoders.append(Autoencoder1)
     autoencoders.append(Autoencoder2)
     autoencoders.append(Autoencoder3)
+    # autoencoders.append(Autoencoder4)
+    # autoencoders.append(Autoencoder5)
 
     dataloaders = []
     dataloaders.append(Dataloader1)
@@ -256,9 +283,14 @@ if __name__ == '__main__':
     print("Start time:  ", time.ctime(start_time))
 
     # Procedures
-    run_machine_for_all()
+    # run_machine_for_all()
 
-    # run_machine(Autoencoder1, Dataloader2(), classifier, Dataloader2.get_number_of_clusters(), first=False)
+    run_machine(
+        Autoencoder1, Dataloader2(), classifier1, Dataloader2.get_number_of_clusters(),
+        first=False, middle_cut_out=True)
+    run_machine(
+        Autoencoder1, Dataloader3(), classifier1, Dataloader3.get_number_of_clusters(),
+        first=False, middle_cut_out=True)
 
     # end procedures
 
