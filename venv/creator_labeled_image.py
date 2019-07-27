@@ -9,6 +9,8 @@ import torchvision.transforms as transforms
 from scipy import io
 import numpy as np
 import time
+import os
+import matplotlib.pyplot as plt
 
 '''
     Main function
@@ -60,19 +62,7 @@ def save_model(my_net, autoencoder_learned_file, autoencoder_learned_file_descri
 
 
 def run_machine(
-        Autoencoder, Dataloader, Classifier, nr_of_clusters, show_img=True, save_img=True, save_data=True, first=True):
-    to_file = False
-
-    # Przekierowanie wyjścia do pliku
-    if to_file:
-        import sys
-        orig_stdout = sys.stdout
-        output_file = open('output_file.txt', 'w')
-        sys.stdout = output_file
-
-    print("START")
-    start_time = time.time()
-    print("Start time:  ", time.ctime(start_time))
+        Autoencoder, Dataloader, Classifier, nr_of_clusters, show_img=True, save_img=True, save_data=True, first=False):
 
     my_dataloader = Dataloader.get_dataloader()
     the_image_shape = Dataloader.get_image_shape()
@@ -105,6 +95,22 @@ def run_machine(
         my_net.getType() + \
         '_' + my_net.getName() + \
         '_description.txt'
+
+    if not first and my_net.getName() != 'none':
+        print()
+        print("***   Checking if model file exists   ***")
+        print("---------------------------------")
+        if os.path.isfile(autoencoder_learned_file):
+            print("\t File exists")
+            print()
+            print("***   Loading model from file   ***")
+            print("---------------------------------")
+            my_net.load_state_dict(torch.load(autoencoder_learned_file))
+            my_net.eval()
+        else:
+            print("\t File doesnt exist")
+            first = True
+
     if first and my_net.getName() != 'none':
         print()
         print("***   Learning   ***")
@@ -141,13 +147,6 @@ def run_machine(
                     the_best_loss,
                     Dataloader.get_name())
 
-    if not first and my_net.getName() != 'none':
-        print()
-        print("***   Loading model from file   ***")
-        print("---------------------------------")
-        my_net.load_state_dict(torch.load(autoencoder_learned_file))
-        my_net.eval()
-
     print()
     print("***   Autoencoding immage   ***")
     print("---------------------------------")
@@ -170,10 +169,10 @@ def run_machine(
     print("***   Printing   ***")
     print("---------------------------------")
     print()
-    import matplotlib.pyplot as plt
     if show_img:
         plt.imshow(the_image_classified)
-        plt.show()
+        plt.draw()
+        # plt.show()
 
     print()
     print("***   Saving image   ***")
@@ -196,17 +195,13 @@ def run_machine(
         print("Path: ", result_data_path)
         np.savetxt(result_data_path, the_image_classified, delimiter=" ", newline="\n", header=data_name, fmt="%s")
 
-    print("\nEND")
-    end_time = time.time()
-    print("End time:  ", time.ctime(end_time))
-    print("Duration:  ", int(end_time - start_time), " seconds")
-
-    # Closing file
-    if to_file:
-        sys.stdout = orig_stdout
-        output_file.close()
 
 def run_machine_for_all():
+    print()
+    print("***   Run machine for all start   ***")
+    print("=====================================")
+    print()
+
     autoencoders = []
     autoencoders.append(Autoencoder1)
     autoencoders.append(Autoencoder2)
@@ -233,10 +228,49 @@ def run_machine_for_all():
     for Autoencoder in autoencoders:
         for Dataloader in dataloaders:
             for clustring in clustering_methods:
+                print("========")
+                print("Autoencoder : \t\t", Autoencoder.getType(), "\t", Autoencoder.getName())
+                print("Dataloader:   \t\t", Dataloader().get_name())
+                print("Clustering:   \t\t", clustring.get_name())
+                print("========")
                 run_machine(Autoencoder, Dataloader(), clustring, Dataloader.get_number_of_clusters(), first=False)
+
+    print()
+    print("***   Run machine for all end   ***")
+    print("=====================================")
+    print()
 
 
 if __name__ == '__main__':
+    to_file = False
+
+    # Przekierowanie wyjścia do pliku
+    if to_file:
+        import sys
+        orig_stdout = sys.stdout
+        output_file = open('creator_labeled_image_output.txt', 'w')
+        sys.stdout = output_file
+
+    print("START")
+    start_time = time.time()
+    print("Start time:  ", time.ctime(start_time))
+
+    # Procedures
     run_machine_for_all()
 
-    #run_machine(Autoencoder1, Dataloader2(), classifier, Dataloader2.get_number_of_clusters(), first=True)
+    # run_machine(Autoencoder1, Dataloader2(), classifier, Dataloader2.get_number_of_clusters(), first=False)
+
+    # end procedures
+
+    print("\nEND")
+    end_time = time.time()
+    print("End time:  ", time.ctime(end_time))
+    print("Duration:  ", int(end_time - start_time), " seconds")
+
+    # Closing file
+    if to_file:
+        sys.stdout = orig_stdout
+        output_file.close()
+
+    plt.show()
+
