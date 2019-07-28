@@ -1,0 +1,18 @@
+# spectral_curve_indian_pines_gaussian_mixture_tied_linear_autoencoder_1_mcu_pairs.txt
+2
+1
+9
+0
+5
+4
+11
+7
+6
+10
+15
+13
+8
+12
+3
+14
+16

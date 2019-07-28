@@ -1,0 +1,8 @@
+# spectral_curve_salinas_a_gaussian_mixture_spherical_none_autoencoder_none_mcu_pairs.txt
+4
+1
+0
+5
+6
+3
+2

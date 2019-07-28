@@ -1,0 +1,8 @@
+# spectral_curve_salinas_a_gaussian_mixture_tied_none_autoencoder_none_pairs.txt
+1
+0
+5
+6
+3
+4
+2
