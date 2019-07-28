@@ -20,6 +20,7 @@ def clustering(the_image_autoencoded, the_image_shape, number_of_clusters, extra
     # #sphx-glr-auto-examples-mixture-plot-gmm-selection-py
 
     print("Image shape: ", the_image_shape)
+    print("Image autoencoded shape: ", np.shape(the_image_autoencoded))
     # print("Creating dataframe")
     # df = DataFrame(data=the_image_autoencoded)
 
@@ -49,7 +50,7 @@ def clustering(the_image_autoencoded, the_image_shape, number_of_clusters, extra
 
 
 def get_name():
-    return "gaussian_mixture_model_selection"
+    return "gaussian_mixture"
 
 
 

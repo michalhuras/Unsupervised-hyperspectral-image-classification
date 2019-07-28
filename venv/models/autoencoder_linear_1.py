@@ -36,4 +36,4 @@ class Autoencoder(nn.Module):
 
     @staticmethod
     def getName():
-        return '3'
+        return '1'
