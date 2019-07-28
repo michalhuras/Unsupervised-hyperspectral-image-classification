@@ -4,7 +4,7 @@ Searching for spectral curve and labeled files
 
 	Path:  ./results/IndianPines/data/
 	Dataloader name:  indian_pines
-{'indian_pines_clustering_kmeans_linear_autoencoder_1.txt': './results/IndianPines/data/indian_pines_clustering_kmeans_linear_autoencoder_1.txt', 'indian_pines_clustering_kmeans_linear_autoencoder_1_mcu.txt': './results/IndianPines/data/indian_pines_clustering_kmeans_linear_autoencoder_1_mcu.txt', 'indian_pines_clustering_kmeans_linear_autoencoder_2_mcu.txt': './results/IndianPines/data/indian_pines_clustering_kmeans_linear_autoencoder_2_mcu.txt', 'indian_pines_gaussian_mixture_diag_linear_autoencoder_1.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_diag_linear_autoencoder_1.txt', 'indian_pines_gaussian_mixture_diag_linear_autoencoder_1_mcu.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_diag_linear_autoencoder_1_mcu.txt', 'indian_pines_gaussian_mixture_full_linear_autoencoder_1.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_full_linear_autoencoder_1.txt', 'indian_pines_gaussian_mixture_full_linear_autoencoder_1_mcu.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_full_linear_autoencoder_1_mcu.txt', 'indian_pines_gaussian_mixture_spherical_linear_autoencoder_1.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_spherical_linear_autoencoder_1.txt', 'indian_pines_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt', 'indian_pines_gaussian_mixture_tied_linear_autoencoder_1.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_tied_linear_autoencoder_1.txt', 'indian_pines_gaussian_mixture_tied_linear_autoencoder_1_mcu.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_tied_linear_autoencoder_1_mcu.txt'}
+{'indian_pines_clustering_kmeans_linear_autoencoder_1.txt': './results/IndianPines/data/indian_pines_clustering_kmeans_linear_autoencoder_1.txt', 'indian_pines_clustering_kmeans_linear_autoencoder_1_mcu.txt': './results/IndianPines/data/indian_pines_clustering_kmeans_linear_autoencoder_1_mcu.txt', 'indian_pines_clustering_kmeans_linear_autoencoder_2.txt': './results/IndianPines/data/indian_pines_clustering_kmeans_linear_autoencoder_2.txt', 'indian_pines_clustering_kmeans_linear_autoencoder_2_mcu.txt': './results/IndianPines/data/indian_pines_clustering_kmeans_linear_autoencoder_2_mcu.txt', 'indian_pines_clustering_kmeans_linear_autoencoder_3.txt': './results/IndianPines/data/indian_pines_clustering_kmeans_linear_autoencoder_3.txt', 'indian_pines_clustering_kmeans_linear_autoencoder_3_mcu.txt': './results/IndianPines/data/indian_pines_clustering_kmeans_linear_autoencoder_3_mcu.txt', 'indian_pines_clustering_kmeans_none_autoencoder_none.txt': './results/IndianPines/data/indian_pines_clustering_kmeans_none_autoencoder_none.txt', 'indian_pines_clustering_kmeans_none_autoencoder_none_mcu.txt': './results/IndianPines/data/indian_pines_clustering_kmeans_none_autoencoder_none_mcu.txt', 'indian_pines_gaussian_mixture_diag_linear_autoencoder_1.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_diag_linear_autoencoder_1.txt', 'indian_pines_gaussian_mixture_diag_linear_autoencoder_1_mcu.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_diag_linear_autoencoder_1_mcu.txt', 'indian_pines_gaussian_mixture_diag_linear_autoencoder_2.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_diag_linear_autoencoder_2.txt', 'indian_pines_gaussian_mixture_diag_linear_autoencoder_2_mcu.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_diag_linear_autoencoder_2_mcu.txt', 'indian_pines_gaussian_mixture_diag_linear_autoencoder_3.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_diag_linear_autoencoder_3.txt', 'indian_pines_gaussian_mixture_diag_linear_autoencoder_3_mcu.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_diag_linear_autoencoder_3_mcu.txt', 'indian_pines_gaussian_mixture_diag_none_autoencoder_none.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_diag_none_autoencoder_none.txt', 'indian_pines_gaussian_mixture_diag_none_autoencoder_none_mcu.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_diag_none_autoencoder_none_mcu.txt', 'indian_pines_gaussian_mixture_full_linear_autoencoder_1.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_full_linear_autoencoder_1.txt', 'indian_pines_gaussian_mixture_full_linear_autoencoder_1_mcu.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_full_linear_autoencoder_1_mcu.txt', 'indian_pines_gaussian_mixture_full_linear_autoencoder_2.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_full_linear_autoencoder_2.txt', 'indian_pines_gaussian_mixture_full_linear_autoencoder_2_mcu.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_full_linear_autoencoder_2_mcu.txt', 'indian_pines_gaussian_mixture_full_linear_autoencoder_3.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_full_linear_autoencoder_3.txt', 'indian_pines_gaussian_mixture_full_linear_autoencoder_3_mcu.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_full_linear_autoencoder_3_mcu.txt', 'indian_pines_gaussian_mixture_spherical_linear_autoencoder_1.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_spherical_linear_autoencoder_1.txt', 'indian_pines_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt', 'indian_pines_gaussian_mixture_spherical_linear_autoencoder_2.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_spherical_linear_autoencoder_2.txt', 'indian_pines_gaussian_mixture_spherical_linear_autoencoder_2_mcu.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_spherical_linear_autoencoder_2_mcu.txt', 'indian_pines_gaussian_mixture_spherical_linear_autoencoder_3.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_spherical_linear_autoencoder_3.txt', 'indian_pines_gaussian_mixture_spherical_linear_autoencoder_3_mcu.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_spherical_linear_autoencoder_3_mcu.txt', 'indian_pines_gaussian_mixture_spherical_none_autoencoder_none.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_spherical_none_autoencoder_none.txt', 'indian_pines_gaussian_mixture_spherical_none_autoencoder_none_mcu.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_spherical_none_autoencoder_none_mcu.txt', 'indian_pines_gaussian_mixture_tied_linear_autoencoder_1.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_tied_linear_autoencoder_1.txt', 'indian_pines_gaussian_mixture_tied_linear_autoencoder_1_mcu.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_tied_linear_autoencoder_1_mcu.txt', 'indian_pines_gaussian_mixture_tied_linear_autoencoder_2.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_tied_linear_autoencoder_2.txt', 'indian_pines_gaussian_mixture_tied_linear_autoencoder_2_mcu.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_tied_linear_autoencoder_2_mcu.txt', 'indian_pines_gaussian_mixture_tied_linear_autoencoder_3.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_tied_linear_autoencoder_3.txt', 'indian_pines_gaussian_mixture_tied_linear_autoencoder_3_mcu.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_tied_linear_autoencoder_3_mcu.txt', 'indian_pines_gaussian_mixture_tied_none_autoencoder_none.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_tied_none_autoencoder_none.txt', 'indian_pines_gaussian_mixture_tied_none_autoencoder_none_mcu.txt': './results/IndianPines/data/indian_pines_gaussian_mixture_tied_none_autoencoder_none_mcu.txt'}
 
 	 File name:   indian_pines_clustering_kmeans_linear_autoencoder_1.txt
 	 Labels image path:  ./results/IndianPines/data/indian_pines_clustering_kmeans_linear_autoencoder_1.txt
@@ -218,7 +218,7 @@ Difference value:  0.7454018558490294
 Saving paired labels
 Result data path: ./results/IndianPines/data/spectral_curve_indian_pines_clustering_kmeans_linear_autoencoder_1_pairs.txt
 * Save report
-Save path: 		 ./results/IndianPines/data/report_indian_pines_clustering_kmeans_linear_autoencoder_1.txt
+Save path: 		 ./results/IndianPines/comparison/report_indian_pines_clustering_kmeans_linear_autoencoder_1.txt
 
 	 File name:   indian_pines_clustering_kmeans_linear_autoencoder_1_mcu.txt
 	 Labels image path:  ./results/IndianPines/data/indian_pines_clustering_kmeans_linear_autoencoder_1_mcu.txt
@@ -432,10 +432,25 @@ Difference value:  0.6515992732941798
 Saving paired labels
 Result data path: ./results/IndianPines/data/spectral_curve_indian_pines_clustering_kmeans_linear_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/IndianPines/data/report_indian_pines_clustering_kmeans_linear_autoencoder_1_mcu.txt
+Save path: 		 ./results/IndianPines/comparison/report_indian_pines_clustering_kmeans_linear_autoencoder_1_mcu.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_clustering_kmeans_linear_autoencoder_2.txt
 
 FILE DOES NOT EXIST
 File:  ./results/IndianPines/data/spectral_curve_indian_pines_clustering_kmeans_linear_autoencoder_2_mcu.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_clustering_kmeans_linear_autoencoder_3.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_clustering_kmeans_linear_autoencoder_3_mcu.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_clustering_kmeans_none_autoencoder_none.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_clustering_kmeans_none_autoencoder_none_mcu.txt
 
 	 File name:   indian_pines_gaussian_mixture_diag_linear_autoencoder_1.txt
 	 Labels image path:  ./results/IndianPines/data/indian_pines_gaussian_mixture_diag_linear_autoencoder_1.txt
@@ -649,7 +664,7 @@ Difference value:  1.4374411001094756
 Saving paired labels
 Result data path: ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_diag_linear_autoencoder_1_pairs.txt
 * Save report
-Save path: 		 ./results/IndianPines/data/report_indian_pines_gaussian_mixture_diag_linear_autoencoder_1.txt
+Save path: 		 ./results/IndianPines/comparison/report_indian_pines_gaussian_mixture_diag_linear_autoencoder_1.txt
 
 	 File name:   indian_pines_gaussian_mixture_diag_linear_autoencoder_1_mcu.txt
 	 Labels image path:  ./results/IndianPines/data/indian_pines_gaussian_mixture_diag_linear_autoencoder_1_mcu.txt
@@ -863,7 +878,25 @@ Difference value:  0.46843690136553817
 Saving paired labels
 Result data path: ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_diag_linear_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/IndianPines/data/report_indian_pines_gaussian_mixture_diag_linear_autoencoder_1_mcu.txt
+Save path: 		 ./results/IndianPines/comparison/report_indian_pines_gaussian_mixture_diag_linear_autoencoder_1_mcu.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_diag_linear_autoencoder_2.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_diag_linear_autoencoder_2_mcu.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_diag_linear_autoencoder_3.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_diag_linear_autoencoder_3_mcu.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_diag_none_autoencoder_none.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_diag_none_autoencoder_none_mcu.txt
 
 FILE DOES NOT EXIST
 File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_full_linear_autoencoder_1.txt
@@ -1080,7 +1113,19 @@ Difference value:  0.6062361601657805
 Saving paired labels
 Result data path: ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_full_linear_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/IndianPines/data/report_indian_pines_gaussian_mixture_full_linear_autoencoder_1_mcu.txt
+Save path: 		 ./results/IndianPines/comparison/report_indian_pines_gaussian_mixture_full_linear_autoencoder_1_mcu.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_full_linear_autoencoder_2.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_full_linear_autoencoder_2_mcu.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_full_linear_autoencoder_3.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_full_linear_autoencoder_3_mcu.txt
 
 	 File name:   indian_pines_gaussian_mixture_spherical_linear_autoencoder_1.txt
 	 Labels image path:  ./results/IndianPines/data/indian_pines_gaussian_mixture_spherical_linear_autoencoder_1.txt
@@ -1294,7 +1339,7 @@ Difference value:  0.5599014283056858
 Saving paired labels
 Result data path: ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_spherical_linear_autoencoder_1_pairs.txt
 * Save report
-Save path: 		 ./results/IndianPines/data/report_indian_pines_gaussian_mixture_spherical_linear_autoencoder_1.txt
+Save path: 		 ./results/IndianPines/comparison/report_indian_pines_gaussian_mixture_spherical_linear_autoencoder_1.txt
 
 	 File name:   indian_pines_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt
 	 Labels image path:  ./results/IndianPines/data/indian_pines_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt
@@ -1508,7 +1553,25 @@ Difference value:  0.42747556241632645
 Saving paired labels
 Result data path: ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_spherical_linear_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/IndianPines/data/report_indian_pines_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt
+Save path: 		 ./results/IndianPines/comparison/report_indian_pines_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_spherical_linear_autoencoder_2.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_spherical_linear_autoencoder_2_mcu.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_spherical_linear_autoencoder_3.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_spherical_linear_autoencoder_3_mcu.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_spherical_none_autoencoder_none.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_spherical_none_autoencoder_none_mcu.txt
 
 	 File name:   indian_pines_gaussian_mixture_tied_linear_autoencoder_1.txt
 	 Labels image path:  ./results/IndianPines/data/indian_pines_gaussian_mixture_tied_linear_autoencoder_1.txt
@@ -1722,7 +1785,7 @@ Difference value:  0.5656790382737944
 Saving paired labels
 Result data path: ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_tied_linear_autoencoder_1_pairs.txt
 * Save report
-Save path: 		 ./results/IndianPines/data/report_indian_pines_gaussian_mixture_tied_linear_autoencoder_1.txt
+Save path: 		 ./results/IndianPines/comparison/report_indian_pines_gaussian_mixture_tied_linear_autoencoder_1.txt
 
 	 File name:   indian_pines_gaussian_mixture_tied_linear_autoencoder_1_mcu.txt
 	 Labels image path:  ./results/IndianPines/data/indian_pines_gaussian_mixture_tied_linear_autoencoder_1_mcu.txt
@@ -1936,7 +1999,25 @@ Difference value:  0.8412977828844113
 Saving paired labels
 Result data path: ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_tied_linear_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/IndianPines/data/report_indian_pines_gaussian_mixture_tied_linear_autoencoder_1_mcu.txt
+Save path: 		 ./results/IndianPines/comparison/report_indian_pines_gaussian_mixture_tied_linear_autoencoder_1_mcu.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_tied_linear_autoencoder_2.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_tied_linear_autoencoder_2_mcu.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_tied_linear_autoencoder_3.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_tied_linear_autoencoder_3_mcu.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_tied_none_autoencoder_none.txt
+
+FILE DOES NOT EXIST
+File:  ./results/IndianPines/data/spectral_curve_indian_pines_gaussian_mixture_tied_none_autoencoder_none_mcu.txt
 
 
 	Path:  ./results/JasperRidge/data/
@@ -1946,7 +2027,7 @@ Save path: 		 ./results/IndianPines/data/report_indian_pines_gaussian_mixture_ti
 
 	Path:  ./results/Pavia/data/
 	Dataloader name:  pavia
-{'pavia_clustering_kmeans_linear_autoencoder_1.txt': './results/Pavia/data/pavia_clustering_kmeans_linear_autoencoder_1.txt', 'pavia_clustering_kmeans_linear_autoencoder_1_mcu.txt': './results/Pavia/data/pavia_clustering_kmeans_linear_autoencoder_1_mcu.txt', 'pavia_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt': './results/Pavia/data/pavia_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt'}
+{'pavia_clustering_kmeans_linear_autoencoder_1.txt': './results/Pavia/data/pavia_clustering_kmeans_linear_autoencoder_1.txt', 'pavia_clustering_kmeans_linear_autoencoder_1_mcu.txt': './results/Pavia/data/pavia_clustering_kmeans_linear_autoencoder_1_mcu.txt', 'pavia_gaussian_mixture_diag_linear_autoencoder_1.txt': './results/Pavia/data/pavia_gaussian_mixture_diag_linear_autoencoder_1.txt', 'pavia_gaussian_mixture_diag_linear_autoencoder_1_mcu.txt': './results/Pavia/data/pavia_gaussian_mixture_diag_linear_autoencoder_1_mcu.txt', 'pavia_gaussian_mixture_spherical_linear_autoencoder_1.txt': './results/Pavia/data/pavia_gaussian_mixture_spherical_linear_autoencoder_1.txt', 'pavia_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt': './results/Pavia/data/pavia_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt', 'pavia_gaussian_mixture_tied_linear_autoencoder_1.txt': './results/Pavia/data/pavia_gaussian_mixture_tied_linear_autoencoder_1.txt', 'pavia_gaussian_mixture_tied_linear_autoencoder_1_mcu.txt': './results/Pavia/data/pavia_gaussian_mixture_tied_linear_autoencoder_1_mcu.txt'}
 
 	 File name:   pavia_clustering_kmeans_linear_autoencoder_1.txt
 	 Labels image path:  ./results/Pavia/data/pavia_clustering_kmeans_linear_autoencoder_1.txt
@@ -2048,7 +2129,7 @@ Difference value:  0.7093204456975223
 Saving paired labels
 Result data path: ./results/Pavia/data/spectral_curve_pavia_clustering_kmeans_linear_autoencoder_1_pairs.txt
 * Save report
-Save path: 		 ./results/Pavia/data/report_pavia_clustering_kmeans_linear_autoencoder_1.txt
+Save path: 		 ./results/Pavia/comparison/report_pavia_clustering_kmeans_linear_autoencoder_1.txt
 
 	 File name:   pavia_clustering_kmeans_linear_autoencoder_1_mcu.txt
 	 Labels image path:  ./results/Pavia/data/pavia_clustering_kmeans_linear_autoencoder_1_mcu.txt
@@ -2150,7 +2231,16 @@ Difference value:  1.1282782736732673
 Saving paired labels
 Result data path: ./results/Pavia/data/spectral_curve_pavia_clustering_kmeans_linear_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/Pavia/data/report_pavia_clustering_kmeans_linear_autoencoder_1_mcu.txt
+Save path: 		 ./results/Pavia/comparison/report_pavia_clustering_kmeans_linear_autoencoder_1_mcu.txt
+
+FILE DOES NOT EXIST
+File:  ./results/Pavia/data/spectral_curve_pavia_gaussian_mixture_diag_linear_autoencoder_1.txt
+
+FILE DOES NOT EXIST
+File:  ./results/Pavia/data/spectral_curve_pavia_gaussian_mixture_diag_linear_autoencoder_1_mcu.txt
+
+FILE DOES NOT EXIST
+File:  ./results/Pavia/data/spectral_curve_pavia_gaussian_mixture_spherical_linear_autoencoder_1.txt
 
 	 File name:   pavia_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt
 	 Labels image path:  ./results/Pavia/data/pavia_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt
@@ -2252,7 +2342,13 @@ Difference value:  0.5201488596948672
 Saving paired labels
 Result data path: ./results/Pavia/data/spectral_curve_pavia_gaussian_mixture_spherical_linear_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/Pavia/data/report_pavia_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt
+Save path: 		 ./results/Pavia/comparison/report_pavia_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt
+
+FILE DOES NOT EXIST
+File:  ./results/Pavia/data/spectral_curve_pavia_gaussian_mixture_tied_linear_autoencoder_1.txt
+
+FILE DOES NOT EXIST
+File:  ./results/Pavia/data/spectral_curve_pavia_gaussian_mixture_tied_linear_autoencoder_1_mcu.txt
 
 
 	Path:  ./results/Salinas/data/
@@ -2331,7 +2427,7 @@ Difference value:  0.2693288124973773
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_clustering_kmeans_convolutional_autoencoder_2_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_clustering_kmeans_convolutional_autoencoder_2.txt
+Save path: 		 ./results/SalinasA/comparison/report_clustering_kmeans_convolutional_autoencoder_2.txt
 
 	 File name:   salinas_a_clustering_kmeans_convolutional_autoencoder_1.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_clustering_kmeans_convolutional_autoencoder_1.txt
@@ -2400,7 +2496,7 @@ Difference value:  0.27115217433871
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_clustering_kmeans_convolutional_autoencoder_1_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_clustering_kmeans_convolutional_autoencoder_1.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_clustering_kmeans_convolutional_autoencoder_1.txt
 
 	 File name:   salinas_a_clustering_kmeans_convolutional_autoencoder_1_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_clustering_kmeans_convolutional_autoencoder_1_mcu.txt
@@ -2469,7 +2565,7 @@ Difference value:  1.0082809234610095
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_clustering_kmeans_convolutional_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_clustering_kmeans_convolutional_autoencoder_1_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_clustering_kmeans_convolutional_autoencoder_1_mcu.txt
 
 	 File name:   salinas_a_clustering_kmeans_linear_autoencoder_1.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_clustering_kmeans_linear_autoencoder_1.txt
@@ -2538,7 +2634,7 @@ Difference value:  0.5773252502260728
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_clustering_kmeans_linear_autoencoder_1_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_clustering_kmeans_linear_autoencoder_1.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_clustering_kmeans_linear_autoencoder_1.txt
 
 	 File name:   salinas_a_clustering_kmeans_linear_autoencoder_1_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_clustering_kmeans_linear_autoencoder_1_mcu.txt
@@ -2607,7 +2703,7 @@ Difference value:  0.5928551234482276
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_clustering_kmeans_linear_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_clustering_kmeans_linear_autoencoder_1_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_clustering_kmeans_linear_autoencoder_1_mcu.txt
 
 	 File name:   salinas_a_clustering_kmeans_linear_autoencoder_2.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_clustering_kmeans_linear_autoencoder_2.txt
@@ -2676,7 +2772,7 @@ Difference value:  0.02352171947239632
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_clustering_kmeans_linear_autoencoder_2_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_clustering_kmeans_linear_autoencoder_2.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_clustering_kmeans_linear_autoencoder_2.txt
 
 	 File name:   salinas_a_clustering_kmeans_linear_autoencoder_2_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_clustering_kmeans_linear_autoencoder_2_mcu.txt
@@ -2745,7 +2841,7 @@ Difference value:  0.057968580473883806
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_clustering_kmeans_linear_autoencoder_2_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_clustering_kmeans_linear_autoencoder_2_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_clustering_kmeans_linear_autoencoder_2_mcu.txt
 
 	 File name:   salinas_a_clustering_kmeans_linear_autoencoder_3.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_clustering_kmeans_linear_autoencoder_3.txt
@@ -2814,7 +2910,7 @@ Difference value:  0.024726986448315336
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_clustering_kmeans_linear_autoencoder_3_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_clustering_kmeans_linear_autoencoder_3.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_clustering_kmeans_linear_autoencoder_3.txt
 
 	 File name:   salinas_a_clustering_kmeans_linear_autoencoder_3_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_clustering_kmeans_linear_autoencoder_3_mcu.txt
@@ -2883,7 +2979,7 @@ Difference value:  0.07139282180316527
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_clustering_kmeans_linear_autoencoder_3_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_clustering_kmeans_linear_autoencoder_3_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_clustering_kmeans_linear_autoencoder_3_mcu.txt
 
 	 File name:   salinas_a_clustering_kmeans_none_autoencoder_none.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_clustering_kmeans_none_autoencoder_none.txt
@@ -2952,7 +3048,7 @@ Difference value:  0.02614426753548013
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_clustering_kmeans_none_autoencoder_none_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_clustering_kmeans_none_autoencoder_none.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_clustering_kmeans_none_autoencoder_none.txt
 
 	 File name:   salinas_a_clustering_kmeans_none_autoencoder_none_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_clustering_kmeans_none_autoencoder_none_mcu.txt
@@ -3021,7 +3117,7 @@ Difference value:  0.013589556553104449
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_clustering_kmeans_none_autoencoder_none_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_clustering_kmeans_none_autoencoder_none_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_clustering_kmeans_none_autoencoder_none_mcu.txt
 
 	 File name:   salinas_a_cut_out_clustering_kmeans_linear_autoencoder_1.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_cut_out_clustering_kmeans_linear_autoencoder_1.txt
@@ -3090,7 +3186,7 @@ Difference value:  0.59290087901824
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_cut_out_clustering_kmeans_linear_autoencoder_1_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_cut_out_clustering_kmeans_linear_autoencoder_1.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_cut_out_clustering_kmeans_linear_autoencoder_1.txt
 
 	 File name:   salinas_a_cut_out_clustering_kmeans_linear_autoencoder_1_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_cut_out_clustering_kmeans_linear_autoencoder_1_mcu.txt
@@ -3159,7 +3255,7 @@ Difference value:  0.6543759130928091
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_cut_out_clustering_kmeans_linear_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_cut_out_clustering_kmeans_linear_autoencoder_1_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_cut_out_clustering_kmeans_linear_autoencoder_1_mcu.txt
 
 	 File name:   salinas_a_cut_out_gaussian_mixture_spherical_linear_autoencoder_1.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_cut_out_gaussian_mixture_spherical_linear_autoencoder_1.txt
@@ -3228,7 +3324,7 @@ Difference value:  0.015636646912833785
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_cut_out_gaussian_mixture_spherical_linear_autoencoder_1_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_cut_out_gaussian_mixture_spherical_linear_autoencoder_1.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_cut_out_gaussian_mixture_spherical_linear_autoencoder_1.txt
 
 	 File name:   salinas_a_cut_out_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_cut_out_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt
@@ -3297,7 +3393,7 @@ Difference value:  0.5931223468960317
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_cut_out_gaussian_mixture_spherical_linear_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_cut_out_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_cut_out_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt
 
 	 File name:   salinas_a_cut_out_gaussian_mixture_tied_linear_autoencoder_1.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_cut_out_gaussian_mixture_tied_linear_autoencoder_1.txt
@@ -3366,7 +3462,7 @@ Difference value:  0.5931133080879575
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_cut_out_gaussian_mixture_tied_linear_autoencoder_1_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_cut_out_gaussian_mixture_tied_linear_autoencoder_1.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_cut_out_gaussian_mixture_tied_linear_autoencoder_1.txt
 
 	 File name:   salinas_a_cut_out_gaussian_mixture_tied_linear_autoencoder_1_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_cut_out_gaussian_mixture_tied_linear_autoencoder_1_mcu.txt
@@ -3435,7 +3531,7 @@ Difference value:  0.015924783209049217
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_cut_out_gaussian_mixture_tied_linear_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_cut_out_gaussian_mixture_tied_linear_autoencoder_1_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_cut_out_gaussian_mixture_tied_linear_autoencoder_1_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_diag_convolutional_autoencoder_1.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_diag_convolutional_autoencoder_1.txt
@@ -3504,7 +3600,7 @@ Difference value:  0.6600340230538387
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_diag_convolutional_autoencoder_1_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_diag_convolutional_autoencoder_1.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_diag_convolutional_autoencoder_1.txt
 
 	 File name:   salinas_a_gaussian_mixture_diag_convolutional_autoencoder_1_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_diag_convolutional_autoencoder_1_mcu.txt
@@ -3573,7 +3669,7 @@ Difference value:  1.0085927185533974
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_diag_convolutional_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_diag_convolutional_autoencoder_1_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_diag_convolutional_autoencoder_1_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_diag_linear_autoencoder_1.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_diag_linear_autoencoder_1.txt
@@ -3642,7 +3738,7 @@ Difference value:  0.10105728836338221
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_diag_linear_autoencoder_1_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_diag_linear_autoencoder_1.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_diag_linear_autoencoder_1.txt
 
 	 File name:   salinas_a_gaussian_mixture_diag_linear_autoencoder_1_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_diag_linear_autoencoder_1_mcu.txt
@@ -3711,7 +3807,7 @@ Difference value:  0.016242890390760486
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_diag_linear_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_diag_linear_autoencoder_1_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_diag_linear_autoencoder_1_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_diag_linear_autoencoder_2.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_diag_linear_autoencoder_2.txt
@@ -3780,7 +3876,7 @@ Difference value:  0.022045928321687593
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_diag_linear_autoencoder_2_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_diag_linear_autoencoder_2.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_diag_linear_autoencoder_2.txt
 
 	 File name:   salinas_a_gaussian_mixture_diag_linear_autoencoder_2_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_diag_linear_autoencoder_2_mcu.txt
@@ -3849,7 +3945,7 @@ Difference value:  0.05631194630812559
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_diag_linear_autoencoder_2_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_diag_linear_autoencoder_2_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_diag_linear_autoencoder_2_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_diag_linear_autoencoder_3.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_diag_linear_autoencoder_3.txt
@@ -3918,7 +4014,7 @@ Difference value:  0.025150350437740443
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_diag_linear_autoencoder_3_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_diag_linear_autoencoder_3.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_diag_linear_autoencoder_3.txt
 
 	 File name:   salinas_a_gaussian_mixture_diag_linear_autoencoder_3_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_diag_linear_autoencoder_3_mcu.txt
@@ -3987,7 +4083,7 @@ Difference value:  0.06834459493166734
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_diag_linear_autoencoder_3_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_diag_linear_autoencoder_3_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_diag_linear_autoencoder_3_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_diag_none_autoencoder_none.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_diag_none_autoencoder_none.txt
@@ -4056,7 +4152,7 @@ Difference value:  0.08459883169316934
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_diag_none_autoencoder_none_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_diag_none_autoencoder_none.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_diag_none_autoencoder_none.txt
 
 	 File name:   salinas_a_gaussian_mixture_diag_none_autoencoder_none_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_diag_none_autoencoder_none_mcu.txt
@@ -4125,7 +4221,7 @@ Difference value:  0.01521092715629824
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_diag_none_autoencoder_none_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_diag_none_autoencoder_none_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_diag_none_autoencoder_none_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_full_convolutional_autoencoder_1.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_full_convolutional_autoencoder_1.txt
@@ -4194,7 +4290,7 @@ Difference value:  1.2022897807763409
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_full_convolutional_autoencoder_1_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_full_convolutional_autoencoder_1.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_full_convolutional_autoencoder_1.txt
 
 	 File name:   salinas_a_gaussian_mixture_full_convolutional_autoencoder_1_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_full_convolutional_autoencoder_1_mcu.txt
@@ -4263,7 +4359,7 @@ Difference value:  0.603737287788196
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_full_convolutional_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_full_convolutional_autoencoder_1_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_full_convolutional_autoencoder_1_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_full_linear_autoencoder_1.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_full_linear_autoencoder_1.txt
@@ -4332,7 +4428,7 @@ Difference value:  0.025330795076751345
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_full_linear_autoencoder_1_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_full_linear_autoencoder_1.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_full_linear_autoencoder_1.txt
 
 	 File name:   salinas_a_gaussian_mixture_full_linear_autoencoder_1_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_full_linear_autoencoder_1_mcu.txt
@@ -4401,7 +4497,7 @@ Difference value:  0.013960522559755146
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_full_linear_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_full_linear_autoencoder_1_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_full_linear_autoencoder_1_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_full_linear_autoencoder_2.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_full_linear_autoencoder_2.txt
@@ -4470,7 +4566,7 @@ Difference value:  0.11498485997603904
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_full_linear_autoencoder_2_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_full_linear_autoencoder_2.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_full_linear_autoencoder_2.txt
 
 	 File name:   salinas_a_gaussian_mixture_full_linear_autoencoder_2_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_full_linear_autoencoder_2_mcu.txt
@@ -4539,7 +4635,7 @@ Difference value:  0.04896745205240633
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_full_linear_autoencoder_2_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_full_linear_autoencoder_2_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_full_linear_autoencoder_2_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_full_linear_autoencoder_3.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_full_linear_autoencoder_3.txt
@@ -4608,7 +4704,7 @@ Difference value:  0.07225738952028526
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_full_linear_autoencoder_3_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_full_linear_autoencoder_3.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_full_linear_autoencoder_3.txt
 
 	 File name:   salinas_a_gaussian_mixture_full_linear_autoencoder_3_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_full_linear_autoencoder_3_mcu.txt
@@ -4677,7 +4773,7 @@ Difference value:  0.24555447377489706
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_full_linear_autoencoder_3_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_full_linear_autoencoder_3_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_full_linear_autoencoder_3_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_full_none_autoencoder_none.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_full_none_autoencoder_none.txt
@@ -4746,7 +4842,7 @@ Difference value:  0.025504328579324213
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_full_none_autoencoder_none_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_full_none_autoencoder_none.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_full_none_autoencoder_none.txt
 
 	 File name:   salinas_a_gaussian_mixture_full_none_autoencoder_none_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_full_none_autoencoder_none_mcu.txt
@@ -4815,7 +4911,7 @@ Difference value:  0.07814589939166061
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_full_none_autoencoder_none_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_full_none_autoencoder_none_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_full_none_autoencoder_none_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_spherical_convolutional_autoencoder_1.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_spherical_convolutional_autoencoder_1.txt
@@ -4884,7 +4980,7 @@ Difference value:  0.610972257745414
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_spherical_convolutional_autoencoder_1_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_spherical_convolutional_autoencoder_1.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_spherical_convolutional_autoencoder_1.txt
 
 	 File name:   salinas_a_gaussian_mixture_spherical_convolutional_autoencoder_1_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_spherical_convolutional_autoencoder_1_mcu.txt
@@ -4953,7 +5049,7 @@ Difference value:  0.9868291273123999
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_spherical_convolutional_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_spherical_convolutional_autoencoder_1_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_spherical_convolutional_autoencoder_1_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_spherical_linear_autoencoder_1.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_spherical_linear_autoencoder_1.txt
@@ -5022,7 +5118,7 @@ Difference value:  0.5756029466172523
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_spherical_linear_autoencoder_1_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_spherical_linear_autoencoder_1.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_spherical_linear_autoencoder_1.txt
 
 	 File name:   salinas_a_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt
@@ -5091,7 +5187,7 @@ Difference value:  0.015403579772146367
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_spherical_linear_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_spherical_linear_autoencoder_1_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_spherical_linear_autoencoder_2.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_spherical_linear_autoencoder_2.txt
@@ -5160,7 +5256,7 @@ Difference value:  0.10239482788696355
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_spherical_linear_autoencoder_2_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_spherical_linear_autoencoder_2.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_spherical_linear_autoencoder_2.txt
 
 	 File name:   salinas_a_gaussian_mixture_spherical_linear_autoencoder_2_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_spherical_linear_autoencoder_2_mcu.txt
@@ -5229,7 +5325,7 @@ Difference value:  0.05604514377713291
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_spherical_linear_autoencoder_2_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_spherical_linear_autoencoder_2_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_spherical_linear_autoencoder_2_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_spherical_linear_autoencoder_3.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_spherical_linear_autoencoder_3.txt
@@ -5298,7 +5394,7 @@ Difference value:  0.10683136674691901
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_spherical_linear_autoencoder_3_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_spherical_linear_autoencoder_3.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_spherical_linear_autoencoder_3.txt
 
 	 File name:   salinas_a_gaussian_mixture_spherical_linear_autoencoder_3_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_spherical_linear_autoencoder_3_mcu.txt
@@ -5367,7 +5463,7 @@ Difference value:  0.06368358701378886
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_spherical_linear_autoencoder_3_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_spherical_linear_autoencoder_3_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_spherical_linear_autoencoder_3_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_spherical_none_autoencoder_none.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_spherical_none_autoencoder_none.txt
@@ -5436,7 +5532,7 @@ Difference value:  0.01854344815791286
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_spherical_none_autoencoder_none_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_spherical_none_autoencoder_none.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_spherical_none_autoencoder_none.txt
 
 	 File name:   salinas_a_gaussian_mixture_spherical_none_autoencoder_none_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_spherical_none_autoencoder_none_mcu.txt
@@ -5505,7 +5601,7 @@ Difference value:  0.01035424049444418
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_spherical_none_autoencoder_none_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_spherical_none_autoencoder_none_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_spherical_none_autoencoder_none_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_tied_convolutional_autoencoder_1.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_tied_convolutional_autoencoder_1.txt
@@ -5574,7 +5670,7 @@ Difference value:  0.8276158848111156
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_tied_convolutional_autoencoder_1_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_tied_convolutional_autoencoder_1.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_tied_convolutional_autoencoder_1.txt
 
 	 File name:   salinas_a_gaussian_mixture_tied_convolutional_autoencoder_1_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_tied_convolutional_autoencoder_1_mcu.txt
@@ -5643,7 +5739,7 @@ Difference value:  0.741265783480905
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_tied_convolutional_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_tied_convolutional_autoencoder_1_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_tied_convolutional_autoencoder_1_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_tied_linear_autoencoder_1.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_tied_linear_autoencoder_1.txt
@@ -5712,7 +5808,7 @@ Difference value:  0.10396071902603794
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_tied_linear_autoencoder_1_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_tied_linear_autoencoder_1.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_tied_linear_autoencoder_1.txt
 
 	 File name:   salinas_a_gaussian_mixture_tied_linear_autoencoder_1_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_tied_linear_autoencoder_1_mcu.txt
@@ -5781,7 +5877,7 @@ Difference value:  0.01574061715082703
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_tied_linear_autoencoder_1_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_tied_linear_autoencoder_1_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_tied_linear_autoencoder_1_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_tied_linear_autoencoder_2.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_tied_linear_autoencoder_2.txt
@@ -5850,7 +5946,7 @@ Difference value:  0.018833300500685966
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_tied_linear_autoencoder_2_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_tied_linear_autoencoder_2.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_tied_linear_autoencoder_2.txt
 
 	 File name:   salinas_a_gaussian_mixture_tied_linear_autoencoder_2_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_tied_linear_autoencoder_2_mcu.txt
@@ -5919,7 +6015,7 @@ Difference value:  0.051797612380790246
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_tied_linear_autoencoder_2_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_tied_linear_autoencoder_2_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_tied_linear_autoencoder_2_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_tied_linear_autoencoder_3.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_tied_linear_autoencoder_3.txt
@@ -5988,7 +6084,7 @@ Difference value:  0.08238267562390833
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_tied_linear_autoencoder_3_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_tied_linear_autoencoder_3.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_tied_linear_autoencoder_3.txt
 
 	 File name:   salinas_a_gaussian_mixture_tied_linear_autoencoder_3_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_tied_linear_autoencoder_3_mcu.txt
@@ -6057,7 +6153,7 @@ Difference value:  0.009925746402443876
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_tied_linear_autoencoder_3_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_tied_linear_autoencoder_3_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_tied_linear_autoencoder_3_mcu.txt
 
 	 File name:   salinas_a_gaussian_mixture_tied_none_autoencoder_none.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_tied_none_autoencoder_none.txt
@@ -6126,7 +6222,7 @@ Difference value:  0.02272563760994576
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_tied_none_autoencoder_none_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_tied_none_autoencoder_none.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_tied_none_autoencoder_none.txt
 
 	 File name:   salinas_a_gaussian_mixture_tied_none_autoencoder_none_mcu.txt
 	 Labels image path:  ./results/SalinasA/data/salinas_a_gaussian_mixture_tied_none_autoencoder_none_mcu.txt
@@ -6195,7 +6291,7 @@ Difference value:  0.026592175968827396
 Saving paired labels
 Result data path: ./results/SalinasA/data/spectral_curve_salinas_a_gaussian_mixture_tied_none_autoencoder_none_mcu_pairs.txt
 * Save report
-Save path: 		 ./results/SalinasA/data/report_salinas_a_gaussian_mixture_tied_none_autoencoder_none_mcu.txt
+Save path: 		 ./results/SalinasA/comparison/report_salinas_a_gaussian_mixture_tied_none_autoencoder_none_mcu.txt
 
 
 	Path:  ./results/Samson/data/
