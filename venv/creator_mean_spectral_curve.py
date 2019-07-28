@@ -12,6 +12,7 @@ from dataloader.salinas_dataloader import Dataloader as salinas_dataloader
 from dataloader.salinas_a_dataloader import Dataloader as salinas_a_dataloader
 from dataloader.pavia_dataloader import Dataloader as pavia_dataloader
 
+
 def create_spectral_curve(
         dataname,
         image,
@@ -25,7 +26,6 @@ def create_spectral_curve(
         draw_legend=True,
         output_name=""):
 
-    print("\n")
     print("---------------------------------------------")
     print("START")
     print("Data name: ", dataname)
@@ -186,9 +186,9 @@ def create_spectral_curve_for_existing_data():
         # "./result/tests/data":test_dataloader(),
     }
 
-    names_and_directories = {}
     # name: directory
     for path in result_directories_with_dataloaders:
+        names_and_directories = {}
         print("\tPath: ", path)
         print("\tDataloader name: ", result_directories_with_dataloaders[path].get_name(False))
 
