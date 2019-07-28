@@ -29,6 +29,6 @@ class Autoencoder(nn.Module):
     def getType():
         return 'none'
 
-   @staticmethod
-   def getName():
+    @staticmethod
+    def getName():
         return 'none'

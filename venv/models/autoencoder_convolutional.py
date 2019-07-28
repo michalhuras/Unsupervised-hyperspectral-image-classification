@@ -39,6 +39,7 @@ class Autoencoder(nn.Module):
         # 8 ponieważ kernel jest 9 i "ucina" po połowie kernela z każdej ze stron
 
     def forward(self, x):
+        original_shape = x.shape
         x = x.reshape((1, 1, x.shape[1]))
         # print("Encoder")
         x = F.relu(self.encoder_conv(x))
@@ -48,14 +49,21 @@ class Autoencoder(nn.Module):
         x = self.decoder_lin(x)
         x = x.view(-1, 6, self.first_size - 8)
         x = self.decoder_conv(x)
+        x = x.reshape(original_shape)
         return x
 
     def getCode(self, x):
-        x = self.encoder(x)
+        x = x.reshape((1, 1, np.amax(x.shape)))
+        # print("Encoder")
+        x = F.relu(self.encoder_conv(x))
+        x = x.view(-1, self.num_flat_features(x))
+        x = self.encoder_lin(x)
+        x = x.reshape((10))
         return x
 
-    def num_flat_features(self, x):
-        size = x.size()[1:]  # all dimensions except the batch dimension
+    @staticmethod
+    def num_flat_features(x):
+        size = x.size()[1:]
         num_features = 1
         for s in size:
             num_features *= s
