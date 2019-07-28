@@ -10,6 +10,7 @@ from scipy import io
 import numpy as np
 import scripts_my.mathematical_operations as mo
 import time
+import os
 
 
 '''
@@ -21,8 +22,11 @@ g_nr_of_clusters = 3
 
 class Dataloader:
     def __init__(self):
-        self.data_dir = 'C:/Users/Public/AI/artificial-intelligence---my-beginning/venv/data/Samson/'
-        # self.data_dir = './data/Samson/'
+        # self.data_dir = 'C:/Users/Public/AI/artificial-intelligence---my-beginning/venv/data/Samson/'
+        self.data_dir = '../data/Samson/'
+        if not os.path.exists(self.data_dir):
+            self.data_dir = 'data/Samson/'
+
         self.results_dir = './results/Samson/'
         self.name = 'samson'
 

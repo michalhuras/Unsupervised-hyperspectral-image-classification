@@ -10,7 +10,7 @@ from scipy import io
 import numpy as np
 import scripts_my.mathematical_operations as mo
 import time
-
+import os
 
 '''
     Pavia
@@ -21,8 +21,11 @@ g_nr_of_clusters = 10
 
 class Dataloader:
     def __init__(self):
-        self.data_dir = 'C:/Users/Public/AI/artificial-intelligence---my-beginning/venv/data/Pavia/'
-        # self.data_dir = './data/Pavia/'
+        # self.data_dir = 'C:/Users/Public/AI/artificial-intelligence---my-beginning/venv/data/Pavia/'
+        self.data_dir = '../data/Pavia/'
+        if not os.path.exists(self.data_dir):
+            self.data_dir = 'data/Pavia/'
+
         self.results_dir = './results/Pavia/'
         self.name = 'pavia'
 

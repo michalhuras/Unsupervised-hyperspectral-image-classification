@@ -10,7 +10,7 @@ from scipy import io
 import numpy as np
 import scripts_my.mathematical_operations as mo
 import time
-
+import os
 
 '''
     Salinas
@@ -21,8 +21,11 @@ g_nr_of_clusters = 17
 
 class Dataloader:
     def __init__(self):
-        self.data_dir = 'C:/Users/Public/AI/artificial-intelligence---my-beginning/venv/data/Salinas/'
-        # self.data_dir = './data/Salinas/'
+        # self.data_dir = 'C:/Users/Public/AI/artificial-intelligence---my-beginning/venv/data/Salinas/'
+        self.data_dir = '../data/Salinas/'
+        if not os.path.exists(self.data_dir):
+            self.data_dir = 'data/Salinas/'
+
         self.results_dir = './results/Salinas/'
         self.name = 'salinas'
 
