@@ -1,0 +1,25 @@
+Autoencoder: 
+Type: convolutional
+Name: 1
+Loss value: 0.13579638302326202
+Dataset: salinas_a
+Autoencoder(
+  (encoder_conv): Conv1d(1, 6, kernel_size=(9,), stride=(1,))
+  (encoder_lin): Sequential(
+    (0): Linear(in_features=1176, out_features=500, bias=True)
+    (1): Linear(in_features=500, out_features=200, bias=True)
+    (2): Linear(in_features=200, out_features=80, bias=True)
+    (3): Linear(in_features=80, out_features=30, bias=True)
+    (4): Linear(in_features=30, out_features=10, bias=True)
+  )
+  (decoder_lin): Sequential(
+    (0): Linear(in_features=10, out_features=30, bias=True)
+    (1): Linear(in_features=30, out_features=80, bias=True)
+    (2): Linear(in_features=80, out_features=200, bias=True)
+    (3): Linear(in_features=200, out_features=500, bias=True)
+    (4): Linear(in_features=500, out_features=1176, bias=True)
+  )
+  (decoder_conv): ConvTranspose1d(6, 1, kernel_size=(9,), stride=(1,))
+)
+Params length:  24
+   6   6   500   500   200   200   80   80   30   30   10   10   30   30   80   80   200   200   500   500   1176   1176   6   1

@@ -1,0 +1,21 @@
+Autoencoder: 
+Type: linear
+Name: 2
+Loss value: 0.6404893398284912
+Dataset: indian_pines
+Autoencoder(
+  (encoder): Sequential(
+    (0): Linear(in_features=200, out_features=90, bias=True)
+    (1): Linear(in_features=90, out_features=40, bias=True)
+    (2): Linear(in_features=40, out_features=15, bias=True)
+    (3): Linear(in_features=15, out_features=7, bias=True)
+  )
+  (decoder): Sequential(
+    (0): Linear(in_features=7, out_features=15, bias=True)
+    (1): Linear(in_features=15, out_features=40, bias=True)
+    (2): Linear(in_features=40, out_features=90, bias=True)
+    (3): Linear(in_features=90, out_features=200, bias=True)
+  )
+)
+Params length:  16
+   90   90   40   40   15   15   7   7   15   15   40   40   90   90   200   200
