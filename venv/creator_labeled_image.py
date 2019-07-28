@@ -204,15 +204,19 @@ def run_machine(
     suffix = ""
     if middle_cut_out:
         suffix = "_mcu"
+    param_txt = ""
+    if param:
+        param_txt = param + "_"
+
     img_name = \
         Dataloader.get_name() + "_" + \
-        Classifier.get_name() + "_" + \
+        Classifier.get_name() + "_" + param_txt + \
         my_net.getType() + '_autoencoder_' + \
         my_net.getName() + suffix + '.png'
     result_img_path = Dataloader.get_results_directory() + 'img/' + img_name
     data_name = \
         Dataloader.get_name() + "_" + \
-        Classifier.get_name() + "_" + \
+        Classifier.get_name() + "_" + param_txt + \
         my_net.getType() + '_autoencoder_' + \
         my_net.getName() + suffix + '.txt'
     result_data_path = Dataloader.get_results_directory() + 'data/' + data_name
@@ -286,20 +290,21 @@ def run_machine_for_all():
     autoencoders.append(Autoencoder5)
 
     dataloaders = []
-    dataloaders.append(Dataloader1)
+    # dataloaders.append(Dataloader1)
     # dataloaders.append(Dataloader11)
     # dataloaders.append(Dataloader2)
     # dataloaders.append(Dataloader3)
     # dataloaders.append(Dataloader33)
     # dataloaders.append(Dataloader4)
     # dataloaders.append(Dataloader44)
-    # dataloaders.append(Dataloader5)
-    # dataloaders.append(Dataloader55)
+    dataloaders.append(Dataloader5)
+    dataloaders.append(Dataloader55)
     # dataloaders.append(Dataloader6)
 
     clustering_methods = []
     clustering_methods.append(classifier1)
-    # clustering_methods.append(classifier2)
+    clustering_methods.append(classifier2)
+
     # clustering_methods.append(classifier3)
     # clustering_methods.append(classifier4)
 
