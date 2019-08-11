@@ -1,0 +1,19 @@
+Autoencoder: 
+Type: linear
+Name: 2
+Loss value: 2081.58447265625
+Dataset: jasper_ridge
+Autoencoder(
+  (encoder): Sequential(
+    (0): Linear(in_features=198, out_features=90, bias=True)
+    (1): Linear(in_features=90, out_features=40, bias=True)
+    (2): Linear(in_features=40, out_features=20, bias=True)
+  )
+  (decoder): Sequential(
+    (0): Linear(in_features=20, out_features=40, bias=True)
+    (1): Linear(in_features=40, out_features=90, bias=True)
+    (2): Linear(in_features=90, out_features=198, bias=True)
+  )
+)
+Params length:  12
+   90   90   40   40   20   20   40   40   90   90   198   198
