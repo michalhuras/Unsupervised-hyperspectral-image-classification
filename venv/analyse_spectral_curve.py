@@ -19,6 +19,21 @@ from dataloader.pavia_dataloader import Dataloader as pavia_dataloader
 from algorithms.pairing_greedy_algorithm import PairingAlgorithm
 
 
+def create_result_img_path(base_path):
+    base_path_split = base_path.split("/")
+    save_name = "comparison_" + base_path_split[-1]
+    if save_name.endswith('.txt'):
+        save_name = save_name[:-4]
+    save_name += ".png"
+    save_path = ""
+    for i in range(len(base_path_split) - 2):
+        save_path += base_path_split[i] + "/"
+
+    save_path = save_path + "comparison/" + save_name
+
+    return save_path
+
+
 def image_to_list(image):
     result_list = np.zeros(image.shape[0] * image.shape[1])
     i = 0
@@ -69,13 +84,14 @@ def get_precision(labeled_image, ground_truth, verbal=False):
     return report
 
 
-def compare_with_ground_truth(labeled_image, dataloader, path_to_file, plot=True, verbal=False):
+def compare_with_ground_truth(
+        labeled_image, dataloader, path_to_file, plot=False, verbal=False, save_img=False, result_img_path=""):
     if verbal:
         print()
         print("* Compare with ground truth")
     ground_truth = dataloader.get_labels(verbal=False)
 
-    if plot:
+    if plot or save_img:
         # plt.clf()
         fig, axs = plt.subplots(1, 2)
         axs[0].imshow(labeled_image)
@@ -83,8 +99,12 @@ def compare_with_ground_truth(labeled_image, dataloader, path_to_file, plot=True
         axs[1].set_title('Ground truth')
         axs[1].imshow(ground_truth)
         fig.suptitle(path_to_file.split("/")[-1], fontsize=16)
-        plt.draw()
-        # plt.show()
+        if save_img:
+            plt.savefig(result_img_path, bbox_inches='tight')
+            print("Saving comparison to file: ", result_img_path)
+        # plt.draw()
+        elif plot:
+            plt.show()
 
     report = "Confusion matrix: \n" + str(create_confusion_matrix(labeled_image, ground_truth))
     report += "\n\n\n" + get_precision(labeled_image, ground_truth)
@@ -101,10 +121,10 @@ def save_report(report, file_labels, verbal=True):
     file_labels_split = file_labels.split("/")
     report_name = "report_" + file_labels_split[-1]
     report_path = ""
-    for i in range(len(file_labels_split) - 1):
+    for i in range(len(file_labels_split) - 2):
         report_path += file_labels_split[i] + "/"
 
-    save_path = report_path + report_name
+    save_path = report_path + "comparison/" + report_name
     if verbal:
         # print("Report file name: \t\t", report_name)
         # print("Report file path: \t\t", report_path)
@@ -119,7 +139,10 @@ def single_analyse(dataloader_local, spectral_curve_path, labeled_image_path):
     print("File labels: \t\t\t", labeled_image_path)
     pairs = prd.pairs_in_spectral_curves(dataloader_local, spectral_curve_path, PairingAlgorithm(), verbal=True)
     labeled_image = prd.get_labeled_image(labeled_image_path, pairs)
-    report = compare_with_ground_truth(labeled_image, dataloader_local, labeled_image_path)
+    comparison_img_path = create_result_img_path(labeled_image_path)
+    report =\
+        compare_with_ground_truth(labeled_image, dataloader_local, labeled_image_path,
+                                  result_img_path=comparison_img_path, save_img=True)
     save_report(report, labeled_image_path)
 
 
@@ -179,7 +202,7 @@ if __name__ == '__main__':
     if to_file:
         import sys
         orig_stdout = sys.stdout
-        output_file = open('analyse_spectral_curve_output.txt', 'w')
+        output_file = open('results/analyse_spectral_curve_output.txt', 'w')
         sys.stdout = output_file
 
     print("START")
@@ -211,10 +234,10 @@ if __name__ == '__main__':
 
     print("END")
 
-
     # Closing file
     if to_file:
         sys.stdout = orig_stdout
         output_file.close()
 
-    plt.show()
+    # plt.show()
+    # to many images

@@ -292,13 +292,13 @@ def run_machine_for_all():
     dataloaders = []
     # dataloaders.append(Dataloader1)
     # dataloaders.append(Dataloader11)
-    # dataloaders.append(Dataloader2)
-    # dataloaders.append(Dataloader3)
-    # dataloaders.append(Dataloader33)
+    dataloaders.append(Dataloader2)
+    dataloaders.append(Dataloader3)
+    dataloaders.append(Dataloader33)
     # dataloaders.append(Dataloader4)
     # dataloaders.append(Dataloader44)
-    dataloaders.append(Dataloader5)
-    dataloaders.append(Dataloader55)
+    # dataloaders.append(Dataloader5)
+    # dataloaders.append(Dataloader55)
     # dataloaders.append(Dataloader6)
 
     clustering_methods = []
