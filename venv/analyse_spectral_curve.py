@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from scipy import io
+import os
 import numpy as np
 import math
 import matplotlib.pyplot as plt
@@ -18,6 +19,8 @@ from dataloader.pavia_dataloader import Dataloader as pavia_dataloader
 
 from algorithms.pairing_greedy_algorithm import PairingAlgorithm
 
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score, f1_score
 
 def create_result_img_path(base_path):
     base_path_split = base_path.split("/")
@@ -64,8 +67,6 @@ def get_precision(labeled_image, ground_truth, verbal=False):
     if verbal:
         print()
         print("PRECISION")
-    from sklearn.metrics import precision_score
-    from sklearn.metrics import recall_score, f1_score
     report = "PRECISION"
     report += "\nPrecision: \t\t\t" + str(precision_score(ground_truth_list, labeled_image_list, average=None))
     report += "\nRecall: \t\t\t" + str(recall_score(ground_truth_list, labeled_image_list, average=None))
@@ -146,9 +147,31 @@ def single_analyse(dataloader_local, spectral_curve_path, labeled_image_path):
     save_report(report, labeled_image_path)
 
 
-def analyse_all_data():
-        import os
+def single_analyse_beta(dataloader_local, spectral_curve_path, labeled_image_path):
+    print("File spectral curve: \t\t", spectral_curve_path)
+    print("File labels: \t\t\t", labeled_image_path)
+    properties = []
+    pairs = prd.pairs_in_spectral_curves(dataloader_local, spectral_curve_path, PairingAlgorithm(), verbal=True)
+    labeled_image = prd.get_labeled_image(labeled_image_path, pairs)
 
+    labeled_image_list = image_to_list(labeled_image)
+    ground_truth_list = image_to_list(dataloader_local.get_labels(verbal=False))
+    properties.append(str(precision_score(ground_truth_list, labeled_image_list, average='micro')))
+    properties.append(str(precision_score(ground_truth_list, labeled_image_list, average='macro')))
+    properties.append(str(precision_score(ground_truth_list, labeled_image_list, average='weighted')))
+    # properties.append(str(precision_score(ground_truth_list, labeled_image_list, average='samples')))
+    properties.append(str(recall_score(ground_truth_list, labeled_image_list, average='micro')))
+    properties.append(str(recall_score(ground_truth_list, labeled_image_list, average='macro')))
+    properties.append(str(recall_score(ground_truth_list, labeled_image_list, average='weighted')))
+    # properties.append(str(recall_score(ground_truth_list, labeled_image_list, average='samples')))
+    properties.append(str(f1_score(ground_truth_list, labeled_image_list, average='micro')))
+    properties.append(str(f1_score(ground_truth_list, labeled_image_list, average='macro')))
+    properties.append(str(f1_score(ground_truth_list, labeled_image_list, average='weighted')))
+    # properties.append(str(f1_score(ground_truth_list, labeled_image_list, average='samples')))
+    return properties
+
+
+def analyse_all_data_separately():
         print("Searching for spectral curve and labeled files")
         result_directories_with_dataloaders = {
             "./results/IndianPines/data/": indian_pines_dataloader(),
@@ -196,6 +219,72 @@ def analyse_all_data():
                     print("File: ", spectral_curve_path)
 
 
+def analyse_all_data_together():
+    import csv
+    print("Analyze all data together")
+    print("Searching for spectral curve and labeled files")
+    result_directories_with_dataloaders = {
+        "./results/IndianPines/data/": indian_pines_dataloader(),
+        "./results/JasperRidge/data/": jasper_ridge_dataloader(),
+        "./results/Pavia/data/": pavia_dataloader(),
+        "./results/Salinas/data/": salinas_dataloader(),
+        "./results/SalinasA/data/": salinas_a_dataloader(),
+        "./results/Samson/data/": samson_dataloader(),
+        # "./result/tests/data":test_dataloader(),
+    }
+
+    # name: directory
+    for path in result_directories_with_dataloaders:
+        print()
+        print()
+        names_and_directories = {}
+        print("\tPath: ", path)
+        print("\tDataloader name: ", result_directories_with_dataloaders[path].get_name(False))
+        print("Create comparison file")
+        comparison_file_name =\
+            result_directories_with_dataloaders[path].get_results_directory() + \
+            "comparison_" + \
+            result_directories_with_dataloaders[path].get_name() + \
+            ".csv"
+        print("Comparison file name: ", comparison_file_name)
+
+        with open(comparison_file_name, 'w') as csvfile:
+            filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            filewriter.writerow(['Name',
+                                 "Precision(micro)", "Precision(macro)", "Precision(weighted)",
+                                 "Recall(micro)", "Recall(macro)", "Recall(weighted)",
+                                 "F1(micro)", "F1(macro)", "F1(weighted)"])
+
+            # r=root, d=directories, f = files
+            for r, d, f in os.walk(path):
+                for file in f:
+                    if '.txt' in file and "spectral_curve" not in file and "report_" not in file:
+                        names_and_directories[file] = os.path.join(r, file)
+
+            print(names_and_directories)
+
+            for file_name in names_and_directories:
+                labels_image_path = names_and_directories[file_name]
+                dataloader_for_this = result_directories_with_dataloaders[path]
+                spectral_curve_path = \
+                    dataloader_for_this.get_results_directory(verbal=False) + "data/spectral_curve_" + file_name
+
+                if os.path.exists(spectral_curve_path):
+                    print()
+                    print("\t File name:  ", file_name)
+                    print("\t Labels image path: ", labels_image_path)
+                    print("\t Spectral curve path: ", spectral_curve_path)
+                    print("\t Dataloader name: ", dataloader_for_this.get_name(verbal=False))
+
+                    report_list = single_analyse_beta(dataloader_for_this, spectral_curve_path, labels_image_path)
+                    report_list = [file_name] + report_list
+                    filewriter.writerow(report_list)
+                else:
+                    print()
+                    print("FILE DOES NOT EXIST")
+                    print("File: ", spectral_curve_path)
+
+
 if __name__ == '__main__':
     to_file = False
     # Przekierowanie wyjścia do pliku
@@ -207,7 +296,8 @@ if __name__ == '__main__':
 
     print("START")
 
-    analyse_all_data()
+    # analyse_all_data_separately()
+    analyse_all_data_together()
 
     '''
     # # Available results files and dataloaders:
