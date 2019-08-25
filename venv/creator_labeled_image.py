@@ -290,8 +290,8 @@ def run_machine_for_all():
     autoencoders.append(Autoencoder5)
 
     dataloaders = []
-    # dataloaders.append(Dataloader1)
-    # dataloaders.append(Dataloader11)
+    dataloaders.append(Dataloader1)
+    dataloaders.append(Dataloader11)
     dataloaders.append(Dataloader2)
     dataloaders.append(Dataloader3)
     dataloaders.append(Dataloader33)
@@ -299,7 +299,7 @@ def run_machine_for_all():
     # dataloaders.append(Dataloader44)
     # dataloaders.append(Dataloader5)
     # dataloaders.append(Dataloader55)
-    # dataloaders.append(Dataloader6)
+    dataloaders.append(Dataloader6)
 
     clustering_methods = []
     clustering_methods.append(classifier1)
