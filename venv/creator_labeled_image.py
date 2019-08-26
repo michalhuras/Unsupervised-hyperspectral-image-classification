@@ -330,7 +330,7 @@ def run_machine_for_all():
 
 
 if __name__ == '__main__':
-    to_file = False
+    to_file = True
 
     # Przekierowanie wyjścia do pliku
     if to_file:
