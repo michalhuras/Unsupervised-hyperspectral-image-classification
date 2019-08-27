@@ -293,8 +293,8 @@ def run_machine_for_all():
     dataloaders.append(Dataloader1)
     dataloaders.append(Dataloader11)
     dataloaders.append(Dataloader2)
-    dataloaders.append(Dataloader3)
-    dataloaders.append(Dataloader33)
+    # dataloaders.append(Dataloader3)
+    # dataloaders.append(Dataloader33)
     # dataloaders.append(Dataloader4)
     # dataloaders.append(Dataloader44)
     # dataloaders.append(Dataloader5)
@@ -311,18 +311,24 @@ def run_machine_for_all():
     for Dataloader in dataloaders:
         for Autoencoder in autoencoders:
             for clustering in clustering_methods:
-                if clustering == classifier2:
-                    for shape in classifier2.cv_types:
+                try:
+                    if clustering == classifier2:
+                        for shape in classifier2.cv_types:
+                            run_machine(Autoencoder, Dataloader(), clustering, Dataloader.get_number_of_clusters()
+                                        , first=False, middle_cut_out=True, param=shape)
+                            run_machine(Autoencoder, Dataloader(), clustering, Dataloader.get_number_of_clusters()
+                                        , first=False, middle_cut_out=False, param=shape)
+                    else:
                         run_machine(Autoencoder, Dataloader(), clustering, Dataloader.get_number_of_clusters()
-                                    , first=False, middle_cut_out=True, param=shape)
+                                    , first=False, middle_cut_out=True)
                         run_machine(Autoencoder, Dataloader(), clustering, Dataloader.get_number_of_clusters()
-                                    , first=False, middle_cut_out=False, param=shape)
-                else:
-                    run_machine(Autoencoder, Dataloader(), clustering, Dataloader.get_number_of_clusters()
-                                , first=False, middle_cut_out=True)
-                    run_machine(Autoencoder, Dataloader(), clustering, Dataloader.get_number_of_clusters()
-                                , first=False, middle_cut_out=False)
-
+                                    , first=False, middle_cut_out=False)
+                except ValueError:
+                    print("EXCEPTION!!!!! -- ValueError")
+                    print()
+                except:
+                    print("EXCEPTION!!!!!")
+                    print()
     print()
     print("***   Run machine for all end   ***")
     print("=====================================")
@@ -330,7 +336,7 @@ def run_machine_for_all():
 
 
 if __name__ == '__main__':
-    to_file = True
+    to_file = False
 
     # Przekierowanie wyjścia do pliku
     if to_file:
