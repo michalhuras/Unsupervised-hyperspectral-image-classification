@@ -1,8 +1,0 @@
-# spectral_curve_salinas_a_clustering_kmeans_linear_autoencoder_3_mcu_pairs.txt
-6
-2
-1
-0
-4
-3
-5

@@ -1,8 +1,0 @@
-# spectral_curve_salinas_a_gaussian_mixture_spherical_linear_autoencoder_3_pairs.txt
-0
-3
-6
-4
-2
-5
-1

@@ -1,8 +1,0 @@
-# spectral_curve_salinas_a_clustering_kmeans_none_autoencoder_none_mcu_pairs.txt
-6
-1
-0
-2
-5
-4
-3

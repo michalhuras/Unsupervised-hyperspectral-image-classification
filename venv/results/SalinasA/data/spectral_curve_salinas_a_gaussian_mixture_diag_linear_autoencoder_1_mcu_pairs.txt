@@ -1,8 +1,0 @@
-# spectral_curve_salinas_a_gaussian_mixture_diag_linear_autoencoder_1_mcu_pairs.txt
-1
-4
-0
-2
-3
-5
-6

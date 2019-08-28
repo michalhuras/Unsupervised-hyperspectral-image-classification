@@ -1,8 +1,0 @@
-# spectral_curve_salinas_a_gaussian_mixture_diag_convolutional_autoencoder_1_pairs.txt
-5
-6
-3
-1
-0
-4
-2

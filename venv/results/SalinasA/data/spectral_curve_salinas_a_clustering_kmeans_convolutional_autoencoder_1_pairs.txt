@@ -1,8 +1,0 @@
-# spectral_curve_salinas_a_clustering_kmeans_convolutional_autoencoder_1_pairs.txt
-1
-4
-6
-0
-2
-3
-5
