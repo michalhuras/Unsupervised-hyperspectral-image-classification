@@ -13,15 +13,17 @@ import os
 import matplotlib.pyplot as plt
 import sys
 
+import creator_result_files as crf
+
 '''
-    Main function
+    Main function to create labeled images
 '''
 
 from models.autoencoder_linear_1 import Autoencoder as Autoencoder1
 from models.autoencoder_linear_2 import Autoencoder as Autoencoder2
 from models.autoencoder_linear_3 import Autoencoder as Autoencoder3
-from models.autoencoder_none import Autoencoder as Autoencoder4 # TODO !!! puścić
-from models.autoencoder_convolutional import Autoencoder as Autoencoder5 # TODO !!! puścić
+from models.autoencoder_none import Autoencoder as Autoencoder4
+from models.autoencoder_convolutional import Autoencoder as Autoencoder5
 
 from dataloader.indian_pines_dataloader import Dataloader as Dataloader1
 from dataloader.indian_pines_cut_out_dataloader import Dataloader as Dataloader11
@@ -348,6 +350,10 @@ if __name__ == '__main__':
     print("START")
     start_time = time.time()
     print("Start time:  ", time.ctime(start_time))
+
+
+    # Creating result files (if doesnt exists)
+    crf.create_result_files()
 
     # Procedures
     run_machine_for_all()
