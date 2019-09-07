@@ -248,7 +248,7 @@ def analyse_all_data_together():
             ".csv"
         print("Comparison file name: ", comparison_file_name)
 
-        with open(comparison_file_name, 'w') as csvfile:
+        with open(comparison_file_name, 'w', newline='') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
             filewriter.writerow(['Name',
                                  "Precision(micro)", "Precision(macro)", "Precision(weighted)",
