@@ -12,6 +12,7 @@ import time
 import os
 import matplotlib.pyplot as plt
 import sys
+import csv
 
 import creator_result_files as crf
 
@@ -40,6 +41,10 @@ import clustering.kmeans as classifier1
 import clustering.gaussian_mixture as classifier2 # TODO puścić
 #import clustering.optics as classifier2 # TODO dostosować
 # import clustering.mean_shift as classifier3 # TODO dostosować
+
+
+time_beg = 0
+time_fin = 0
 
 
 def cut_out_in_midle(the_image_autoencoded, Dataloader, verbal=False):
@@ -81,6 +86,16 @@ def save_model(my_net, autoencoder_learned_file, autoencoder_learned_file_descri
         description_file.write("   " + str(len(parameter)))
 
     description_file.close()
+
+
+def save_csv_file(
+        filename, row_to_write, verbal=True):
+    print("save_model_file")
+    with open(filename, 'a', newline='') as csvfile:
+        if verbal:
+            print("Filename: ", filename)
+        file_writer = csv.writer(csvfile, delimiter=';', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        file_writer.writerow(row_to_write)
 
 
 def run_machine(
@@ -129,6 +144,14 @@ def run_machine(
         '_' + my_net.getName() + \
         dataloader_suffix + \
         '_description.txt'
+    file_times_learning = \
+        Dataloader.get_results_directory() + \
+        "autoencoder/times_learning_autoencoders.csv"
+
+    file_times_classification = \
+        Dataloader.get_results_directory() + \
+        "comparison/times_classification.csv"
+
     print("Autoencoder learn file: ", autoencoder_learned_file)
 
     if not first and my_net.getName() != 'none':
@@ -173,6 +196,7 @@ def run_machine(
         epsilon = 0.23
         the_best_loss = sys.maxsize
         for epoch in range(num_epochs):
+            time_beg = time.time()
             for i, data in enumerate(my_dataloader):
                 img, _ = data
                 img = img.to(device)
@@ -185,10 +209,25 @@ def run_machine(
                 loss.backward()
                 optimizer.step()
             # ===================log========================
+            time_fin = time.time()
             print('epoch [', epoch + 1, '/', num_epochs, '], loss:', loss.item())
+            print('Begin time: ', time_beg)
+            print('Begin time: ', time_fin)
+            duration = int(time_fin - time_beg)
+            print("Duration:  ", duration, " seconds")
+
             # if loss.item() < epsilon:
             #     print('Epsilon break. Epsilon value: ',epsilon)
             #     break
+            save_csv_file(  # saving learning time and loss value
+                file_times_learning,
+                [Dataloader.get_name(),
+                my_net.getType(),
+                my_net.getName(),
+                epoch + 1,
+                dataloader_suffix,
+                str(duration),
+                loss.item()])
             if loss.item() < the_best_loss:
                 the_best_loss = loss.item()
                 save_model(
@@ -250,8 +289,25 @@ def run_machine(
     print()
     print("***   Clustering   ***")
     print("---------------------------------")
+    time_beg = time.time()
+
     the_image_classified =\
         Classifier.clustering(the_image_autoencoded, the_image_shape, nr_of_clusters, extra_parameters=param)
+    time_fin = time.time()
+    print('Begin time: ', time_beg)
+    print('Begin time: ', time_fin)
+    duration = int(time_fin - time_beg)
+    print("Duration:  ", duration, " seconds")
+    save_csv_file(  # saving classification time
+        file_times_classification,
+        [Dataloader.get_name(),
+         dataloader_suffix,
+         my_net.getType(),
+         my_net.getName(),
+         suffix,
+         Classifier.get_name(),
+         param_txt,
+         duration])
     print("Result shape: ", np.shape(the_image_classified))
 
     print()
@@ -292,9 +348,9 @@ def run_machine_for_all():
     autoencoders.append(Autoencoder5)
 
     dataloaders = []
-    dataloaders.append(Dataloader1)
-    dataloaders.append(Dataloader11)
-    dataloaders.append(Dataloader2)
+    # dataloaders.append(Dataloader1)
+    # dataloaders.append(Dataloader11)
+    # dataloaders.append(Dataloader2)
     # dataloaders.append(Dataloader3)
     # dataloaders.append(Dataloader33)
     # dataloaders.append(Dataloader4)
