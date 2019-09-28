@@ -225,7 +225,7 @@ def create_spectral_curve_for_existing_data():
 
 if __name__ == '__main__':
     # Ideal data
-    # create_spectral_curve_for_ideal_data()
+    create_spectral_curve_for_ideal_data()
 
     # All data
     create_spectral_curve_for_existing_data()

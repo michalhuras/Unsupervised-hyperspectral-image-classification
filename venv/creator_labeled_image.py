@@ -3,10 +3,10 @@
 
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
-import torch.utils.data as utils
-import torchvision.transforms as transforms
-from scipy import io
+# import torch.nn.functional as F
+# import torch.utils.data as utils
+# import torchvision.transforms as transforms
+# from scipy import io
 import numpy as np
 import time
 import os
@@ -38,7 +38,7 @@ from dataloader.salinas_a_cut_out_dataloader import Dataloader as Dataloader55
 from dataloader.samson_dataloader import Dataloader as Dataloader6
 
 import clustering.kmeans as classifier1
-import clustering.gaussian_mixture as classifier2 # TODO puścić
+import clustering.gaussian_mixture as classifier2
 #import clustering.optics as classifier2 # TODO dostosować
 # import clustering.mean_shift as classifier3 # TODO dostosować
 
@@ -277,8 +277,23 @@ def run_machine(
     print("Image shape: ", the_image_shape)
     print("Image list shape: ", np.shape(the_image_list))
     print("Image code got from autoencoder")
+    file_times_autoencoding = \
+        Dataloader.get_results_directory() + \
+        "autoencoder/times_autoencoding.csv"
     my_net.to(torch.device("cpu"))
+    time_beg = time.time()
     the_image_autoencoded = [my_net.getCode(torch.Tensor(point)).detach().numpy() for point in the_image_list]
+    time_fin = time.time()
+    duration = int(time_fin - time_beg)
+    print("Duration:  ", duration, " seconds")
+    save_csv_file(  # saving autoencoding time
+        file_times_autoencoding, # TODO
+        [Dataloader.get_name(),
+         my_net.getType(),
+         my_net.getName(),
+         dataloader_suffix,
+         str(duration)])
+
     print("Autoencoded image shape: ", np.shape(the_image_autoencoded))
     if middle_cut_out:
         print()
@@ -290,7 +305,6 @@ def run_machine(
     print("***   Clustering   ***")
     print("---------------------------------")
     time_beg = time.time()
-
     the_image_classified =\
         Classifier.clustering(the_image_autoencoded, the_image_shape, nr_of_clusters, extra_parameters=param)
     time_fin = time.time()
@@ -394,7 +408,7 @@ def run_machine_for_all():
 
 
 if __name__ == '__main__':
-    to_file = False
+    to_file = False # TODO change
 
     # Przekierowanie wyjścia do pliku
     if to_file:
