@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from scipy import io
+#from scipy import io # TODO do usuniecia?
 import os
 import numpy as np
-import math
+#import math # TODO do usuniecia?
 import matplotlib.pyplot as plt
 
 import scripts_my.prepare_result_data as prd
@@ -18,6 +18,7 @@ from dataloader.salinas_a_dataloader import Dataloader as salinas_a_dataloader
 from dataloader.pavia_dataloader import Dataloader as pavia_dataloader
 
 from algorithms.pairing_greedy_algorithm import PairingAlgorithm
+from algorithms.pairing_greedy_algorithm import NotEnoughLabelsError
 
 from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score, f1_score
@@ -211,8 +212,11 @@ def analyse_all_data_separately():
                     print("\t Labels image path: ", labels_image_path)
                     print("\t Spectral curve path: ", spectral_curve_path)
                     print("\t Dataloader name: ", dataloader_for_this.get_name(verbal=False))
-
-                    single_analyse(dataloader_for_this, spectral_curve_path, labels_image_path)
+                    try:
+                        single_analyse(dataloader_for_this, spectral_curve_path, labels_image_path)
+                    except NotEnoughLabelsError:
+                        print("NotEnoughLabelsError")
+                        print()
                 else:
                     print()
                     print("FILE DOES NOT EXIST")
@@ -276,9 +280,14 @@ def analyse_all_data_together():
                     print("\t Spectral curve path: ", spectral_curve_path)
                     print("\t Dataloader name: ", dataloader_for_this.get_name(verbal=False))
 
-                    report_list = single_analyse_beta(dataloader_for_this, spectral_curve_path, labels_image_path)
-                    report_list = [file_name] + report_list
-                    filewriter.writerow(report_list)
+                    try:
+                        report_list = single_analyse_beta(dataloader_for_this, spectral_curve_path, labels_image_path)
+                        report_list = [file_name] + report_list
+                        filewriter.writerow(report_list)
+                    except NotEnoughLabelsError:
+                        print("NotEnoughLabelsError")
+                        print("File:  ", file_name)
+                        print()
                 else:
                     print()
                     print("FILE DOES NOT EXIST")
@@ -286,12 +295,12 @@ def analyse_all_data_together():
 
 
 if __name__ == '__main__':
-    to_file = False
+    to_file = True
     # Przekierowanie wyjścia do pliku
     if to_file:
         import sys
         orig_stdout = sys.stdout
-        output_file = open('results/analyse_spectral_curve_output.txt', 'w')
+        output_file = open('results/analyse_spectral_curve_output_24_09.txt', 'w')
         sys.stdout = output_file
 
     print("START")

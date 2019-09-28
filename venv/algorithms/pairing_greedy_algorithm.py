@@ -5,6 +5,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
+class NotEnoughLabelsError(Exception):
+    # Raised when nan value is being found in labels distance array
+    pass
+
+
 class PairingAlgorithm:
     def __init__(self):
         self.algorithm_name = "Greedy algorithm"
@@ -93,6 +98,12 @@ class PairingAlgorithm:
             for x in range(nr_of_labels):
                 distance_array[y][x] = self.count_difference(ideal_spectral_curve[x], spectral_curve[y])
         self.my_print_array(distance_array)
+
+        self.my_print()
+        self.my_print("Checking if any argument is nan - situation when at least one label wasn't used")
+        if np.isnan(distance_array).any():
+            print("nan argument in array throwing message!")
+            raise NotEnoughLabelsError
 
         self.my_print()
         self.my_print("Normalization")
