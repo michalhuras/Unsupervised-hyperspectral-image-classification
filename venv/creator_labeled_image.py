@@ -20,11 +20,14 @@ import creator_result_files as crf
     Main function to create labeled images
 '''
 
+from models.autoencoder_none import Autoencoder as Autoencoder0
 from models.autoencoder_linear_1 import Autoencoder as Autoencoder1
 from models.autoencoder_linear_2 import Autoencoder as Autoencoder2
 from models.autoencoder_linear_3 import Autoencoder as Autoencoder3
-from models.autoencoder_none import Autoencoder as Autoencoder4
-from models.autoencoder_convolutional import Autoencoder as Autoencoder5
+from models.autoencoder_linear_4 import Autoencoder as Autoencoder4
+from models.autoencoder_linear_5 import Autoencoder as Autoencoder5
+from models.autoencoder_linear_6 import Autoencoder as Autoencoder6
+# from models.autoencoder_convolutional import Autoencoder as Autoencoder7
 
 from dataloader.indian_pines_dataloader import Dataloader as Dataloader1
 from dataloader.indian_pines_cut_out_dataloader import Dataloader as Dataloader11
@@ -355,11 +358,14 @@ def run_machine_for_all():
     print()
 
     autoencoders = []
+    autoencoders.append(Autoencoder0)
     autoencoders.append(Autoencoder1)
     autoencoders.append(Autoencoder2)
     autoencoders.append(Autoencoder3)
     autoencoders.append(Autoencoder4)
     autoencoders.append(Autoencoder5)
+    autoencoders.append(Autoencoder6)
+    # autoencoders.append(Autoencoder7)
 
     dataloaders = []
     # dataloaders.append(Dataloader1)
@@ -398,9 +404,13 @@ def run_machine_for_all():
                 except ValueError:
                     print("EXCEPTION!!!!! -- ValueError")
                     print()
-                except:
+                except Exception:
+                    import traceback
                     print("EXCEPTION!!!!!")
+                    traceback.print_exc()
                     print()
+                    import sys
+                    sys.exit()
     print()
     print("***   Run machine for all end   ***")
     print("=====================================")
