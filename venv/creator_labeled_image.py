@@ -3,10 +3,6 @@
 
 import torch
 import torch.nn as nn
-# import torch.nn.functional as F
-# import torch.utils.data as utils
-# import torchvision.transforms as transforms
-# from scipy import io
 import numpy as np
 import time
 import os
@@ -27,7 +23,9 @@ from models.autoencoder_linear_3 import Autoencoder as Autoencoder3
 from models.autoencoder_linear_4 import Autoencoder as Autoencoder4
 from models.autoencoder_linear_5 import Autoencoder as Autoencoder5
 from models.autoencoder_linear_6 import Autoencoder as Autoencoder6
-# from models.autoencoder_convolutional import Autoencoder as Autoencoder7
+from models.autoencoder_convolutional_1 import Autoencoder as Autoencoder7
+from models.autoencoder_convolutional_2 import Autoencoder as Autoencoder8
+from models.autoencoder_convolutional_3 import Autoencoder as Autoencoder9
 
 from dataloader.indian_pines_dataloader import Dataloader as Dataloader1
 from dataloader.indian_pines_cut_out_dataloader import Dataloader as Dataloader11
@@ -312,7 +310,7 @@ def run_machine(
         Classifier.clustering(the_image_autoencoded, the_image_shape, nr_of_clusters, extra_parameters=param)
     time_fin = time.time()
     print('Begin time: ', time_beg)
-    print('Begin time: ', time_fin)
+    print('Finish time: ', time_fin)
     duration = int(time_fin - time_beg)
     print("Duration:  ", duration, " seconds")
     save_csv_file(  # saving classification time
@@ -366,6 +364,8 @@ def run_machine_for_all():
     autoencoders.append(Autoencoder5)
     autoencoders.append(Autoencoder6)
     # autoencoders.append(Autoencoder7)
+    # autoencoders.append(Autoencoder8)
+    # autoencoders.append(Autoencoder9)
 
     dataloaders = []
     # dataloaders.append(Dataloader1)
