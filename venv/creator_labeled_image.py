@@ -358,11 +358,11 @@ def run_machine_for_all():
     autoencoders = []
     autoencoders.append(Autoencoder0)
     autoencoders.append(Autoencoder1)
-    autoencoders.append(Autoencoder2)
-    autoencoders.append(Autoencoder3)
-    autoencoders.append(Autoencoder4)
-    autoencoders.append(Autoencoder5)
-    autoencoders.append(Autoencoder6)
+    # autoencoders.append(Autoencoder2)
+    # autoencoders.append(Autoencoder3)
+    # autoencoders.append(Autoencoder4)
+    # autoencoders.append(Autoencoder5)
+    # autoencoders.append(Autoencoder6)
     # autoencoders.append(Autoencoder7)
     # autoencoders.append(Autoencoder8)
     # autoencoders.append(Autoencoder9)
@@ -381,10 +381,7 @@ def run_machine_for_all():
 
     clustering_methods = []
     clustering_methods.append(classifier1)
-    clustering_methods.append(classifier2)
-
-    # clustering_methods.append(classifier3)
-    # clustering_methods.append(classifier4)
+    # clustering_methods.append(classifier2)
 
     for Dataloader in dataloaders:
         for Autoencoder in autoencoders:
@@ -417,14 +414,25 @@ def run_machine_for_all():
     print()
 
 
+def get_timestamp():
+    import time
+    from datetime import datetime
+    date_time_obj = datetime.now()
+    date_obj = date_time_obj.date()
+    time_obj = date_time_obj.time()
+    timestamp_str = str(date_obj.day) + '-' + str(date_obj.month) + '-' + str(date_obj.year) + '_' + \
+        str(time_obj.hour) + '^' + str(time_obj.minute) + '^' + str(time_obj.second)
+    return timestamp_str
+
+
 if __name__ == '__main__':
-    to_file = False # TODO change
+    to_file = True # TODO change
 
     # Przekierowanie wyjścia do pliku
     if to_file:
         import sys
         orig_stdout = sys.stdout
-        output_file = open('results/creator_labeled_image_output.txt', 'w')
+        output_file = open('results/creator_labeled_image_output_' + get_timestamp() + '.txt', 'w')
         sys.stdout = output_file
 
     print("START")
@@ -454,4 +462,4 @@ if __name__ == '__main__':
         sys.stdout = orig_stdout
         output_file.close()
 
-    plt.show()
+    # plt.show()
