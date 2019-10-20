@@ -36,7 +36,7 @@ class Autoencoder(nn.Module):
         self.decoder_conv = nn.ConvTranspose1d(self.dimensions, 1, self.kernel_size)
 
     def encode(self, input_value):
-        input_value = input_value.reshape((1, 1, input_value.shape[1]))
+        input_value = input_value.reshape((1, 1, self.first_size))
         input_value = F.relu(self.encoder_conv(input_value))
         self.this_size = input_value.size()
         input_value, self.indices = self.encoder_pool(input_value)
@@ -59,10 +59,8 @@ class Autoencoder(nn.Module):
         return x
 
     def getCode(self, x):
-        print("Get code")
         x = self.encode(x)
-        x = x.reshape((x.shape[0]))
-        print("Shape:", x.shape())
+        x = x.reshape(self.dimensions)
         return x
 
     @staticmethod
