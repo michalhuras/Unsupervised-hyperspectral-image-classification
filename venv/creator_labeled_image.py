@@ -40,8 +40,11 @@ from dataloader.samson_dataloader import Dataloader as Dataloader6
 
 import clustering.kmeans as classifier1
 import clustering.gaussian_mixture as classifier2
-#import clustering.optics as classifier2 # TODO dostosować
-# import clustering.mean_shift as classifier3 # TODO dostosować
+
+
+def current_time_ms():
+    # get current time in milliseconds
+    return int(round(time.time() * 1000))
 
 
 time_beg = 0
@@ -197,7 +200,7 @@ def run_machine(
         epsilon = 0.23
         the_best_loss = sys.maxsize
         for epoch in range(num_epochs):
-            time_beg = time.time()
+            time_beg = current_time_ms()
             for i, data in enumerate(my_dataloader):
                 img, _ = data
                 img = img.to(device)
@@ -210,7 +213,7 @@ def run_machine(
                 loss.backward()
                 optimizer.step()
             # ===================log========================
-            time_fin = time.time()
+            time_fin = current_time_ms()
             print('epoch [', epoch + 1, '/', num_epochs, '], loss:', loss.item())
             print('Begin time: ', time_beg)
             print('Begin time: ', time_fin)
@@ -282,9 +285,9 @@ def run_machine(
         Dataloader.get_results_directory() + \
         "autoencoder/times_autoencoding.csv"
     my_net.to(torch.device("cpu"))
-    time_beg = time.time()
+    time_beg = current_time_ms()
     the_image_autoencoded = [my_net.getCode(torch.Tensor(point)).detach().numpy() for point in the_image_list]
-    time_fin = time.time()
+    time_fin = current_time_ms()
     duration = int(time_fin - time_beg)
     print("Duration:  ", duration, " seconds")
     save_csv_file(  # saving autoencoding time
@@ -305,10 +308,10 @@ def run_machine(
     print()
     print("***   Clustering   ***")
     print("---------------------------------")
-    time_beg = time.time()
+    time_beg = current_time_ms()
     the_image_classified =\
         Classifier.clustering(the_image_autoencoded, the_image_shape, nr_of_clusters, extra_parameters=param)
-    time_fin = time.time()
+    time_fin = current_time_ms()
     print('Begin time: ', time_beg)
     print('Finish time: ', time_fin)
     duration = int(time_fin - time_beg)
@@ -356,14 +359,14 @@ def run_machine_for_all():
     print()
 
     autoencoders = []
-    autoencoders.append(Autoencoder0)
-    autoencoders.append(Autoencoder1)
+    # autoencoders.append(Autoencoder0)
+    # autoencoders.append(Autoencoder1)
     # autoencoders.append(Autoencoder2)
     # autoencoders.append(Autoencoder3)
     # autoencoders.append(Autoencoder4)
     # autoencoders.append(Autoencoder5)
     # autoencoders.append(Autoencoder6)
-    # autoencoders.append(Autoencoder7)
+    autoencoders.append(Autoencoder7)
     # autoencoders.append(Autoencoder8)
     # autoencoders.append(Autoencoder9)
 
@@ -381,7 +384,7 @@ def run_machine_for_all():
 
     clustering_methods = []
     clustering_methods.append(classifier1)
-    # clustering_methods.append(classifier2)
+    clustering_methods.append(classifier2)
 
     for Dataloader in dataloaders:
         for Autoencoder in autoencoders:
