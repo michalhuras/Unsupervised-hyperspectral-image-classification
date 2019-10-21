@@ -87,7 +87,7 @@ def get_precision(labeled_image, ground_truth, verbal=False):
 
 
 def compare_with_ground_truth(
-        labeled_image, dataloader, path_to_file, plot=False, verbal=False, save_img=False, result_img_path=""):
+        labeled_image, dataloader, path_to_file, plot=False, verbal=False, save_img=True, result_img_path=""):
     if verbal:
         print()
         print("* Compare with ground truth")
@@ -293,6 +293,15 @@ def analyse_all_data_together():
                     print("FILE DOES NOT EXIST")
                     print("File: ", spectral_curve_path)
 
+def get_timestamp():
+    import time
+    from datetime import datetime
+    date_time_obj = datetime.now()
+    date_obj = date_time_obj.date()
+    time_obj = date_time_obj.time()
+    timestamp_str = str(date_obj.day) + '-' + str(date_obj.month) + '-' + str(date_obj.year) + '_' + \
+        str(time_obj.hour) + '^' + str(time_obj.minute) + '^' + str(time_obj.second)
+    return timestamp_str
 
 if __name__ == '__main__':
     to_file = True
@@ -300,7 +309,7 @@ if __name__ == '__main__':
     if to_file:
         import sys
         orig_stdout = sys.stdout
-        output_file = open('results/analyse_spectral_curve_output_24_09.txt', 'w')
+        output_file = open('results/analyse_spectral_curve_output_' + get_timestamp() + '.txt', 'w')
         sys.stdout = output_file
 
     print("START")
