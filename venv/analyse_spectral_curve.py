@@ -293,6 +293,7 @@ def analyse_all_data_together():
                     print("FILE DOES NOT EXIST")
                     print("File: ", spectral_curve_path)
 
+
 def get_timestamp():
     import time
     from datetime import datetime
@@ -302,6 +303,7 @@ def get_timestamp():
     timestamp_str = str(date_obj.day) + '-' + str(date_obj.month) + '-' + str(date_obj.year) + '_' + \
         str(time_obj.hour) + '^' + str(time_obj.minute) + '^' + str(time_obj.second)
     return timestamp_str
+
 
 if __name__ == '__main__':
     to_file = True

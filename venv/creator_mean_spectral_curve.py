@@ -4,7 +4,7 @@ from scipy import io
 import numpy as np
 import time
 
-from drafts.tests.test_dataloader import Dataloader as test_dataloader
+# from drafts.tests.test_dataloader import Dataloader as test_dataloader
 from dataloader.indian_pines_dataloader import Dataloader as indian_pines_dataloader
 from dataloader.samson_dataloader import Dataloader as samson_dataloader
 from dataloader.jasper_ridge_dataloader import Dataloader as jasper_ridge_dataloader
@@ -130,7 +130,7 @@ def create_spectral_curve_from_dataloader(
         dataloader.get_number_of_clusters(verbal=False),
         dataloader.get_image_shape(verbal=False),
         dataloader.get_results_directory(verbal=False),
-        show_img=True,
+        show_img=False,
         save_img=True,
         save_data=True,
         draw_legend=True,
@@ -163,7 +163,7 @@ def create_spectral_curve_from_dataloader_plus(
 
 
 def create_spectral_curve_for_ideal_data():
-    create_spectral_curve_from_dataloader(test_dataloader())
+    # create_spectral_curve_from_dataloader(test_dataloader())
     create_spectral_curve_from_dataloader(indian_pines_dataloader())
     create_spectral_curve_from_dataloader(samson_dataloader())
     create_spectral_curve_from_dataloader(jasper_ridge_dataloader())
