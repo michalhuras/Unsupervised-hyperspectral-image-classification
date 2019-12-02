@@ -21,7 +21,7 @@ from algorithms.pairing_greedy_algorithm import PairingAlgorithm
 from algorithms.pairing_greedy_algorithm import NotEnoughLabelsError
 
 from sklearn.metrics import precision_score
-from sklearn.metrics import recall_score, f1_score
+from sklearn.metrics import recall_score, f1_score, accuracy_score
 
 def create_result_img_path(base_path):
     base_path_split = base_path.split("/")
@@ -145,7 +145,7 @@ def single_analyse(dataloader_local, spectral_curve_path, labeled_image_path):
     report =\
         compare_with_ground_truth(labeled_image, dataloader_local, labeled_image_path,
                                   result_img_path=comparison_img_path, save_img=True)
-    save_report(report, labeled_image_path)
+    # save_report(report, labeled_image_path)
 
 
 def single_analyse_beta(dataloader_local, spectral_curve_path, labeled_image_path):
@@ -162,12 +162,13 @@ def single_analyse_beta(dataloader_local, spectral_curve_path, labeled_image_pat
     properties.append(str(precision_score(ground_truth_list, labeled_image_list, average='weighted')))
     # properties.append(str(precision_score(ground_truth_list, labeled_image_list, average='samples')))
     properties.append(str(recall_score(ground_truth_list, labeled_image_list, average='micro')))
-    properties.append(str(recall_score(ground_truth_list, labeled_image_list, average='macro')))
+    properties.append(str(recall_score(groprecision_scoreund_truth_list, labeled_image_list, average='macro')))
     properties.append(str(recall_score(ground_truth_list, labeled_image_list, average='weighted')))
     # properties.append(str(recall_score(ground_truth_list, labeled_image_list, average='samples')))
     properties.append(str(f1_score(ground_truth_list, labeled_image_list, average='micro')))
     properties.append(str(f1_score(ground_truth_list, labeled_image_list, average='macro')))
     properties.append(str(f1_score(ground_truth_list, labeled_image_list, average='weighted')))
+    properties.append(str(accuracy_score(ground_truth_list, labeled_image_list)))
     # properties.append(str(f1_score(ground_truth_list, labeled_image_list, average='samples')))
     return properties
 
@@ -222,19 +223,21 @@ def analyse_all_data_separately():
                     print("FILE DOES NOT EXIST")
                     print("File: ", spectral_curve_path)
 
+                plt.close("all")
+
 
 def analyse_all_data_together():
     import csv
     print("Analyze all data together")
     print("Searching for spectral curve and labeled files")
     result_directories_with_dataloaders = {
-        "./results/IndianPines/data/": indian_pines_dataloader(),
-        "./results/JasperRidge/data/": jasper_ridge_dataloader(),
-        "./results/Pavia/data/": pavia_dataloader(),
-        "./results/Salinas/data/": salinas_dataloader(),
+        # TODO odkomentować
+        # "./results/IndianPines/data/": indian_pines_dataloader(),
+        # "./results/JasperRidge/data/": jasper_ridge_dataloader(),
+        # "./results/Pavia/data/": pavia_dataloader(),
+        # "./results/Salinas/data/": salinas_dataloader(),
         "./results/SalinasA/data/": salinas_a_dataloader(),
-        "./results/Samson/data/": samson_dataloader(),
-        # "./result/tests/data":test_dataloader(),
+        # "./results/Samson/data/": samson_dataloader(),
     }
 
     # name: directory
@@ -255,9 +258,9 @@ def analyse_all_data_together():
         with open(comparison_file_name, 'w', newline='') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
             filewriter.writerow(['Name',
-                                 "Precision(micro)", "Precision(macro)", "Precision(weighted)",
-                                 "Recall(micro)", "Recall(macro)", "Recall(weighted)",
-                                 "F1(micro)", "F1(macro)", "F1(weighted)"])
+                                 "Precision (micro)", "Precision (macro)", "Precision (weighted)",
+                                 "Recall (micro)", "Recall (macro)", "Recall (weighted)",
+                                 "F1 (micro)", "F1 (macro)", "F1 (weighted)"])
 
             # r=root, d=directories, f = files
             for r, d, f in os.walk(path):
@@ -283,6 +286,7 @@ def analyse_all_data_together():
                     try:
                         report_list = single_analyse_beta(dataloader_for_this, spectral_curve_path, labels_image_path)
                         report_list = [file_name] + report_list
+                        # report_list = file_name.split('_') + report_list
                         filewriter.writerow(report_list)
                     except NotEnoughLabelsError:
                         print("NotEnoughLabelsError")
@@ -292,6 +296,8 @@ def analyse_all_data_together():
                     print()
                     print("FILE DOES NOT EXIST")
                     print("File: ", spectral_curve_path)
+
+                plt.close("all")
 
 
 def get_timestamp():
@@ -316,8 +322,8 @@ if __name__ == '__main__':
 
     print("START")
 
-    # analyse_all_data_separately()
-    analyse_all_data_together()
+    analyse_all_data_separately()
+    analyse_all_data_together() # TODO Odkomentować
 
     '''
     # # Available results files and dataloaders:
