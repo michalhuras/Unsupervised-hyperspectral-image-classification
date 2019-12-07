@@ -196,7 +196,7 @@ class Dataloader:
         my_tensor = torch.stack(list_of_tensors)
         my_tensor_labels = torch.stack(list_of_tensors_labels)
         my_dataset = utils.TensorDataset(my_tensor, my_tensor_labels)
-        my_dataloader = utils.DataLoader(my_dataset)
+        my_dataloader = utils.DataLoader(my_dataset, num_workers=10, pin_memory=True)
 
         if verbal:
             print("Number of elements in dataset: ", my_dataset.__len__())

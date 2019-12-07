@@ -137,6 +137,7 @@ class Dataloader:
             the_image_labels = the_image_labels.transpose()
             the_image_labels = np.reshape(the_image_labels, (self.image_shape[0], self.image_shape[1], 3))
 
+            # labels_numbers = {0: 0, 1: 0, 2: 0} # counting elements in every group EIEG
             corrected_labels_1D = np.zeros((self.image_shape[0], self.image_shape[1]))
             for i, row in enumerate(corrected_labels_1D):
                 for j, element in enumerate(row):
@@ -148,6 +149,8 @@ class Dataloader:
                         corrected_labels_1D[j][i] = 1
                     else:
                         corrected_labels_1D[j][i] = 2
+                    # labels_numbers[corrected_labels_1D[j][i]] = labels_numbers[corrected_labels_1D[j][i]] + 1 # EIEG
+
             # import matplotlib.pyplot as plt
             # plt.imshow(corrected_labels_1D)
             # plt.show()
@@ -172,6 +175,7 @@ class Dataloader:
                 print("Rozmiar: \t\t\t\t", "wiersze: ", NRows_labels, " kolumny: ", NCols_labels)
                 print("Ilośc etykiet: \t\t\t", 3)
                 print("Etykiety: \t\t\t\t", (0, 1, 2))
+                # print("Elements labeld", labels_numbers) # EIEG
             self.image_labels = corrected_labels_1D
             self.image_labels_exists = True
 
@@ -199,7 +203,7 @@ class Dataloader:
         my_tensor = torch.stack(list_of_tensors)
         my_tensor_labels = torch.stack(list_of_tensors_labels)
         my_dataset = utils.TensorDataset(my_tensor, my_tensor_labels)
-        my_dataloader = utils.DataLoader(my_dataset)
+        my_dataloader = utils.DataLoader(my_dataset, num_workers=10, pin_memory=True)
 
         if verbal:
             print("Number of elements in dataset: ", my_dataset.__len__())
