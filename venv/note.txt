@@ -1,0 +1,14 @@
+
+
+oryginalne dane 
+wiecej klasteryzacji 
+autenkoder
+
+
+ selines
+ pavia
+
+ �rednia krzywa spektralna
+ MI - mutual information
+
+TODO labels wszędzie jako uint 8 !!! <- kiedy jest float64 to potrzebne są dodatkowe rzutowania
