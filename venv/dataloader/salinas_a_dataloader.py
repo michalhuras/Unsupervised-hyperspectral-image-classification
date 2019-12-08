@@ -17,8 +17,8 @@ import os
     Salinas A
 '''
 
-g_nr_of_clusters = 7
-
+g_nr_of_clusters = 6
+# g_nr_of_clusters = 6 + 1 # with ground thruth
 
 class Dataloader:
     def __init__(self):
@@ -145,8 +145,9 @@ class Dataloader:
             NCols_labels = image_size_labels[1]
 
             # labels unification - wartości od 0 do number_of_labels -1
-            unused_label = 0
             labels_dictionary = {}
+            labels_dictionary[0] = 0
+            unused_label = 1
             x = 0
             y = 0
             labels_values = set()
@@ -160,10 +161,6 @@ class Dataloader:
                 if x == self.image_shape[1]:
                     x = 0
                     y += 1
-
-            # import matplotlib.pyplot as plt
-            # plt.imshow(the_image_labels)
-            # plt.show()
 
             if verbal:
                 print("Lokalizacja obrazu: \t", filename_labels)
@@ -223,3 +220,8 @@ if __name__ == '__main__':
     print("RESULT:  ", np.shape(my_dataloader.get_labels()))
     print("\nTEST GET DATALOADER")
     print("RESULT:  ", my_dataloader.get_dataloader())
+
+    if False:
+        import matplotlib.pyplot as plt
+        plt.imshow(my_dataloader.get_labels())
+        plt.show()
