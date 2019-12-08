@@ -392,13 +392,13 @@ def run_machine_for_all():
                 try:
                     if clustering == classifier2:
                         for shape in classifier2.cv_types:
-                            run_machine(Autoencoder, Dataloader(), clustering, Dataloader.get_number_of_clusters()
-                                        , first=False, middle_cut_out=True, param=shape)
+                            # run_machine(Autoencoder, Dataloader(), clustering, Dataloader.get_number_of_clusters()
+                            #             , first=False, middle_cut_out=True, param=shape)
                             run_machine(Autoencoder, Dataloader(), clustering, Dataloader.get_number_of_clusters()
                                         , first=False, middle_cut_out=False, param=shape)
                     else:
-                        run_machine(Autoencoder, Dataloader(), clustering, Dataloader.get_number_of_clusters()
-                                    , first=False, middle_cut_out=True)
+                        # run_machine(Autoencoder, Dataloader(), clustering, Dataloader.get_number_of_clusters()
+                        #             , first=False, middle_cut_out=True)
                         run_machine(Autoencoder, Dataloader(), clustering, Dataloader.get_number_of_clusters()
                                     , first=False, middle_cut_out=False)
                     plt.close("all")
