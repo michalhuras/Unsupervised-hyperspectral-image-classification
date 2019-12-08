@@ -18,7 +18,7 @@ import os
 '''
 
 g_nr_of_clusters = 6
-# g_nr_of_clusters = 6 + 1 # with ground thruth
+# g_nr_of_clusters = 6 + 1 # with background
 
 class Dataloader:
     def __init__(self):

@@ -16,7 +16,8 @@ import os
     Salinas
 '''
 
-g_nr_of_clusters = 17
+g_nr_of_clusters = 16
+# g_nr_of_clusters = 16 + 1 # with background
 
 
 class Dataloader:
@@ -139,8 +140,9 @@ class Dataloader:
             the_image_labels = ImDict_labels[image_name_labels]
 
             # labels unification - wartości od 0 do number_of_labels -1
-            unused_label = 0
             labels_dictionary = {}
+            labels_dictionary[0] = 0
+            unused_label = 1
             x = 0
             y = 0
             labels_values = set()
@@ -222,3 +224,8 @@ if __name__ == '__main__':
     print("RESULT:  ", np.shape(my_dataloader.get_labels()))
     print("\nTEST GET DATALOADER")
     print("RESULT:  ", my_dataloader.get_dataloader())
+
+    if False:
+        import matplotlib.pyplot as plt
+        plt.imshow(my_dataloader.get_labels())
+        plt.show()
