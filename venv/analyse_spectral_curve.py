@@ -23,6 +23,36 @@ from algorithms.pairing_greedy_algorithm import NotEnoughLabelsError
 from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score, f1_score, accuracy_score
 
+
+def cut_background_out(ground_truth_list, labeled_image_list):
+    # Note cut out elements of background in both lists
+    # If on GT element is equal 0 than, this position is deleted from both lists
+    number_of_background = 0
+    for ele in ground_truth_list:
+        if ele == 0:
+            number_of_background = number_of_background + 1
+    print(cut_background_out)
+    print("List length: ", ground_truth_list.shape[0])
+    print("Background elements: ", number_of_background)
+
+    # Number of elements without background
+    nr_of_elements = ground_truth_list.shape[0] - number_of_background
+
+    GT = np.zeros(nr_of_elements)
+    Data = np.zeros(nr_of_elements)
+
+    iter = 0
+    for ele in range(ground_truth_list.shape[0]):
+        if ground_truth_list[ele] != 0:
+            GT[iter] = ground_truth_list[ele]
+            Data[iter] = labeled_image_list[ele]
+            iter = iter + 1
+
+    print("New list length: ", iter)
+
+    return GT, Data
+
+
 def create_result_img_path(base_path):
     base_path_split = base_path.split("/")
     save_name = "comparison_" + base_path_split[-1]
@@ -157,18 +187,22 @@ def single_analyse_beta(dataloader_local, spectral_curve_path, labeled_image_pat
 
     labeled_image_list = image_to_list(labeled_image)
     ground_truth_list = image_to_list(dataloader_local.get_labels(verbal=False))
-    properties.append(str(precision_score(ground_truth_list, labeled_image_list, average='micro')))
-    properties.append(str(precision_score(ground_truth_list, labeled_image_list, average='macro')))
-    properties.append(str(precision_score(ground_truth_list, labeled_image_list, average='weighted')))
+    for i in range(labeled_image_list.shape[0]):
+        # etykiety w danych zaczynają się od 0, a w GT od 1
+        labeled_image_list[i] = labeled_image_list[i] + 1
+    GT, Data = cut_background_out(ground_truth_list, labeled_image_list)
+    properties.append(str(precision_score(GT, Data, average='micro')))
+    properties.append(str(precision_score(GT, Data, average='macro')))
+    properties.append(str(precision_score(GT, Data, average='weighted')))
     # properties.append(str(precision_score(ground_truth_list, labeled_image_list, average='samples')))
-    properties.append(str(recall_score(ground_truth_list, labeled_image_list, average='micro')))
-    properties.append(str(recall_score(groprecision_scoreund_truth_list, labeled_image_list, average='macro')))
-    properties.append(str(recall_score(ground_truth_list, labeled_image_list, average='weighted')))
+    properties.append(str(recall_score(GT, Data, average='micro')))
+    properties.append(str(recall_score(GT, Data, average='macro')))
+    properties.append(str(recall_score(GT, Data, average='weighted')))
     # properties.append(str(recall_score(ground_truth_list, labeled_image_list, average='samples')))
-    properties.append(str(f1_score(ground_truth_list, labeled_image_list, average='micro')))
-    properties.append(str(f1_score(ground_truth_list, labeled_image_list, average='macro')))
-    properties.append(str(f1_score(ground_truth_list, labeled_image_list, average='weighted')))
-    properties.append(str(accuracy_score(ground_truth_list, labeled_image_list)))
+    properties.append(str(f1_score(GT, Data, average='micro')))
+    properties.append(str(f1_score(GT, Data, average='macro')))
+    properties.append(str(f1_score(GT, Data, average='weighted')))
+    properties.append(str(accuracy_score(GT, Data)))
     # properties.append(str(f1_score(ground_truth_list, labeled_image_list, average='samples')))
     return properties
 

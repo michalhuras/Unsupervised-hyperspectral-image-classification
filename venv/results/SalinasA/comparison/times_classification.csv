@@ -1,0 +1,10 @@
+salinas_a;;none;none;;clustering_kmeans;;19660
+salinas_a;;none;none;;gaussian_mixture;spherical_;6411
+salinas_a;;none;none;;gaussian_mixture;tied_;32200
+salinas_a;;none;none;;gaussian_mixture;diag_;6330
+salinas_a;;none;none;;gaussian_mixture;full_;35046
+salinas_a;;linear;1;;clustering_kmeans;;15982
+salinas_a;;linear;1;;gaussian_mixture;spherical_;5491
+salinas_a;;linear;1;;gaussian_mixture;tied_;6871
+salinas_a;;linear;1;;gaussian_mixture;diag_;4583
+salinas_a;;linear;1;;gaussian_mixture;full_;12457
