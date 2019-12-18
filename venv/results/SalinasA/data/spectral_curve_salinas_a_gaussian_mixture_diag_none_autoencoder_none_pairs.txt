@@ -1,7 +1,7 @@
 # spectral_curve_salinas_a_gaussian_mixture_diag_none_autoencoder_none_pairs.txt
-4
-5
-0
-3
-1
 2
+4
+0
+1
+5
+3

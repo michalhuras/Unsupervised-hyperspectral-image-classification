@@ -1,7 +1,7 @@
 Autoencoder: 
 Type: linear
 Name: 2
-Loss value: 0.1641329526901245
+Loss value: 0.12741431593894958
 Dataset: salinas_a
 Autoencoder(
   (encoder): Sequential(
