@@ -1,0 +1,7 @@
+# spectral_curve_salinas_a_gaussian_mixture_tied_linear_autoencoder_4_pairs.txt
+0
+5
+4
+1
+3
+2

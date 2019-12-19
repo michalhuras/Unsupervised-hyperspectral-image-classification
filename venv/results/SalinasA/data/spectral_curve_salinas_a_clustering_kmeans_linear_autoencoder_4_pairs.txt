@@ -1,0 +1,7 @@
+# spectral_curve_salinas_a_clustering_kmeans_linear_autoencoder_4_pairs.txt
+0
+5
+4
+1
+3
+2

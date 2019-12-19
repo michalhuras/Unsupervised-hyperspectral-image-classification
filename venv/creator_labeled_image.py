@@ -28,14 +28,14 @@ from models.autoencoder_convolutional_2 import Autoencoder as Autoencoder8
 from models.autoencoder_convolutional_3 import Autoencoder as Autoencoder9
 
 from dataloader.indian_pines_dataloader import Dataloader as Dataloader1
-from dataloader.indian_pines_cut_out_dataloader import Dataloader as Dataloader11
+# from dataloader.indian_pines_cut_out_dataloader import Dataloader as Dataloader11
 from dataloader.jasper_ridge_dataloader import Dataloader as Dataloader2
 from dataloader.pavia_dataloader import Dataloader as Dataloader3
-from dataloader.pavia_cut_out_dataloader import Dataloader as Dataloader33
+# from dataloader.pavia_cut_out_dataloader import Dataloader as Dataloader33
 from dataloader.salinas_dataloader import Dataloader as Dataloader4
-from dataloader.salinas_cut_out_dataloader import Dataloader as Dataloader44
+# from dataloader.salinas_cut_out_dataloader import Dataloader as Dataloader44
 from dataloader.salinas_a_dataloader import Dataloader as Dataloader5
-from dataloader.salinas_a_cut_out_dataloader import Dataloader as Dataloader55
+# from dataloader.salinas_a_cut_out_dataloader import Dataloader as Dataloader55
 from dataloader.samson_dataloader import Dataloader as Dataloader6
 
 import clustering.kmeans as classifier1
@@ -360,27 +360,24 @@ def run_machine_for_all():
 
     autoencoders = []
     autoencoders.append(Autoencoder0)
+
     autoencoders.append(Autoencoder1)
-    autoencoders.append(Autoencoder2)
-    autoencoders.append(Autoencoder3)
+    # autoencoders.append(Autoencoder2)
+    # autoencoders.append(Autoencoder3)
     autoencoders.append(Autoencoder4)
-    autoencoders.append(Autoencoder5)
-    autoencoders.append(Autoencoder6)
+    # autoencoders.append(Autoencoder5)
+    # autoencoders.append(Autoencoder6)
     autoencoders.append(Autoencoder7)
-    autoencoders.append(Autoencoder8)
-    autoencoders.append(Autoencoder9)
+    # autoencoders.append(Autoencoder8)
+    # autoencoders.append(Autoencoder9)
 
     dataloaders = []
-    dataloaders.append(Dataloader1)
-    dataloaders.append(Dataloader11)
-    dataloaders.append(Dataloader2)
+    # dataloaders.append(Dataloader1)
+    # dataloaders.append(Dataloader2)
     dataloaders.append(Dataloader3)
-    dataloaders.append(Dataloader33)
-    dataloaders.append(Dataloader4)
-    dataloaders.append(Dataloader44)
-    dataloaders.append(Dataloader5)
-    dataloaders.append(Dataloader55)
-    dataloaders.append(Dataloader6)
+    # dataloaders.append(Dataloader4)
+    # dataloaders.append(Dataloader5)
+    # dataloaders.append(Dataloader6)
 
     clustering_methods = []
     clustering_methods.append(classifier1)
@@ -442,7 +439,6 @@ if __name__ == '__main__':
     print("START")
     start_time = time.time()
     print("Start time:  ", time.ctime(start_time))
-
 
     # Creating result files (if doesnt exists)
     crf.create_result_files()

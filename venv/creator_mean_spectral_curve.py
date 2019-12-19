@@ -5,6 +5,7 @@ import numpy as np
 import time
 
 # from drafts.tests.test_dataloader import Dataloader as test_dataloader
+
 from dataloader.indian_pines_dataloader import Dataloader as indian_pines_dataloader
 from dataloader.samson_dataloader import Dataloader as samson_dataloader
 from dataloader.jasper_ridge_dataloader import Dataloader as jasper_ridge_dataloader
@@ -24,8 +25,10 @@ def create_spectral_curve(
         save_img=True,
         save_data=True,
         draw_legend=True,
-        output_name=""):
-
+        output_name="",
+        zero_out=False):
+    # Note: zero_out - when creating spectral curves for ground truth labeling this should be set to true
+    #       When true spectral curve doesn't contain zero label(background)
     print("---------------------------------------------")
     print("START")
     print("Data name: ", dataname)
@@ -45,8 +48,17 @@ def create_spectral_curve(
     x = 0
     y = 0
     for i in range(shape[0]*shape[1]):
-        sum_of_clusters[int(labels[y, x])] += image[y, x]
-        elements_in_labels[int(labels[y, x])] += 1
+        element = int(labels[y, x])
+        if zero_out:
+            if element != 0:
+                element = element - 1
+                # klastry zostaną zapisane w tabeli od 0, dlatego 1 musi się zmienić na 0
+                sum_of_clusters[element] += image[y, x]
+                elements_in_labels[element] += 1
+        else:
+            sum_of_clusters[element] += image[y, x]
+            elements_in_labels[element] += 1
+
         x = x + 1
         if x == shape[1]:
             x = 0
@@ -134,7 +146,8 @@ def create_spectral_curve_from_dataloader(
         save_img=True,
         save_data=True,
         draw_legend=True,
-        output_name="")
+        output_name="",
+        zero_out=True)
 
 
 def create_spectral_curve_from_dataloader_plus(
@@ -164,6 +177,7 @@ def create_spectral_curve_from_dataloader_plus(
 
 def create_spectral_curve_for_ideal_data():
     # create_spectral_curve_from_dataloader(test_dataloader())
+
     create_spectral_curve_from_dataloader(indian_pines_dataloader())
     create_spectral_curve_from_dataloader(samson_dataloader())
     create_spectral_curve_from_dataloader(jasper_ridge_dataloader())

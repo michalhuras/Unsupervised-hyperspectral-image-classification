@@ -232,3 +232,8 @@ if __name__ == '__main__':
     print("RESULT:  ", np.shape(my_dataloader.get_labels()))
     print("\nTEST GET DATALOADER")
     print("RESULT:  ", my_dataloader.get_dataloader())
+
+    if False:
+        import matplotlib.pyplot as plt
+        plt.imshow(my_dataloader.get_labels())
+        plt.show()

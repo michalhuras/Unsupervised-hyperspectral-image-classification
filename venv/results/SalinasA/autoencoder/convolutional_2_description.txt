@@ -1,0 +1,15 @@
+Autoencoder: 
+Type: convolutional
+Name: 2
+Loss value: 0.548891544342041
+Dataset: salinas_a
+Autoencoder(
+  (encoder_conv): Conv1d(1, 20, kernel_size=(20,), stride=(1,))
+  (encoder_pool): MaxPool1d(kernel_size=4, stride=4, padding=0, dilation=1, ceil_mode=False)
+  (encoder_linear): Linear(in_features=46, out_features=1, bias=True)
+  (decoder_linear): Linear(in_features=1, out_features=46, bias=True)
+  (decoder_pool): MaxUnpool1d(kernel_size=(4,), stride=(4,), padding=(0,))
+  (decoder_conv): ConvTranspose1d(20, 1, kernel_size=(20,), stride=(1,))
+)
+Params length:  8
+   20   20   1   1   46   46   20   1

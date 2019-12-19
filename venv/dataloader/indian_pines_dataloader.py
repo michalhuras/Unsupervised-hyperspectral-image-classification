@@ -19,7 +19,8 @@ import os
     if notloaded .. 
 '''
 
-g_nr_of_clusters = 17
+g_nr_of_clusters = 16
+# g_nr_of_clusters = 16 + 1 # with background
 
 
 class Dataloader:
@@ -154,8 +155,9 @@ class Dataloader:
         NCols_labels = image_size_labels[1]
 
         # labels unification - wartości od 0 do number_of_labels -1
-        unused_label = 0
         labels_dictionary = {}
+        labels_dictionary[0] = 0 # background label
+        unused_label = 1
         x = 0
         y = 0
         labels_values = set()
@@ -213,19 +215,24 @@ class Dataloader:
 
 if __name__ == '__main__':
     my_dataloader = Dataloader()
-    print("\nTEST GET NAME")
-    print("RESULT:  ", my_dataloader.get_name())
-    print("\nTEST GET results directory")
-    print("RESULT:  ", my_dataloader.get_results_directory())
-    print("\nTEST GET NUMBER OF CLUSTERS")
-    print("RESULT:  ", my_dataloader.get_number_of_clusters())
-    print("\nTEST GET IMAGE")
-    print("RESULT:  ", np.shape(my_dataloader.get_image()))
-    print("\nTEST GET IMAGE LIST")
-    print("RESULT:  ", np.shape(my_dataloader.get_image_list()))
-    print("\nTEST GET IMAGE SHAPE")
-    print("RESULT:  ", my_dataloader.get_image_shape())
-    print("\nTEST GET LABELS")
-    print("RESULT:  ", np.shape(my_dataloader.get_labels()))
-    print("\nTEST GET DATALOADER")
-    print("RESULT:  ", my_dataloader.get_dataloader())
+    # print("\nTEST GET NAME")
+    # print("RESULT:  ", my_dataloader.get_name())
+    # print("\nTEST GET results directory")
+    # print("RESULT:  ", my_dataloader.get_results_directory())
+    # print("\nTEST GET NUMBER OF CLUSTERS")
+    # print("RESULT:  ", my_dataloader.get_number_of_clusters())
+    # print("\nTEST GET IMAGE")
+    # print("RESULT:  ", np.shape(my_dataloader.get_image()))
+    # print("\nTEST GET IMAGE LIST")
+    # print("RESULT:  ", np.shape(my_dataloader.get_image_list()))
+    # print("\nTEST GET IMAGE SHAPE")
+    # print("RESULT:  ", my_dataloader.get_image_shape())
+    # print("\nTEST GET LABELS")
+    # print("RESULT:  ", np.shape(my_dataloader.get_labels()))
+    # print("\nTEST GET DATALOADER")
+    # print("RESULT:  ", my_dataloader.get_dataloader())
+
+    if True:
+        import matplotlib.pyplot as plt
+        plt.imshow(my_dataloader.get_labels())
+        plt.show()
