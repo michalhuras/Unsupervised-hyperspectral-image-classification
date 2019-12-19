@@ -360,23 +360,24 @@ def run_machine_for_all():
 
     autoencoders = []
     autoencoders.append(Autoencoder0)
+
     autoencoders.append(Autoencoder1)
-    autoencoders.append(Autoencoder2)
-    autoencoders.append(Autoencoder3)
+    # autoencoders.append(Autoencoder2)
+    # autoencoders.append(Autoencoder3)
     autoencoders.append(Autoencoder4)
-    autoencoders.append(Autoencoder5)
-    autoencoders.append(Autoencoder6)
+    # autoencoders.append(Autoencoder5)
+    # autoencoders.append(Autoencoder6)
     autoencoders.append(Autoencoder7)
-    autoencoders.append(Autoencoder8)
-    autoencoders.append(Autoencoder9)
+    # autoencoders.append(Autoencoder8)
+    # autoencoders.append(Autoencoder9)
 
     dataloaders = []
-    dataloaders.append(Dataloader1)
-    dataloaders.append(Dataloader2)
+    # dataloaders.append(Dataloader1)
+    # dataloaders.append(Dataloader2)
     dataloaders.append(Dataloader3)
-    dataloaders.append(Dataloader4)
-    dataloaders.append(Dataloader5)
-    dataloaders.append(Dataloader6)
+    # dataloaders.append(Dataloader4)
+    # dataloaders.append(Dataloader5)
+    # dataloaders.append(Dataloader6)
 
     clustering_methods = []
     clustering_methods.append(classifier1)
