@@ -1,0 +1,29 @@
+Autoencoder: 
+Type: linear
+Name: 6
+Loss value: 0.00013707664038520306
+Dataset: samson
+Autoencoder(
+  (encoder): Sequential(
+    (0): Linear(in_features=156, out_features=90, bias=True)
+    (1): ReLU(inplace=True)
+    (2): Linear(in_features=90, out_features=40, bias=True)
+    (3): ReLU(inplace=True)
+    (4): Linear(in_features=40, out_features=15, bias=True)
+    (5): ReLU(inplace=True)
+    (6): Linear(in_features=15, out_features=7, bias=True)
+    (7): ReLU(inplace=True)
+  )
+  (decoder): Sequential(
+    (0): Linear(in_features=7, out_features=15, bias=True)
+    (1): ReLU(inplace=True)
+    (2): Linear(in_features=15, out_features=40, bias=True)
+    (3): ReLU(inplace=True)
+    (4): Linear(in_features=40, out_features=90, bias=True)
+    (5): ReLU(inplace=True)
+    (6): Linear(in_features=90, out_features=156, bias=True)
+    (7): ReLU(inplace=True)
+  )
+)
+Params length:  16
+   90   90   40   40   15   15   7   7   15   15   40   40   90   90   156   156
