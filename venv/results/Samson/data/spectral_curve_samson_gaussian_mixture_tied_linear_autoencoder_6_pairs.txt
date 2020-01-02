@@ -1,0 +1,4 @@
+# spectral_curve_samson_gaussian_mixture_tied_linear_autoencoder_6_pairs.txt
+2
+1
+0

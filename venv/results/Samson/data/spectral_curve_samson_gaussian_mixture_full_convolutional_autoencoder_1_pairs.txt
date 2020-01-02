@@ -1,0 +1,4 @@
+# spectral_curve_samson_gaussian_mixture_full_convolutional_autoencoder_1_pairs.txt
+1
+0
+2
