@@ -427,7 +427,7 @@ def get_timestamp():
 
 
 if __name__ == '__main__':
-    to_file = True # TODO change
+    to_file = False # TODO change
 
     # Przekierowanie wyjścia do pliku
     if to_file:
