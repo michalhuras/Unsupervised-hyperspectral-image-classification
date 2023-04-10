@@ -89,6 +89,7 @@ venv/Include
 ENV/
 env.bak/
 venv.bak/
+venv
 
 # Spyder project settings
 .spyderproject
@@ -109,3 +110,6 @@ venv.bak/
 
 *.exe
 *.ddl
+
+# Processed data
+data/processed

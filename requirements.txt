@@ -1,0 +1,6 @@
+matplotlib
+numpy
+scikit-learn==0.23
+torch
+torchvision
+pandas
